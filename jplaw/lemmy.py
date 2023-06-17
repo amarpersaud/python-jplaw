@@ -25,7 +25,14 @@ class Lemmy:
             HttpType.POST, url, {"username_or_email": username, "password": password}
         )
         return res_data["jwt"]
-
+        
+    def getInstance(self, instance_name):
+        url = self.instance + "/api/v3/user/login"
+        res_data = self._req.request(
+            HttpType.POST, url, {"username_or_email": username, "password": password}
+        )
+        return res_data
+        
     def getCommunity(self, name):
         url = self.instance + "/api/v3/community"
         res = self._req.request(HttpType.GET, url, {"name": name})
