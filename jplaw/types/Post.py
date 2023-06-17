@@ -1,5 +1,8 @@
 class Post:
-    def __init__(self, instance, community_id, post_id):
+    def __init__(self, lem, instance, cid, pid, author, text):
+        self.lem = lem
         self.instance = instance
-        self.community_id = community_id
-        self.post_id = post_id
+        self.cid = cid
+        self.pid = pid
+        sef.author = author
+        self.text = text
