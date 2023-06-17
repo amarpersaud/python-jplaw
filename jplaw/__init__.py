@@ -1,4 +1,4 @@
 from .lemmy import Lemmy
-from types.community import Community
-from types.instance import Instance
-from types.post import Post
+from .instance import Instance
+from .community import Community
+from .post import Post
