@@ -27,7 +27,8 @@ class Lemmy:
     def login(self, username, password, instance=None):
         self.instance = instance or self.instance 
         url = self.apiURL(self.instance, "login")
-        res_data = self._req.request(HttpType.POST, url, {"username_or_email": username, "password": password})
+        form = {"username_or_email": username, "password": password}
+        res_data = self._req.request(HttpType.POST, url, form)
         return res_data["jwt"]
     
     def getCommunity(self, name, instance=None, auth=False, auth_token=None):
