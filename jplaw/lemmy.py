@@ -2,9 +2,9 @@ from .requestor import Requestor, HttpType
 from .api_paths import *
 
 class Lemmy:    
-    from .community import getCommunity, listCommunities
-    from .post import listPosts, getPost, submitPost, editPost
-    from .comment import submitComment
+    from .community import getCommunity, listCommunities, followCommunity
+    from .post import listPosts, getPost, submitPost, editPost, likePost
+    from .comment import submitComment, likeComment
     
     def __enter__(self):
         """Handle the context manager open."""
