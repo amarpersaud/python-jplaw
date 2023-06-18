@@ -5,7 +5,7 @@ API_PATH = {
     "getCommunity" : "/community",
     "listCommunities" : "/community/list",
     "listPosts" : "/post/list",
-    "submitPost": "/post",
-    "editPost": "/post",
-    "submitComment": "/comment"
+    "submitPost" : "/post",
+    "editPost" : "/post",
+    "submitComment" : "/comment"
 }
