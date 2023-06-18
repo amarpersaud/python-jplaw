@@ -37,7 +37,7 @@ class Lemmy:
         if(auth):
             form.auth = auth_token or self.auth_token
         res = self._req.request(HttpType.GET, url, form)
-        return self.community
+        return res["community_view"]["community"]
     
     def listCommunities(self, instance=None, auth=False, auth_token=None): 
         url = self.apiURL(self.instance, "listCommunities")
@@ -45,7 +45,7 @@ class Lemmy:
         if(auth):
             form.auth = auth_token or self.auth_token
         res = self._req.request(HttpType.GET, url, form)
-        return res
+        return res["communities"]
     
     def listPosts(self, community_id, instance=None, sort=None, auth=False, auth_token=None):
         url = self.apiURL(self.instance, "listPosts")
