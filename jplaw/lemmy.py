@@ -40,14 +40,14 @@ class Lemmy:
         res = self._req.request(HttpType.GET, url, form)
         return res
 
-    def listPosts(self, community, instance=None, sort=None):
+    def listPosts(self, communityId, instance=None, sort=None):
         url = apiURL(self.instance, "listPosts")
         res = self._req.request(
             HttpType.GET,
             url,
-            {"sort": sort or "New", "community_id": self.community["id"]},
+            { "sort": sort or "New", "community_id": communityId }
         )
-
+        
         return res["posts"]
 
     def getPost(self, id):
