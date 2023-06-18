@@ -4,18 +4,18 @@ class Lemmy:
     def __enter__(self):
         """Handle the context manager open."""
         return self
-
+    
     def __exit__(self, *_args):
         """Handle the context manager close."""
-
+    
     def __init__(self, instance, username, password):
         self.username = username
-
+        
         # Login, get token, and set as header for future
         self._req = Requestor({})
-
+        
         self.auth_token = self.login(username, password, instance)
-
+        
         self._req.headers.update({"Authorization": "Bearer " + self.auth_token})
         # print(self._req.headers.get("Authorization"))
     
@@ -37,7 +37,7 @@ class Lemmy:
             form.auth = auth_token or self.auth_token
         res = self._req.request(HttpType.GET, url, form)
         return self.community
-
+    
     def listCommunities(self, instance=None, auth=False, auth_token=None): 
         url = apiURL(self.instance, "listCommunities")
         form={}
@@ -45,7 +45,7 @@ class Lemmy:
             form.auth = auth_token or self.auth_token
         res = self._req.request(HttpType.GET, url, form)
         return res
-
+    
     def listPosts(self, community_id, instance=None, sort=None, auth=False, auth_token=None):
         url = apiURL(self.instance, "listPosts")
         form = { "sort": sort or "New", "community_id": community_id }
@@ -58,7 +58,7 @@ class Lemmy:
         )
         
         return res["posts"]
-
+    
     def getPost(self, community_id, post_id, instance=None, auth=False, auth_token=None):
         url = apiURL(instance, "getPost")
         form = {"id": post_id}
@@ -71,7 +71,7 @@ class Lemmy:
         )
         
         return res["post_view"]
-
+    
     def submitPost(self, community_id, instance=None, title=None, body=None, remoteinstance=None, nsfw=False, language_id=None, auth_token=None):
         #there could be a bug here if instance != logged in instance when trying to create a post
         url = apiURL(instance, "submitPost")
