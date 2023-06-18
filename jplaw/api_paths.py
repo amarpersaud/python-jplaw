@@ -1,5 +1,7 @@
+API_VERSION = "/api/v3"
 API_PATH = {
-    "login" : "/api/v3/login",
-    "getPost" : "/api/v3/post",
-    "geCommunity" : "/api/v3/community"
+    "login" : "/login",
+    "getPost" : "/post",
+    "getCommunity" : "/community"
+    "listCommunities" : "/community/list"
 }
