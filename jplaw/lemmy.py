@@ -72,57 +72,60 @@ class Lemmy:
         
         return res["post_view"]
 
-    def submitPost(self, community_id, title=None, body=None, sub_url=None):
+    def submitPost(self, community_id, instance=None, title=None, body=None, remoteinstance=None, nsfw=False, language_id=None, auth_token=None):
+        #there could be a bug here if instance != logged in instance when trying to create a post
         url = apiURL(instance, "submitPost")
         form = { 
             "auth": auth_token or self.auth_token, 
             "community_id": community_id,
             "name": title,
             "body": body,
-            "url": sub_url, }
+            "url": remoteinstance, 
+            "language_id": language_id,
+            "nsfw"=nsfw
+            }
         res = self._req.request(
             HttpType.POST,
             url,
             form,
         )
-        
         return res["post_view"]
-
-    def editPost(self, post_id, title=None, body=None, url=None):
-        api_url = self.instance + "/api/v3/post"
-        data = {
-            "auth": self.auth_token,
-            "post_id": post_id,
-        }
-        if title:
-            data["name"] = title
-        if body:
-            data["body"] = body
-        if url:
-            data["url"] = url
-        
-        res = self._req.request(HttpType.PUT, api_url, data)
-        
-        return res["post_view"]
-
-    def submitComment(self, post_id, content, language_id=None, parent_id=None):
-        api_url = self.instance + "/api/v3/comment"
-
-        data = {
-            "auth": self.auth_token,
-            "content": content,
-            "post_id": post_id,
-        }
-        
-        if language_id:
-            data["language_id"] = language_id
-        if parent_id:
-            data["parent_id"] = parent_id
-        
-        res = self._req.request(
-            HttpType.POST,
-            api_url,
-            data,
-        )
-        
-        return res
+#    
+#    def editPost(self, post_id, title=None, body=None, url=None):
+#        api_url = self.instance + "/api/v3/post"
+#        data = {
+#            "auth": self.auth_token,
+#            "post_id": post_id,
+#        }
+#        if title:
+#            data["name"] = title
+#        if body:
+#            data["body"] = body
+#        if url:
+#            data["url"] = url
+#        
+#        res = self._req.request(HttpType.PUT, api_url, data)
+#        
+#        return res["post_view"]
+#
+#    def submitComment(self, post_id, content, language_id=None, parent_id=None):
+#        api_url = self.instance + "/api/v3/comment"
+#
+#        data = {
+#            "auth": self.auth_token,
+#            "content": content,
+#            "post_id": post_id,
+#        }
+#        
+#        if language_id:
+#            data["language_id"] = language_id
+#        if parent_id:
+#            data["parent_id"] = parent_id
+#        
+#        res = self._req.request(
+#            HttpType.POST,
+#            api_url,
+#            data,
+#        )
+#        
+#        return res
