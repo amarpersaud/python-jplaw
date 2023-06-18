@@ -1,14 +1,13 @@
 from .requestor import Requestor, HttpType
 from .api_paths import *
 
-def submitComment(self, post_id, content, parent_id=None, instance=None, title=None, body=None, remoteinstance=None, nsfw=None, language_id=None, auth_token=None):
+def submitComment(self, post_id, content, parent_id=None, instance=None, language_id=None, auth_token=None):
     url = self.apiURL(instance, "submitComment")
     
     form = {
-        "auth": self.auth_token,
+        "auth": auth_token or self.auth_token,
         "content": content,
         "post_id": post_id,
-        "url": remoteinstance or instance or self.instance
     }
     
     if language_id:
