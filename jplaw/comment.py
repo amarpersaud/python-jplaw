@@ -21,7 +21,7 @@ def submitComment(self, post_id, content, parent_id=None, instance=None, languag
         form,
     )
     
-    return res
+    return res["comment_view"]
     
 def likeComment(self, comment_id, score=1, instance=None, auth_token=None):
     url = self.apiURL(instance, "likeComment")
@@ -35,4 +35,4 @@ def likeComment(self, comment_id, score=1, instance=None, auth_token=None):
         "score": score
     }
     res = self._req.request(HttpType.POST, url, form)
-    return res
+    return res["comment_view"]
