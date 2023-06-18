@@ -34,3 +34,21 @@ class Lemmy:
         form = {"username_or_email": username, "password": password}
         res_data = self._req.request(HttpType.POST, url, form)
         return res_data["jwt"]
+        
+    def resolveObject(self, obj, instance=None, auth_token=None):
+        url = self.apiURL(instance, "resolveObject")
+        form={
+            "q": obj,
+            "auth": auth_token or self.auth_token
+        }
+        res = self._req.request(HttpType.GET, url, form)
+        return res
+        
+    def search(self, term, instance=None, auth_token=None):
+        url = self.apiURL(instance, "search")
+        form={
+            "q": term,
+            "auth": auth_token or self.auth_token
+        }
+        res = self._req.request(HttpType.GET, url, form)
+        return res

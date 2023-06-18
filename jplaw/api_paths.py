@@ -11,4 +11,6 @@ API_PATH = {
     "likePost" : "/post/like",
     "likeComment" : "/comment/like",
     "followCommunity" : "/community/follow",
+    "resolveObject": "/resolve_object",
+    "search": "/search",
 }
