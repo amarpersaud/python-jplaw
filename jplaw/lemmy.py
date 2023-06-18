@@ -20,11 +20,7 @@ class Lemmy:
         # print(self._req.headers.get("Authorization"))
     
     def apiURL(self, instance, path):
-        url = None
-        if(instance):
-            url = instance 
-        else:
-            url = self.instance
+        url = instance or self.instance
         return url.rstrip("/") + API_VERSION.rstrip("/") + API_PATH[path]
     
     def login(self, username, password, instance=None):
@@ -39,13 +35,13 @@ class Lemmy:
         res = self._req.request(HttpType.GET, url, {"name": name})
         return self.community
 
-    def listCommunities(self, instance=None, data={}): 
+    def listCommunities(self, instance=None, form={}): 
         url = apiURL(self.instance, "listCommunities")
-        res = self._req.request(HttpType.GET, url, {})
+        res = self._req.request(HttpType.GET, url, form)
         return res
 
-    def listPosts(self, sort=None):
-        url = self.instance + "/api/v3/post/list"
+    def listPosts(self, community, instance=None, sort=None):
+        url = apiURL(self.instance, "listPosts")
         res = self._req.request(
             HttpType.GET,
             url,

@@ -4,4 +4,5 @@ API_PATH = {
     "getPost" : "/post",
     "getCommunity" : "/community"
     "listCommunities" : "/community/list"
+    "listPosts" : "/post/list"
 }
