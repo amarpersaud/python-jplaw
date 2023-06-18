@@ -8,7 +8,7 @@ def submitComment(self, post_id, content, parent_id=None, instance=None, title=N
         "auth": self.auth_token,
         "content": content,
         "post_id": post_id,
-        "url": remoteinstance or url
+        "url": remoteinstance or instance or self.instance
     }
     
     if language_id:
