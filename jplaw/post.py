@@ -27,7 +27,7 @@ def getPost(self, community_id, post_id, instance=None, auth=True, auth_token=No
     )
     return res["post_view"]
 
-def submitPost(self, community_id, instance=None, title=None, body=None, remoteinstance=None, nsfw=False, language_id=None, auth_token=None):
+def submitPost(self, community_id, instance=None, title=None, body=None, remote_url=None, nsfw=False, language_id=None, auth_token=None):
     #there could be a bug here if instance != logged in instance when trying to create a post
     url = self.apiURL(instance, "submitPost")
     form = { 
@@ -35,10 +35,11 @@ def submitPost(self, community_id, instance=None, title=None, body=None, remotei
         "community_id": community_id,
         "name": title,
         "body": body,
-        "url": remoteinstance or url, 
         "language_id": language_id,
         "nsfw": nsfw
         }
+    if(remote_url):
+        form["url"] = remote_url
     res = self._req.request(
         HttpType.POST,
         url,
@@ -46,13 +47,14 @@ def submitPost(self, community_id, instance=None, title=None, body=None, remotei
     )
     return res["post_view"]
 
-def editPost(self, post_id, instance=None, title=None, body=None, remoteinstance=None, nsfw=None, language_id=None, auth_token=None):
+def editPost(self, post_id, instance=None, title=None, body=None, remote_url=None, nsfw=None, language_id=None, auth_token=None):
     url = self.apiURL(instance, "editPost")
     form = {
         "auth": auth_token or self.auth_token,
         "post_id": post_id,
-        "url": remoteinstance or url
     }
+    if(remote_url):
+        form["url"] = remote_url
     if (not (nsfw is None)):
         form["nsfw"] = nsfw
     if (not (language_id is None)):
