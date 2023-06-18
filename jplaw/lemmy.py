@@ -82,7 +82,7 @@ class Lemmy:
             "body": body,
             "url": remoteinstance, 
             "language_id": language_id,
-            "nsfw"=nsfw
+            "nsfw": nsfw
             }
         res = self._req.request(
             HttpType.POST,
