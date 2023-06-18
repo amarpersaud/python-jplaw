@@ -30,34 +30,46 @@ class Lemmy:
         res_data = self._req.request(HttpType.POST, url, {"username_or_email": username, "password": password})
         return res_data["jwt"]
     
-    def getCommunity(self, name, instance=None):
+    def getCommunity(self, name, instance=None, auth=False, auth_token=None):
         url = apiURL(instance, "getCommunity")
-        res = self._req.request(HttpType.GET, url, {"name": name})
+        form = {"name": name}
+        if(auth):
+            form.data = auth_token or self.auth_token
+        res = self._req.request(HttpType.GET, url, form)
         return self.community
 
-    def listCommunities(self, instance=None, form={}): 
+    def listCommunities(self, instance=None, auth=False, auth_token=None): 
         url = apiURL(self.instance, "listCommunities")
+        form={}
+        if(auth):
+            form.data = auth_token or self.auth_token
         res = self._req.request(HttpType.GET, url, form)
         return res
 
-    def listPosts(self, communityId, instance=None, sort=None):
+    def listPosts(self, community_id, instance=None, sort=None, auth=False, auth_token=None):
         url = apiURL(self.instance, "listPosts")
+        form = { "sort": sort or "New", "community_id": community_id }
+        if(auth):
+            form.data = auth_token or self.auth_token
         res = self._req.request(
             HttpType.GET,
             url,
-            { "sort": sort or "New", "community_id": communityId }
+            form
         )
         
         return res["posts"]
 
-    def getPost(self, id):
-        url = self.instance + "/api/v3/post"
+    def getPost(self, community_id, post_id, instance=None, auth=False, auth_token=None):
+        url = apiURL(instance, "getPost")
+        form = {"id": post_id}
+        if(auth):
+            form.data = auth_token or self.auth_token
         res = self._req.request(
             HttpType.GET,
             url,
-            {"id": id},
+            form,
         )
-
+        
         return res["post_view"]
 
     def submitPost(self, title=None, body=None, url=None):
@@ -73,7 +85,7 @@ class Lemmy:
                 "url": url,
             },
         )
-
+        
         return res["post_view"]
 
     def editPost(self, post_id, title=None, body=None, url=None):
@@ -88,9 +100,9 @@ class Lemmy:
             data["body"] = body
         if url:
             data["url"] = url
-
+        
         res = self._req.request(HttpType.PUT, api_url, data)
-
+        
         return res["post_view"]
 
     def submitComment(self, post_id, content, language_id=None, parent_id=None):
@@ -101,16 +113,16 @@ class Lemmy:
             "content": content,
             "post_id": post_id,
         }
-
+        
         if language_id:
             data["language_id"] = language_id
         if parent_id:
             data["parent_id"] = parent_id
-
+        
         res = self._req.request(
             HttpType.POST,
             api_url,
             data,
         )
-
+        
         return res
