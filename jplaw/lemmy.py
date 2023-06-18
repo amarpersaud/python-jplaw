@@ -1,4 +1,5 @@
 from .requestor import Requestor, HttpType
+from .api_paths import *
 
 class Lemmy:
     def __enter__(self):
@@ -24,9 +25,9 @@ class Lemmy:
         return url.rstrip("/") + API_VERSION.rstrip("/") + API_PATH[path]
     
     def login(self, username, password, instance=None):
-        if(instance):
-            self.instance = instance 
+        self.instance = instance or self.instance 
         url = self.apiURL(self.instance, "login")
+        print("URL IS: " + url)
         res_data = self._req.request(HttpType.POST, url, {"username_or_email": username, "password": password})
         return res_data["jwt"]
     
