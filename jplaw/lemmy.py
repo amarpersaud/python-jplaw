@@ -34,7 +34,7 @@ class Lemmy:
         url = apiURL(instance, "getCommunity")
         form = {"name": name}
         if(auth):
-            form.data = auth_token or self.auth_token
+            form.auth = auth_token or self.auth_token
         res = self._req.request(HttpType.GET, url, form)
         return self.community
 
@@ -42,7 +42,7 @@ class Lemmy:
         url = apiURL(self.instance, "listCommunities")
         form={}
         if(auth):
-            form.data = auth_token or self.auth_token
+            form.auth = auth_token or self.auth_token
         res = self._req.request(HttpType.GET, url, form)
         return res
 
@@ -50,7 +50,7 @@ class Lemmy:
         url = apiURL(self.instance, "listPosts")
         form = { "sort": sort or "New", "community_id": community_id }
         if(auth):
-            form.data = auth_token or self.auth_token
+            form.auth = auth_token or self.auth_token
         res = self._req.request(
             HttpType.GET,
             url,
@@ -63,7 +63,7 @@ class Lemmy:
         url = apiURL(instance, "getPost")
         form = {"id": post_id}
         if(auth):
-            form.data = auth_token or self.auth_token
+            form.auth = auth_token or self.auth_token
         res = self._req.request(
             HttpType.GET,
             url,
@@ -72,18 +72,18 @@ class Lemmy:
         
         return res["post_view"]
 
-    def submitPost(self, title=None, body=None, url=None):
-        api_url = self.instance + "/api/v3/post"
+    def submitPost(self, community_id, title=None, body=None, sub_url=None):
+        url = apiURL(instance, "submitPost")
+        form = { 
+            "auth": auth_token or self.auth_token, 
+            "community_id": community_id,
+            "name": title,
+            "body": body,
+            "url": sub_url, }
         res = self._req.request(
             HttpType.POST,
-            api_url,
-            {
-                "auth": self.auth_token,
-                "community_id": self.community["id"],
-                "name": title,
-                "body": body,
-                "url": url,
-            },
+            url,
+            form,
         )
         
         return res["post_view"]
