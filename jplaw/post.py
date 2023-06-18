@@ -1,7 +1,7 @@
 from .requestor import Requestor, HttpType
 from .api_paths import *
 
-def listPosts(self, community_id, instance=None, sort=None, auth=False, auth_token=None):
+def listPosts(self, community_id, instance=None, sort=None, auth=True, auth_token=None):
     url = self.apiURL(self.instance, "listPosts")
     form = { "sort": sort or "New", "community_id": community_id }
     if(auth):
@@ -13,11 +13,13 @@ def listPosts(self, community_id, instance=None, sort=None, auth=False, auth_tok
     )
     
     return res["posts"]
-def getPost(self, community_id, post_id, instance=None, auth=False, auth_token=None):
+def getPost(self, community_id, post_id, instance=None, auth=True, auth_token=None):
     url = self.apiURL(instance, "getPost")
-    form = {"id": post_id}
+    form = {
+        "id": post_id,
+    }
     if(auth):
-        form.auth = auth_token or self.auth_token
+        form["auth"] = auth_token or self.auth_token
     res = self._req.request(
         HttpType.GET,
         url,
