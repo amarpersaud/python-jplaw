@@ -26,12 +26,12 @@ class Lemmy:
     def login(self, username, password, instance=None):
         if(instance):
             self.instance = instance 
-        url = apiURL(self.instance, "login")
+        url = self.apiURL(self.instance, "login")
         res_data = self._req.request(HttpType.POST, url, {"username_or_email": username, "password": password})
         return res_data["jwt"]
     
     def getCommunity(self, name, instance=None, auth=False, auth_token=None):
-        url = apiURL(instance, "getCommunity")
+        url = self.apiURL(instance, "getCommunity")
         form = {"name": name}
         if(auth):
             form.auth = auth_token or self.auth_token
@@ -39,7 +39,7 @@ class Lemmy:
         return self.community
     
     def listCommunities(self, instance=None, auth=False, auth_token=None): 
-        url = apiURL(self.instance, "listCommunities")
+        url = self.apiURL(self.instance, "listCommunities")
         form={}
         if(auth):
             form.auth = auth_token or self.auth_token
@@ -47,7 +47,7 @@ class Lemmy:
         return res
     
     def listPosts(self, community_id, instance=None, sort=None, auth=False, auth_token=None):
-        url = apiURL(self.instance, "listPosts")
+        url = self.apiURL(self.instance, "listPosts")
         form = { "sort": sort or "New", "community_id": community_id }
         if(auth):
             form.auth = auth_token or self.auth_token
@@ -60,7 +60,7 @@ class Lemmy:
         return res["posts"]
     
     def getPost(self, community_id, post_id, instance=None, auth=False, auth_token=None):
-        url = apiURL(instance, "getPost")
+        url = self.apiURL(instance, "getPost")
         form = {"id": post_id}
         if(auth):
             form.auth = auth_token or self.auth_token
@@ -74,7 +74,7 @@ class Lemmy:
     
     def submitPost(self, community_id, instance=None, title=None, body=None, remoteinstance=None, nsfw=False, language_id=None, auth_token=None):
         #there could be a bug here if instance != logged in instance when trying to create a post
-        url = apiURL(instance, "submitPost")
+        url = self.apiURL(instance, "submitPost")
         form = { 
             "auth": auth_token or self.auth_token, 
             "community_id": community_id,
