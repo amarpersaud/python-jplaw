@@ -7,5 +7,7 @@ API_PATH = {
     "listPosts" : "/post/list",
     "submitPost" : "/post",
     "editPost" : "/post",
-    "submitComment" : "/comment"
+    "submitComment" : "/comment",
+    "likePost" : "/post/like",
+    "likeComment" : "/comment/like",
 }

@@ -65,3 +65,17 @@ def editPost(self, post_id, instance=None, title=None, body=None, remote_url=Non
         form["body"] = body
     res = self._req.request(HttpType.PUT, url, form)
     return res["post_view"]
+
+def likePost(self, post_id, score=1, instance=None, language_id=None, auth_token=None):
+    url = self.apiURL(instance, "likePost")
+    if(score > 1):
+        score = 1
+    if(score < -1):
+        score = -1
+    form = {
+        "auth": auth_token or self.auth_token,
+        "post_id": post_id,
+        "score": score
+    }
+    res = self._req.request(HttpType.POST, url, form)
+    return res
