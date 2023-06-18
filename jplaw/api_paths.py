@@ -10,4 +10,5 @@ API_PATH = {
     "submitComment" : "/comment",
     "likePost" : "/post/like",
     "likeComment" : "/comment/like",
+    "followCommunity" : "/community/follow",
 }

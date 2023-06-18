@@ -16,3 +16,13 @@ def listCommunities(self, instance=None, auth=True, auth_token=None):
         form["auth"] = auth_token or self.auth_token
     res = self._req.request(HttpType.GET, url, form)
     return res["communities"]
+
+def followCommunity(self, community_id, follow=True, instance=None, auth_token=None):
+    url = self.apiURL(self.instance, "followCommunity")
+    form={
+        "community_id": community_id,
+        "follow": follow,
+        "auth": auth_token or self.auth_token
+    }
+    res = self._req.request(HttpType.POST, url, form)
+    return res["community_view"]["community"]
