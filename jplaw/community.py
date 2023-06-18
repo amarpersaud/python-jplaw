@@ -1,8 +1,6 @@
 class Community:
-    def __init__(self, lem, instance, cid, name, description):
+    def __init__(self, lem, instance, community_name):
         self.lem = lem
         self.instance = instance
-        self.cid = cid
-        self.name = name
-        self.description = description
-        
+        self.community_name = community_name
+        self.json = lem.getCommunity(instance, community_name)
