@@ -1,6 +1,5 @@
 from .requestor import Requestor, HttpType
 
-
 class Lemmy:
     def __enter__(self):
         """Handle the context manager open."""
@@ -10,28 +9,40 @@ class Lemmy:
         """Handle the context manager close."""
 
     def __init__(self, instance, username, password):
-        self.instance = instance
         self.username = username
 
         # Login, get token, and set as header for future
         self._req = Requestor({})
-        self.auth_token = self.login(username, password)
+
+        self.auth_token = self.login(username, password, instance)
+
         self._req.headers.update({"Authorization": "Bearer " + self.auth_token})
         # print(self._req.headers.get("Authorization"))
-
-    def login(self, username, password):
-        url = self.instance + "/api/v3/user/login"
-        res_data = self._req.request(
-            HttpType.POST, url, {"username_or_email": username, "password": password}
-        )
+    
+    def apiURL(self, instance, path):
+        url = None
+        if(instance):
+            url = instance 
+        else:
+            url = self.instance
+        return url.rstrip("/") + API_VERSION.rstrip("/") + API_PATH[path]
+    
+    def login(self, username, password, instance=None):
+        if(instance):
+            self.instance = instance 
+        url = apiURL(self.instance, "login")
+        res_data = self._req.request(HttpType.POST, url, {"username_or_email": username, "password": password})
         return res_data["jwt"]
     
-    def getCommunity(self, name):
-        url = self.instance + "/api/v3/community"
+    def getCommunity(self, name, instance=None):
+        url = apiURL(instance, "getCommunity")
         res = self._req.request(HttpType.GET, url, {"name": name})
-
-        self.community = res["community_view"]["community"]
         return self.community
+
+    def listCommunities(self, instance=None, data={}): 
+        url = apiURL(self.instance, "listCommunities")
+        res = self._req.request(HttpType.GET, url, {})
+        return res
 
     def listPosts(self, sort=None):
         url = self.instance + "/api/v3/post/list"
