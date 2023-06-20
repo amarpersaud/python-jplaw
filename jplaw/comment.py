@@ -5,7 +5,6 @@ def submitComment(self, post_id, content, parent_id=None, instance=None, languag
     url = self.apiURL(instance, "submitComment")
     
     form = {
-        "auth": auth_token or self.auth_token,
         "content": content,
         "post_id": post_id,
     }
@@ -15,24 +14,19 @@ def submitComment(self, post_id, content, parent_id=None, instance=None, languag
     if parent_id:
         form["parent_id"] = parent_id
     
-    res = self._req.request(
-        HttpType.POST,
-        url,
-        form,
-    )
+    
+    res = self._req.lemmyRequest(HttpType.POST, "submitComment", instance=instance, form=form, auth=True, auth_token=auth_token)
     
     return res["comment_view"]
     
 def likeComment(self, comment_id, score=1, instance=None, auth_token=None):
-    url = self.apiURL(instance, "likeComment")
     if(score > 1):
         score = 1
     if(score < -1):
         score = -1
     form = {
-        "auth": auth_token or self.auth_token,
         "comment_id": comment_id,
         "score": score
     }
-    res = self._req.request(HttpType.POST, url, form)
+    res = self._req.lemmyRequest(HttpType.POST, "likeComment", instance=instance, form=form, auth=True, auth_token=auth_token)
     return res["comment_view"]

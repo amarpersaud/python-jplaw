@@ -13,10 +13,34 @@ class HttpType(Enum):
     # ... any other HTTP methods you need
 
 class Requestor:
-    def __init__(self, headers: Dict[str, str]):
+    def __init__(self, instance:str, username:str, password:str, headers: Dict[str, str]):
+        """
+        Make an HTTP request
+        
+        Args:
+            instance (str): URL of instance to log in to or use
+            username (str): username or email to log in with
+            password (str): password of user
+            headers (Dict[str,str]): Header data
+        Returns:
+            Requestor object
+        """
         self.headers = headers
-    
+        self.instance = instance
+        self.auth = username and password
+        if(self.auth):
+            self.auth_token = login()
     def request(self, type_: HttpType, url: str, form: Dict[str, Any]) -> T:
+        """
+        Make an HTTP request
+        
+        Args:
+            type_ (HttpType): Type of request
+            url (str): full url of endpoint
+            form (Dict[str,Any]): dictionary with data to send
+        Returns:
+            json object of response
+        """
         if type_ == HttpType.GET:
             response = requests.get(url, params=form, headers=self.headers)
         else:
@@ -30,3 +54,50 @@ class Requestor:
             raise Exception(response.text)  # Adjust this according to how your API returns errors
         
         return response.json()
+    
+    def apiURL(self, path:str, instance:str=None):
+        """
+        Converts API path to full API URL
+        
+        Args:
+            path (str): Path in api (minus version number), starting with "/"
+            instance (str): instance to access. Default None uses logged in instance
+        Returns:
+            URL of api endpoint
+        """
+        url = instance or self.instance
+        return url.rstrip("/") + API_VERSION.rstrip("/") + API_PATH[path]
+    
+    def lemmyRequest(self, type_: HttpType, function: str, instance: str = None, form: Dict[str, Any]={}, auth:bool=True, auth_token:str=None) -> T:
+        """
+        Make an api request specifically to a lemmy instance for a given api function
+        
+        Args:
+            type_ (HttpType): Type of request
+            function (str): API function
+            instance (str): instance to access. Default None uses logged in/default instance
+            form (Dict[str,Any]): dictionary with data to send
+            auth (bool): Whether or not to authenticate. Will use auth_token if available first, then internal auth_token from login.
+            auth_token (str): authentication token
+        Returns:
+            request response
+        """
+        if((auth and auth_token) or (auth and self.auth)):
+            form["auth"] = auth_token or self.auth
+        return self.request(type_.value, apiURL(instance, function), form)
+
+    def login(self, username, password, instance=None):
+        """"
+        Make an api request specifically to a lemmy instance for a given api function
+        
+        Args:
+            username: username or email in instance
+            password: password for login
+            instance (str): instance to access. Default None uses logged in/default/constructor instance
+        Returns:
+            request response
+        """
+        self.instance = instance or self.instance
+        form = {"username_or_email": username, "password": password}
+        res_data = self.lemmyRequest(HttpType.POST, "login", form)
+        return res_data["jwt"]

@@ -23,32 +23,17 @@ class Lemmy:
         
         self._req.headers.update({"Authorization": "Bearer " + self.auth_token})
         # print(self._req.headers.get("Authorization"))
-    
-    def apiURL(self, instance, path):
-        url = instance or self.instance
-        return url.rstrip("/") + API_VERSION.rstrip("/") + API_PATH[path]
-    
-    def login(self, username, password, instance=None):
-        self.instance = instance or self.instance 
-        url = self.apiURL(self.instance, "login")
-        form = {"username_or_email": username, "password": password}
-        res_data = self._req.request(HttpType.POST, url, form)
-        return res_data["jwt"]
         
     def resolveObject(self, obj, instance=None, auth_token=None):
-        url = self.apiURL(instance, "resolveObject")
         form={
-            "q": obj,
-            "auth": auth_token or self.auth_token
+            "q": obj
         }
-        res = self._req.request(HttpType.GET, url, form)
+        res = self._req.lemmyRequest(HttpType.GET, "resolveObject", instance=instance, form=form, auth_token=auth_token)
         return res
         
     def search(self, term, instance=None, auth_token=None):
-        url = self.apiURL(instance, "search")
         form={
-            "q": term,
-            "auth": auth_token or self.auth_token
+            "q": term
         }
-        res = self._req.request(HttpType.GET, url, form)
+        res = self._req.request(HttpType.GET, "search", instance=instance, auth_token=auth_token, form=form)
         return res
