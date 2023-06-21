@@ -27,9 +27,10 @@ class Requestor:
         """
         self.headers = headers
         self.instance = instance
-        self.auth = username and password
-        if(self.auth):
+        if(username and password):
             self.auth_token = login()
+        else:
+            self.auth_token = None
     def request(self, type_: HttpType, url: str, form: Dict[str, Any]) -> T:
         """
         Make an HTTP request
@@ -82,20 +83,27 @@ class Requestor:
         Returns:
             request response
         """
-        if((auth and auth_token) or (auth and self.auth)):
+        #if auth and token available 
+        if(auth and (auth_token or self.auth_token)):
             form["auth"] = auth_token or self.auth
         return self.request(type_.value, apiURL(instance, function), form)
-
+    
+    def logout(self):
+        """
+        Logs out of instance
+        """
+        #TODO: send log out 
+        self.auth_token = None
+    
     def login(self, username, password, instance=None):
-        """"
-        Make an api request specifically to a lemmy instance for a given api function
-        
+        """
+        Log into instance
         Args:
             username: username or email in instance
             password: password for login
             instance (str): instance to access. Default None uses logged in/default/constructor instance
         Returns:
-            request response
+            Access token
         """
         self.instance = instance or self.instance
         form = {"username_or_email": username, "password": password}

@@ -1,10 +1,11 @@
 from .requestor import Requestor, HttpType
 from .api_paths import *
-
-class Lemmy:    
-    from .community import getCommunity, listCommunities, followCommunity
-    from .post import listPosts, getPost, submitPost, editPost, likePost
-    from .comment import submitComment, likeComment
+from .comment import Comment
+from .post import Post
+class Lemmy:
+    Post: Post
+    Community: Community
+    Comment: Comment
     
     def __enter__(self):
         """Handle the context manager open."""
@@ -13,15 +14,16 @@ class Lemmy:
     def __exit__(self, *_args):
         """Handle the context manager close."""
     
-    def __init__(self, instance, username, password):
+    def __init__(self, instance, username:str = None, password:str = None):
+        self.Post = Post()
+        self.Community = Community()
+        self.Comment = Comment()
+        
         self.username = username
         
         # Login, get token, and set as header for future
-        self._req = Requestor({})
+        self._req = Requestor(instance=instance, username=username, password=password, headers={})
         
-        self.auth_token = self.login(username, password, instance)
-        
-        self._req.headers.update({"Authorization": "Bearer " + self.auth_token})
         # print(self._req.headers.get("Authorization"))
         
     def resolveObject(self, obj, instance=None, auth_token=None):
