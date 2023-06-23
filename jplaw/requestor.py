@@ -109,3 +109,22 @@ class Requestor:
         form = {"username_or_email": username, "password": password}
         res_data = self.lemmyRequest(HttpType.POST, "login", form)
         return res_data["jwt"]
+    
+    def AddIfValue(self, name, value, form):
+        """
+        Adds items to form if not None
+        Args:
+        
+        Returns:
+            Access token
+        """
+        if(value is not None):
+            form[name]=value
+        return form
+    
+    def AddListIfValue(self, obj, form):
+        if(obj is not None):
+            for key in obj:
+                if(obj[key] is not None):
+                    form[key]=obj[key]
+        return form
