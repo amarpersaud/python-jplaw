@@ -23,8 +23,7 @@ class User():
             "honeypot"       :honeypot       ,
             "answer"         :answer         ,
         }
-        form = _req.AddListIfValue(optional, form)
-        res = self._req.lemmyRequest(HttpType.POST, "register", instance=instance, form=form, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest(HttpType.POST, "register", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
         return res
     def getPersonDetails(self, instance:str=None, person_id:str=None, username:str=None, sort:str=None, page:int=0, limit:int=10, community_id:int=None, saved_only:bool=None, auth:bool=True, auth_token:str=None):
         form={}
@@ -37,8 +36,7 @@ class User():
             "community_id"   :community_id   ,
             "saved_only"     :saved_only     ,
         }
-        form = _req.AddListIfValue(optional, form)
-        res = self._req.lemmyRequest(HttpType.GET, "getPersonDetails", instance=instance, form=form, auth=auth, auth_token=auth_token))
+        res = self._req.lemmyRequest(HttpType.GET, "getPersonDetails", instance=instance, form=form, optional=optional, auth=auth, auth_token=auth_token))
         return res
     
     def markPersonMentionAsRead(self, instance:str=None, person_mention_id:int, read:bool=True, auth_token:str=None):
@@ -57,8 +55,7 @@ class User():
             "limit"          :limit          ,
             "unread_only"    :unread_only    ,
         }
-        form=_req.AddListIfValue(optional, form)
-        res = self._req.lemmyRequest(HttpType.GET, "getPersonMentions", instance=instance, form=form, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest(HttpType.GET, "getPersonMentions", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
         return res
     
     def getReplies(self, instance:str=None, sort:str=None, page:int=0, limit:int=10, unread_only:bool=True, auth_token:str=None):
@@ -69,8 +66,7 @@ class User():
             "limit"          :limit          ,
             "unread_only"    :unread_only    ,
         }
-        form=_req.AddListIfValue(optional, form)
-        res = self._req.lemmyRequest(HttpType.GET, "getReplies", instance=instance, form=form, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest(HttpType.GET, "getReplies", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
         return res
     
     def banPerson(self, person_id:int, ban:bool, remove_data:bool=None, reason:str=None, expires:int=None, auth_token:str=None):
@@ -83,8 +79,7 @@ class User():
             "reason"         :reason        ,
             "expires"        :expires
         }
-        form=_req.AddListIfValue(optional, form)
-        res = self._req.lemmyRequest(HttpType.POST, "banPerson", instance=instance, form=form, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest(HttpType.POST, "banPerson", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
         return res
     
     def getBannedPersons(self, instance:str=None, auth_token:str=None):
@@ -134,7 +129,5 @@ class User():
             "moderators": moderators,
             "discussion_languages": discussion_languages,
         }
-        form= self._req.AddListIfValue(optional, form)
-        res = self._req.lemmyRequest(HttpType.POST, "passwordChangeAfterReset", instance=instance, form=form, auth=False, auth_token=auth_token))
+        res = self._req.lemmyRequest(HttpType.POST, "passwordChangeAfterReset", instance=instance, form=form, optional=optional, auth=False, auth_token=auth_token))
         return res
-    def 

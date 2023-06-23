@@ -69,7 +69,7 @@ class Requestor:
         url = instance or self.instance
         return url.rstrip("/") + API_VERSION.rstrip("/") + API_PATH[path]
     
-    def lemmyRequest(self, type_: HttpType, function: str, instance: str = None, form: Dict[str, Any]={}, auth:bool=True, auth_token:str=None) -> T:
+    def lemmyRequest(self, type_: HttpType, function: str, instance: str = None, form: Dict[str, Any]={}, optional: Dict[str, Any]={}, auth:bool=True, auth_token:str=None) -> T:
         """
         Make an api request specifically to a lemmy instance for a given api function
         
@@ -83,6 +83,8 @@ class Requestor:
         Returns:
             request response
         """
+        form = self.AddListIfValue(optional=optional, form=form)
+        
         #if auth and token available 
         if(auth and (auth_token or self.auth_token)):
             form["auth"] = auth_token or self.auth
@@ -122,9 +124,9 @@ class Requestor:
             form[name]=value
         return form
     
-    def AddListIfValue(self, obj, form):
-        if(obj is not None):
-            for key in obj:
-                if(obj[key] is not None):
-                    form[key]=obj[key]
+    def AddListIfValue(self, optional: Dict[str, Any], form: Dict[str, Any]):
+        if(optional is not None):
+            for key in optional:
+                if(optional[key] is not None):
+                    form[key]=optional[key]
         return form

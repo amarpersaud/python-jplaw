@@ -12,14 +12,11 @@ class Comment():
             "content": content,
             "post_id": post_id,
         }
-        
-        if language_id:
-            form["language_id"] = language_id
-        if parent_id:
-            form["parent_id"] = parent_id
-        
-        
-        res = self._req.lemmyRequest(HttpType.POST, "submitComment", instance=instance, form=form, auth=True, auth_token=auth_token)
+        optional={
+            "language_id": language_id,
+            "parent_id": parent_id
+        }
+        res = self._req.lemmyRequest(HttpType.POST, "submitComment", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         
         return res["comment_view"]
         
