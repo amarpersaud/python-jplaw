@@ -1,11 +1,17 @@
 from .requestor import Requestor, HttpType
 from .api_paths import *
+from enum import *
 from .comment import Comment
 from .post import Post
+from .user import User
+from .site import Site
+
 class Lemmy:
     Post: Post
     Community: Community
     Comment: Comment
+    User: User
+    Site: Site
     
     def __enter__(self):
         """Handle the context manager open."""
@@ -18,6 +24,8 @@ class Lemmy:
         self.Post = Post()
         self.Community = Community()
         self.Comment = Comment()
+        self.User = User()
+        self.Site = Site()
         
         self.username = username
         
