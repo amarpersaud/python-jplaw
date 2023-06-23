@@ -137,3 +137,4 @@ class User():
         form= self._req.AddListIfValue(optional, form)
         res = self._req.lemmyRequest(HttpType.POST, "passwordChangeAfterReset", instance=instance, form=form, auth=False, auth_token=auth_token))
         return res
+    def 
