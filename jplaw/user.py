@@ -192,3 +192,17 @@ class User():
         }
         res = self._req.lemmyRequest("changePassword", instance=instance, form=form, auth=True, auth_token=auth_token))
         return res
+    def getReportCount(self, instance:str=None, community_id:int=None, auth_token:str=None):
+        form={}
+        optional={
+            "community_id": community_id
+            }
+        res = self._req.lemmyRequest("getReportCount", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
+        return res
+        
+    def getUnreadCount(self, instance:str=None, auth_token:str=None):
+        form={}
+        res = self._req.lemmyRequest("getUnreadCount", instance=instance, form=form, auth=True, auth_token=auth_token))
+        return res
+    def verifyEmail(self, instance:str=None, auth_token:str=None):
+        
