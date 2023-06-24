@@ -204,5 +204,7 @@ class User():
         form={}
         res = self._req.lemmyRequest("getUnreadCount", instance=instance, form=form, auth=True, auth_token=auth_token))
         return res
-    def verifyEmail(self, instance:str=None, auth_token:str=None):
-        
+    def verifyEmail(self, instance:str=None, token:str=None):
+        form={ "token": token }
+        res = self._req.lemmyRequest("verifyEmail", instance=instance, form=form, auth=False, auth_token=auth_token))
+        return res
