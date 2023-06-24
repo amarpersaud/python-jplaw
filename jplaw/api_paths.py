@@ -20,7 +20,7 @@ API_PATH = {
     "register":                             { "method": HttpType.POST    , "path": "/user/register"                         },
     "getPersonDetails":                     { "method": HttpType.GET     , "path": "/user"                                  },
     "getPersonMentions":                    { "method": HttpType.GET     , "path": "/user/mention"                          },
-    "markPersonMentionAsRead",              { "method": HttpType.POST    , "path": "/user/mention/mark_as_read"             },
+    "markPersonMentionAsRead":              { "method": HttpType.POST    , "path": "/user/mention/mark_as_read"             },
     "getReplies":                           { "method": HttpType.GET     , "path": "/user/replies"                          },
     "banPerson":                            { "method": HttpType.POST    , "path": "/user/ban"                              },
     "getBannedPersons":                     { "method": HttpType.GET     , "path": "/user/banned"                           },
@@ -38,6 +38,4 @@ API_PATH = {
     "addAdmin":                             { "method": HttpType.POST    , "path": "/admin/add"                             },
     "getUnreadRegistrationApplicationCount":{ "method": HttpType.GET     , "path": "/admin/registration_application/count"  },
     "listRegistrationApplications":         { "method": HttpType.GET     , "path": "/admin/registration_application/list"   },
-
-
 }
