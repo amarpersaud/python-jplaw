@@ -19,4 +19,5 @@ setup(
         'Programming Language :: Python :: 3.9',
     ],
     keywords='lemmy plaw api jplaw',
+    long_description=open('README.md').read(),
 )
