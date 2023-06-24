@@ -6,8 +6,15 @@ class PrivateMessage():
     def __init__(self, _req: Requestor):
         self._req = _req
     
-    def getPrivateMessages(self, )
-    
+    def getPrivateMessages(self, unread_only:bool=None, page:int=None, limit:int=None, instance:str=None, auth_token:str=None):
+        form = {}
+        optional={
+            "unread_only": unread_only,
+            "page": page,
+            "limit": limit,
+            }
+        res = self._req.lemmyRequest("getPrivateMessages", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
     def createPrivateMessage(self, content:str, recipient_id:int, instance:str=None, auth_token:str=None):
         form = {
             "content": content,

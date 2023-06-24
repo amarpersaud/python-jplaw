@@ -1,6 +1,7 @@
 from .requestor import Requestor
 from .api_paths import *
 from typing import List
+from .modlog_action_type import ModlogActionType
 
 class Site():
     def __init__(self, _req: Requestor):
@@ -86,7 +87,7 @@ class Site():
         res = self._req.lemmyRequest("approveRegistrationApplication", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res
         
-    def getModlog(self, mod_person_id:int=None, community_id:int, page:int=None, limit:int=None, type_:ModlogActionType=None, other_person_id:int=None, instance:str=None, auth_token:str=None):
+    def getModlog(self, mod_person_id:int=None, community_id:int=None, page:int=None, limit:int=None, type_:ModlogActionType=None, other_person_id:int=None, instance:str=None, auth_token:str=None):
         form={}
         optional={
             "mod_person_id": mod_person_id,
