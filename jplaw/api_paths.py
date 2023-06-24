@@ -2,7 +2,7 @@ from .http_type import HttpType
 
 API_VERSION = "/api/v3"
 API_PATH = {
-    "login" :                               { "method": HttpType.POST     , "path": "/user/login"                            },
+    "login" :                               { "method": HttpType.POST    , "path": "/user/login"                            },
     "getPost" :                             { "method": HttpType.GET     , "path": "/post"                                  },
     "getCommunity" :                        { "method": HttpType.GET     , "path": "/community"                             },
     "listCommunities" :                     { "method": HttpType.GET     , "path": "/community/list"                        },
@@ -30,7 +30,6 @@ API_PATH = {
     "passwordChangeAfterReset":             { "method": HttpType.POST    , "path": "/user/password_change"                  },
     "saveUserSettings":                     { "method": HttpType.PUT     , "path": "/user/save_user_settings"               },
     "markAllAsRead":                        { "method": HttpType.GET     , "path": "/user/mark_all_as_read"                 },
-    "saveUserSettings":                     { "method": HttpType.PUT     , "path": "/user/save_user_settings"               },
     "changePassword":                       { "method": HttpType.PUT     , "path": "/user/change_password"                  },
     "getReportCount":                       { "method": HttpType.GET     , "path": "/user/report_count"                     },
     "getUnreadCount":                       { "method": HttpType.GET     , "path": "/user/unread_count"                     },
@@ -40,5 +39,13 @@ API_PATH = {
     "listRegistrationApplications":         { "method": HttpType.GET     , "path": "/admin/registration_application/list"   },
     "createCustomEmoji":                    { "method": HttpType.GET     , "path": "/custom_emoji"                          },
     "editCustomEmoji":                      { "method": HttpType.PUT     , "path": "/custom_emoji"                          },
-    "deleteCustomEmoji":                    { "method": HttpType.POST    , "path": "/custom_emoji/delete"                   }
+    "deleteCustomEmoji":                    { "method": HttpType.POST    , "path": "/custom_emoji/delete"                   },
+    "addModToCommunity":                    { "method": HttpType.POST    , "path": "/community/mod"                         },
+    "approveRegistrationApplication":       { "method": HttpType.PUT     , "path": "/admin/registration_application/approve"},
+    "communityBanUser":                     { "method": HttpType.POST    , "path": "/community/ban_user"                    },
+    "blockCommunity":                       { "method": HttpType.POST    , "path": "/community/block"                       },
+    "createCommentReport":                  { "method": HttpType.POST    , "path": "/comment/report"                        },
+    "createCommunity":                      { "method": HttpType.POST    , "path": "/community"                             },
+    "createPostReport":                     { "method": HttpType.POST    , "path": "/post/report"                           },
 }
+
