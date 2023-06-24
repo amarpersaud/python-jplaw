@@ -1,4 +1,4 @@
-from .requestor import Requestor, HttpType
+from .requestor import Requestor
 from .api_paths import *
 
 
