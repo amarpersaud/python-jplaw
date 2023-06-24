@@ -53,7 +53,7 @@ class Community():
             "reason": reason,
             "expires": expires,
         }
-        res = self._req.lemmyRequest("addModToCommunity", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("banFromCommunity", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res
         
     def blockCommunity(self, community_id:int, block:bool=True, instance:str=None, auth_token:str=None):
@@ -61,8 +61,8 @@ class Community():
             "community_id": community_id,
             "block": block,
             }
-        res = self._req.lemmyRequest("addModToCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
-        return res
+        res = self._req.lemmyRequest("blockCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res["community_view"]
         
     def createCommunity(self, name:str, title:str, description:str=None, icon:str=None, banner:str=None, nsfw:bool=None, posting_restricted_to_mods:bool=None, discussion_languages:List[str]=None, instance:str=None, auth_token:str=None):
         form={
@@ -78,6 +78,28 @@ class Community():
             "discussion_languages": discussion_languages,
             }
         res = self._req.lemmyRequest("createCommunity", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
-        return res
+        return res["community_view"]
         
+    def deleteCommunity(self, community_id:int, deleted:bool=True, instance:str=None, auth_token:str=None):
+        form={
+            "community_id": community_id,
+            "deleted": deleted,
+            }
+        res = self._req.lemmyRequest("deleteCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res["community_view"]
     
+    def editCommunity(self, community_id:int, title:str=None, description:str=None, icon:str=None, banner:str=None, nsfw:bool=None, posting_restricted_to_mods:bool=None, discussion_languages:List[str]=None, instance:str=None, auth_token:str=None):
+        form={
+            "community_id": community_id,
+            }
+        optional={
+            "title": title,
+            "description": description,
+            "icon": icon,
+            "banner": banner,
+            "nsfw": nsfw,
+            "posting_restricted_to_mods": posting_restricted_to_mods,
+            "discussion_languages": discussion_languages,
+            }
+        res = self._req.lemmyRequest("createCommunity", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res["community_view"]

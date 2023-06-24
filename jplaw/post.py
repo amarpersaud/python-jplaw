@@ -1,6 +1,6 @@
 from .requestor import Requestor
 from .api_paths import *
-
+from .post_feature_type import PostFeatureType
 
 class Post():
     def __init__(self, _req: Requestor):
@@ -18,7 +18,7 @@ class Post():
         res = self._req.lemmyRequest("getPost", instance=instance, form=form, auth=auth, auth_token=auth_token)
         return res["post_view"]
         
-    def submitPost(self, community_id:int, title=None, body=None, remote_url=None, nsfw=False, language_id=None, instance:str=None, auth_token:str=None):
+    def submitPost(self, community_id:int, title:str=None, body:str=None, remote_url:str=None, nsfw=False, language_id=None, instance:str=None, auth_token:str=None):
         #there could be a bug here if instance != logged in instance when trying to create a post
         form = {
             "community_id": community_id,
@@ -33,7 +33,7 @@ class Post():
         res = self._req.lemmyRequest("submitPost", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res["post_view"]
         
-    def editPost(self, post_id:int, title=None, body=None, remote_url=None, nsfw=None, language_id=None, instance:str=None, auth_token:str=None):
+    def editPost(self, post_id:int, title:str=None, body:str=None, remote_url:str=None, nsfw:bool=None, language_id=None, instance:str=None, auth_token:str=None):
         form = {
             "post_id": post_id,
         }
@@ -65,4 +65,20 @@ class Post():
             "reason": reason
             }
         res = self._req.lemmyRequest("createPostReport", instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+        
+    def deletePost(self, post_id:int, deleted:bool=True, instance:str=None, auth_token:str=None):
+        form = {
+            "post_id": post_id,
+            "deleted": deleted
+            }
+        res = self._req.lemmyRequest("deletePost", instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+    def featurePost(self, post_id:int, feature_type: PostFeatureType, featured:bool=True, instance:str=None, auth_token:str=None):
+        form = {
+            "post_id": post_id,
+            "feature_type": feature_type.value,
+            "featured": featured,
+            }
+        res = self._req.lemmyRequest("featurePost", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res

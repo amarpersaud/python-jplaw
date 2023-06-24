@@ -37,3 +37,45 @@ class Comment():
             }
         res = self._req.lemmyRequest("createCommentReport", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res
+        
+    def deleteComment(self, comment_id:int, deleted:bool=True, instance:str=None, auth_token:str=None):
+        form = {
+            "comment_id": comment_id,
+            "deleted": deleted
+            }
+        res = self._req.lemmyRequest("deleteComment", instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res["comment_view"]
+        
+    def removeComment(self, comment_id:int, mod_person_id:int, when_:str, removed:bool=True, reason:str=None, instance:str=None, auth_token:str=None):
+        form = {
+            "comment_id": comment_id,
+            "mod_person_id": mod_person_id,
+            "when_": when_,
+            "removed": removed,
+            }
+        optional={
+            "reason":reason,
+            }
+        res = self._req.lemmyRequest("removeComment", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res["comment_view"]
+        
+    def distinguishComment(self, comment_id:int, distinguished:bool=True, instance:str=None, auth_token:str=None):
+        form = {
+            "comment_id": comment_id,
+            "distinguished": distinguished,
+            }
+        res = self._req.lemmyRequest("distinguishComment", instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res["comment_view"]
+        
+    def editComment(self, comment_id:int, content:str=None, language_id:str=None, form_id:str=None, instance:str=None, auth_token:str=None):
+        form = {
+            "comment_id": comment_id
+            }
+        optional={
+            "content":content,
+            "language_id":language_id,
+            "form_id":form_id,
+            }
+        res = self._req.lemmyRequest("editComment", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res["comment_view"]
+        
