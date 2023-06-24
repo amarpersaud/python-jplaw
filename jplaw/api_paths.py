@@ -26,4 +26,9 @@ API_PATH = {
     "deleteAccount":    "/user/delete_account",
     "passwordReset":    "/user/password_reset",
     "passwordChangeAfterReset": "/user/password_change",
+    "saveUserSettings": "/user/save_user_settings",
+    "markAllAsRead": "/user/mark_all_as_read",
+    "saveUserSettings": "/user/save_user_settings",
+    "changePassword": "/user/change_password",
+    
 }
