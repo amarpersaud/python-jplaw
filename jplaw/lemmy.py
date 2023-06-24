@@ -5,6 +5,7 @@ from .community import Community
 from .post import Post
 from .user import User
 from .site import Site
+from .private_message import PrivateMessage
 
 class Lemmy:
     Post: Post
@@ -12,6 +13,7 @@ class Lemmy:
     Comment: Comment
     User: User
     Site: Site
+    PrivateMessage: PrivateMessage
     
     def __enter__(self):
         """Handle the context manager open."""
@@ -31,6 +33,7 @@ class Lemmy:
         self.Comment = Comment(self._req)
         self.User = User(self._req)
         self.Site = Site(self._req)
+        self.PrivateMessage = PrivateMessage(self._req)
         # print(self._req.headers.get("Authorization"))
         
     def resolveObject(self, obj, instance=None, auth_token=None):

@@ -1,6 +1,7 @@
 from .requestor import Requestor
 from .api_paths import *
 from typing import List
+from .modlog_action_type import ModlogActionType
 
 class Site():
     def __init__(self, _req: Requestor):
@@ -20,7 +21,7 @@ class Site():
         return res
         
     def getFederatedInstances(self, instance:str=None, auth:bool=True, auth_token:str=None):
-        res = self._req.lemmyRequest("federated_instances", instance=instance, auth=auth, auth_token=auth_token)
+        res = self._req.lemmyRequest("getFederatedInstances", instance=instance, auth=auth, auth_token=auth_token)
         return res
         
     def createCustomEmoji(self, category:str, shortcode:str, image_url:str, alt_text:str, keywords:List[str], instance:str=None, auth_token:str=None):
@@ -73,4 +74,65 @@ class Site():
             "unread_only": unread_only
             }
         res = self._req.lemmyRequest("listRegistrationApplications", instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+        
+    def approveRegistrationApplication(self, application_id:int, approve:bool, deny_reason:str=None, instance:str=None, auth_token:str=None):
+        form={
+            "application_id": application_id,
+            "approve": approve,
+            }
+        optional={
+            "deny_reason": deny_reason
+            }
+        res = self._req.lemmyRequest("approveRegistrationApplication", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+        
+    def getModlog(self, mod_person_id:int=None, community_id:int=None, page:int=None, limit:int=None, type_:ModlogActionType=None, other_person_id:int=None, instance:str=None, auth_token:str=None):
+        form={}
+        optional={
+            "mod_person_id": mod_person_id,
+            "community_id": community_id,
+            "page": page,
+            "limit": limit,
+            "type_": type_,
+            "other_person_id": other_person_id,
+            }
+        res = self._req.lemmyRequest("getModlog", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+        
+    def purgeComment(self, comment_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+        form={
+            "comment_id": comment_id
+            }
+        optional={
+            "reason": reason,
+            }
+        res = self._req.lemmyRequest("purgeComment", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    def purgeCommunity(self, community_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+        form={
+            "community_id": community_id
+            }
+        optional={
+            "reason": reason,
+            }
+        res = self._req.lemmyRequest("purgeCommunity", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    def purgePost(self, post_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+        form={
+            "post_id": post_id
+            }
+        optional={
+            "reason": reason,
+            }
+        res = self._req.lemmyRequest("purgePost", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    def purgePerson(self, person_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+        form={
+            "person_id": person_id
+            }
+        optional={
+            "reason": reason,
+            }
+        res = self._req.lemmyRequest("purgePerson", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res
