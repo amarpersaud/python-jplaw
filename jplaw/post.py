@@ -58,3 +58,11 @@ class Post():
         }
         res = self._req.lemmyRequest("likePost", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res
+    
+    def createPostReport(self, post_id:int, reason:str, instance:str=None, auth_token:str=None):
+        form = {
+            "post_id": post_id,
+            "reason": reason
+            }
+        res = self._req.lemmyRequest("createPostReport", instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res

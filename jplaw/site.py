@@ -74,3 +74,14 @@ class Site():
             }
         res = self._req.lemmyRequest("listRegistrationApplications", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res
+        
+    def approveRegistrationApplication(self, application_id:int, approve:bool, deny_reason:str=None, instance:str=None, auth_token:str=None):
+        form={
+            "application_id": application_id,
+            "approve": approve,
+            }
+        optional={
+            "deny_reason": deny_reason
+            }
+        res = self._req.lemmyRequest("approveRegistrationApplication", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res

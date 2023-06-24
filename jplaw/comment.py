@@ -18,7 +18,7 @@ class Comment():
         
         return res["comment_view"]
         
-    def likeComment(self, comment_id:int, score=1, instance:str=None, auth_token:str=None):
+    def likeComment(self, comment_id:int, score:int=1, instance:str=None, auth_token:str=None):
         if(score > 1):
             score = 1
         if(score < -1):
@@ -29,3 +29,11 @@ class Comment():
         }
         res = self._req.lemmyRequest("likeComment", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res["comment_view"]
+        
+    def createCommentReport(self, comment_id:int, reason:str, instance:str=None, auth_token:str=None):
+        form = {
+            "comment_id": comment_id,
+            "reason": reason
+            }
+        res = self._req.lemmyRequest("createCommentReport", instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
