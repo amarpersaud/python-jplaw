@@ -1,5 +1,6 @@
 from .requestor import Requestor
 from .api_paths import *
+from typing import List
 
 class Site():
     def __init__(self, _req: Requestor):
@@ -46,7 +47,7 @@ class Site():
         
     def deleteCustomEmoji(self, emoji_id:int, instance:str=None, auth_token:str=None):
         form={
-            "id" = emoji_id
+            "id": emoji_id
             }
         res = self._req.lemmyRequest("deleteCustomEmoji", instance=instance, form=form, auth=auth, auth_token=auth_token)
         return res

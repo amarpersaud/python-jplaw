@@ -40,6 +40,5 @@ API_PATH = {
     "listRegistrationApplications":         { "method": HttpType.GET     , "path": "/admin/registration_application/list"   },
     "createCustomEmoji":                    { "method": HttpType.GET     , "path": "/custom_emoji"                          },
     "editCustomEmoji":                      { "method": HttpType.PUT     , "path": "/custom_emoji"                          },
-    "deleteCustomEmoji":                    { "method": HttpType.POST    , "path": "/custom_emoji/delete"                   },
-    "
+    "deleteCustomEmoji":                    { "method": HttpType.POST    , "path": "/custom_emoji/delete"                   }
 }
