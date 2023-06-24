@@ -1,7 +1,7 @@
 from .requestor import Requestor, HttpType
 from .api_paths import *
 
-class Post():
+class Community():
     def __init__(self, _req: Requestor):
         self._req = _req
         
