@@ -22,17 +22,16 @@ class Lemmy:
         """Handle the context manager close."""
     
     def __init__(self, instance, username:str = None, password:str = None):
-        self.Post = Post()
-        self.Community = Community()
-        self.Comment = Comment()
-        self.User = User()
-        self.Site = Site()
-        
         self.username = username
         
         # Login, get token, and set as header for future
         self._req = Requestor(instance=instance, username=username, password=password, headers={})
         
+        self.Post = Post(_req)
+        self.Community = Community(_req)
+        self.Comment = Comment(_req)
+        self.User = User(_req)
+        self.Site = Site(_req)
         # print(self._req.headers.get("Authorization"))
         
     def resolveObject(self, obj, instance=None, auth_token=None):
