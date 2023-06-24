@@ -1,29 +1,24 @@
-from .requestor import Requestor, HttpType
+from .requestor import Requestor
 from .api_paths import *
 
 class Comment():
     def __init__(self, _req: Requestor):
         self._req = _req
         
-    def submitComment(self, post_id, content, parent_id=None, instance=None, language_id=None, auth_token=None):
-        url = self.apiURL(instance, "submitComment")
-        
+    def submitComment(self, post_id:int, content:str, parent_id:int=None, language_id:str=None, instance:str=None, auth_token:str=None):
         form = {
             "content": content,
             "post_id": post_id,
         }
-        
-        if language_id:
-            form["language_id"] = language_id
-        if parent_id:
-            form["parent_id"] = parent_id
-        
-        
-        res = self._req.lemmyRequest(HttpType.POST, "submitComment", instance=instance, form=form, auth=True, auth_token=auth_token)
+        optional={
+            "language_id": language_id,
+            "parent_id": parent_id
+        }
+        res = self._req.lemmyRequest("submitComment", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         
         return res["comment_view"]
         
-    def likeComment(self, comment_id, score=1, instance=None, auth_token=None):
+    def likeComment(self, comment_id:int, score=1, instance:str=None, auth_token:str=None):
         if(score > 1):
             score = 1
         if(score < -1):
@@ -32,5 +27,5 @@ class Comment():
             "comment_id": comment_id,
             "score": score
         }
-        res = self._req.lemmyRequest(HttpType.POST, "likeComment", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("likeComment", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res["comment_view"]

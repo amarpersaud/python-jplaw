@@ -2,15 +2,10 @@ from enum import Enum
 import requests
 import json
 from typing import Dict, Any, TypeVar
+from .api_paths import *
+from .http_type import HttpType
 
 T = TypeVar("T")
-
-class HttpType(Enum):
-    GET = "GET"
-    POST = "POST"
-    PUT = "PUT"
-    DELETE = "DELETE"
-    # ... any other HTTP methods you need
 
 class Requestor:
     def __init__(self, instance:str, username:str, password:str, headers: Dict[str, str]):
@@ -27,10 +22,10 @@ class Requestor:
         """
         self.headers = headers
         self.instance = instance
+        self.auth_token = None
         if(username and password):
-            self.auth_token = login()
-        else:
-            self.auth_token = None
+            self.auth_token = self.login(username=username, password=password, instance=instance)
+            
     def request(self, type_: HttpType, url: str, form: Dict[str, Any]) -> T:
         """
         Make an HTTP request
@@ -50,7 +45,6 @@ class Requestor:
                 **self.headers,
             }
             response = requests.request(type_.value, url, data=json.dumps(form), headers=headers)
-        
         if response.status_code != 200:
             raise Exception(response.text)  # Adjust this according to how your API returns errors
         
@@ -67,9 +61,9 @@ class Requestor:
             URL of api endpoint
         """
         url = instance or self.instance
-        return url.rstrip("/") + API_VERSION.rstrip("/") + API_PATH[path]
+        return url.rstrip("/") + API_VERSION.rstrip("/") + path
     
-    def lemmyRequest(self, type_: HttpType, function: str, instance: str = None, form: Dict[str, Any]={}, auth:bool=True, auth_token:str=None) -> T:
+    def lemmyRequest(self, function: str, instance: str = None, form: Dict[str, Any]={}, optional: Dict[str, Any]={}, auth:bool=True, auth_token:str=None) -> T:
         """
         Make an api request specifically to a lemmy instance for a given api function
         
@@ -83,10 +77,12 @@ class Requestor:
         Returns:
             request response
         """
+        form = self.AddListIfValue(optional=optional, form=form)
+        
         #if auth and token available 
         if(auth and (auth_token or self.auth_token)):
-            form["auth"] = auth_token or self.auth
-        return self.request(type_.value, apiURL(instance, function), form)
+            form["auth"] = auth_token or self.auth_token
+        return self.request((API_PATH[function]["method"]), self.apiURL(instance=instance, path=(API_PATH[function]["path"])), form)
     
     def logout(self):
         """
@@ -106,6 +102,25 @@ class Requestor:
             Access token
         """
         self.instance = instance or self.instance
-        form = {"username_or_email": username, "password": password}
-        res_data = self.lemmyRequest(HttpType.POST, "login", form)
+        form = { "username_or_email": username, "password": password }
+        res_data = self.lemmyRequest("login", form=form, instance=instance)
         return res_data["jwt"]
+    
+    def AddIfValue(self, name, value, form):
+        """
+        Adds items to form if not None
+        Args:
+        
+        Returns:
+            Access token
+        """
+        if(value is not None):
+            form[name]=value
+        return form
+    
+    def AddListIfValue(self, optional: Dict[str, Any], form: Dict[str, Any]):
+        if(optional is not None):
+            for key in optional:
+                if(optional[key] is not None):
+                    form[key]=optional[key]
+        return form
