@@ -11,7 +11,7 @@ class Post():
         res = self._req.lemmyRequest("listPosts", instance=instance, form=form, auth=auth, auth_token=auth_token)
         return res["posts"]
         
-    def getPost(self, community_id, post_id, instance:str=None, auth:bool=True, auth_token:str=None):
+    def getPost(self, community_id, post_id, instance:str=None, auth=True, auth_token:str=None):
         form = {
             "id": post_id,
         }
@@ -30,7 +30,7 @@ class Post():
         optional={
             "url": remote_url
         }
-        res = self._req.lemmyRequest("submitPost", instance=instance, form=form, optional=optional, auth:bool=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("submitPost", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res["post_view"]
         
     def editPost(self, post_id:int, instance:str=None, title=None, body=None, remote_url=None, nsfw=None, language_id=None, auth_token:str=None):
@@ -44,7 +44,7 @@ class Post():
             "name": name,
             "body": body
         }
-        res = self._req.lemmyRequest("editPost", instance=instance, form=form, optional=optional, auth:bool=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("editPost", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res["post_view"]
         
     def likePost(self, post_id:int, score:int=1, instance:str=None, language_id=None, auth_token:str=None):
@@ -56,5 +56,5 @@ class Post():
             "post_id": post_id,
             "score": score
         }
-        res = self._req.lemmyRequest("likePost", instance=instance, form=form, auth:bool=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("likePost", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res
