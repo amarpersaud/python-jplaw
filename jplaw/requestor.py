@@ -88,7 +88,7 @@ class Requestor:
         #if auth and token available 
         if(auth and (auth_token or self.auth_token)):
             form["auth"] = auth_token or self.auth
-        return self.request(API_PATH[function]["method"].value, apiURL(instance=instance, API_PATH[function]["path"]), form)
+        return self.request(API_PATH[function]["method"].value, apiURL(instance=instance, path=(API_PATH[function]["path"])), form)
     
     def logout(self):
         """
