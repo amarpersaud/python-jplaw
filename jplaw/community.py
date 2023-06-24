@@ -103,3 +103,23 @@ class Community():
             }
         res = self._req.lemmyRequest("createCommunity", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res["community_view"]
+        
+    def removeCommunity(self, community_id:int, removed:bool=True, reason:str=None, expires:int=None, instance:str=None, auth_token:str=None):
+        form={
+            "community_id": community_id,
+            "removed":removed,
+            }
+        optional={
+            "reason": reason,
+            "expires": expires,
+            }
+        res = self._req.lemmyRequest("removeCommunity", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res["community_view"]
+    
+    def transferCommunity(self, community_id:int, person_id:int, instance:str=None, auth_token:str=None):
+        form={
+            "community_id": community_id,
+            "person_id":person_id,
+            }
+        res = self._req.lemmyRequest("transferCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res["community_view"]
