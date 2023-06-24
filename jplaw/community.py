@@ -1,5 +1,6 @@
 from .requestor import Requestor, HttpType
 from .api_paths import *
+from typing import List
 
 class Community():
     def __init__(self, _req: Requestor):

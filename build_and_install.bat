@@ -1,2 +1,2 @@
 py -m build
-py -m pip install dist/jplaw-0.1.1.tar.gz
+py -m pip install dist/jplaw-0.1.2.tar.gz
