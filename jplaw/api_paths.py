@@ -37,5 +37,9 @@ API_PATH = {
     "verifyEmail":                          { "method": HttpType.POST    , "path": "/user/verify_email"                     },
     "addAdmin":                             { "method": HttpType.POST    , "path": "/admin/add"                             },
     "getUnreadRegistrationApplicationCount":{ "method": HttpType.GET     , "path": "/admin/registration_application/count"  },
-    "listRegistrationApplications":         { "method": HttpType.GET     , "path": "/admin/registration_application/list"   }
+    "listRegistrationApplications":         { "method": HttpType.GET     , "path": "/admin/registration_application/list"   },
+    "createCustomEmoji":                    { "method": HttpType.GET     , "path": "/custom_emoji"                          },
+    "editCustomEmoji":                      { "method": HttpType.PUT     , "path": "/custom_emoji"                          },
+    "deleteCustomEmoji":                    { "method": HttpType.POST    , "path": "/custom_emoji/delete"                   },
+    "
 }
