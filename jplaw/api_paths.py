@@ -1,8 +1,8 @@
-from .requestor import HttpType
+from .http_type import HttpType
 
 API_VERSION = "/api/v3"
 API_PATH = {
-    "login" :                               { "method": HttpType.GET     , "path": "/user/login"                            },
+    "login" :                               { "method": HttpType.POST     , "path": "/user/login"                            },
     "getPost" :                             { "method": HttpType.GET     , "path": "/post"                                  },
     "getCommunity" :                        { "method": HttpType.GET     , "path": "/community"                             },
     "listCommunities" :                     { "method": HttpType.GET     , "path": "/community/list"                        },
@@ -37,5 +37,5 @@ API_PATH = {
     "verifyEmail":                          { "method": HttpType.POST    , "path": "/user/verify_email"                     },
     "addAdmin":                             { "method": HttpType.POST    , "path": "/admin/add"                             },
     "getUnreadRegistrationApplicationCount":{ "method": HttpType.GET     , "path": "/admin/registration_application/count"  },
-    "listRegistrationApplications":         { "method": HttpType.GET     , "path": "/admin/registration_application/list"   },
+    "listRegistrationApplications":         { "method": HttpType.GET     , "path": "/admin/registration_application/list"   }
 }

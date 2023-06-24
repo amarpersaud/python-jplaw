@@ -1,5 +1,4 @@
 from .requestor import Requestor, HttpType
-from .api_paths import *
 from enum import *
 from .comment import Comment
 from .community import Community
@@ -27,11 +26,11 @@ class Lemmy:
         # Login, get token, and set as header for future
         self._req = Requestor(instance=instance, username=username, password=password, headers={})
         
-        self.Post = Post(_req)
-        self.Community = Community(_req)
-        self.Comment = Comment(_req)
-        self.User = User(_req)
-        self.Site = Site(_req)
+        self.Post = Post(self._req)
+        self.Community = Community(self._req)
+        self.Comment = Comment(self._req)
+        self.User = User(self._req)
+        self.Site = Site(self._req)
         # print(self._req.headers.get("Authorization"))
         
     def resolveObject(self, obj, instance=None, auth_token=None):

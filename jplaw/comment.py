@@ -5,7 +5,7 @@ class Comment():
     def __init__(self, _req: Requestor):
         self._req = _req
         
-    def submitComment(self, post_id:int, content:str, parent_id:int=None, instance:str=None, language_id:str=None, auth_token:str=None):
+    def submitComment(self, post_id:int, content:str, parent_id:int=None, language_id:str=None, instance:str=None, auth_token:str=None):
         form = {
             "content": content,
             "post_id": post_id,
