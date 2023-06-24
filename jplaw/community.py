@@ -9,12 +9,12 @@ class Post():
         form = {
             "name": name
         }
-        res = self._req.lemmyRequest(HttpType.GET, "getCommunity", instance=instance, form=form, auth=auth, auth_token=auth_token)
+        res = self._req.lemmyRequest("getCommunity", instance=instance, form=form, auth=auth, auth_token=auth_token)
         return res["community_view"]
         
     def listCommunities(self, instance=None, auth=True, auth_token=None): 
         form={}
-        res = self._req.lemmyRequest(HttpType.GET, "listCommunities", instance=instance, form=form, auth=auth, auth_token=auth_token)
+        res = self._req.lemmyRequest("listCommunities", instance=instance, form=form, auth=auth, auth_token=auth_token)
         return res["communities"]
         
     def followCommunity(self, community_id, follow=True, instance=None, auth_token=None):
@@ -22,5 +22,5 @@ class Post():
             "community_id": community_id,
             "follow": follow
         }
-        res = self._req.lemmyRequest(HttpType.POST, "followCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("followCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res["community_view"]

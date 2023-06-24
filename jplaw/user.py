@@ -7,7 +7,7 @@ class User():
         self._req = _req
     def leaveAdmin(self, instance:str=None, auth_token:str=None):
         form = {}
-        res = self._req.lemmyRequest(HttpType.POST, "leaveAdmin", instance=instance, form=form, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest("leaveAdmin", instance=instance, form=form, auth=True, auth_token=auth_token))
     def register(self, username:str, password:str, password_verify:str, show_nsfw:bool, email:str=None, captcha_uuid:str=None, captcha_answer:str=None, honeypot:str=None, answer:str=None):
         form={
             "username": username,
@@ -23,7 +23,7 @@ class User():
             "honeypot"       :honeypot       ,
             "answer"         :answer         ,
             }
-        res = self._req.lemmyRequest(HttpType.POST, "register", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest("register", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
         return res
     def getPersonDetails(self, instance:str=None, person_id:str=None, username:str=None, sort:str=None, page:int=0, limit:int=10, community_id:int=None, saved_only:bool=None, auth:bool=True, auth_token:str=None):
         form={}
@@ -36,7 +36,7 @@ class User():
             "community_id"   :community_id   ,
             "saved_only"     :saved_only     ,
             }
-        res = self._req.lemmyRequest(HttpType.GET, "getPersonDetails", instance=instance, form=form, optional=optional, auth=auth, auth_token=auth_token))
+        res = self._req.lemmyRequest("getPersonDetails", instance=instance, form=form, optional=optional, auth=auth, auth_token=auth_token))
         return res
     
     def markPersonMentionAsRead(self, instance:str=None, person_mention_id:int, read:bool=True, auth_token:str=None):
@@ -44,7 +44,7 @@ class User():
             "person_mention_id": person_mention_id,
             "read": read
             }
-        res = self._req.lemmyRequest(HttpType.POST, "markPersonMentionAsRead", instance=instance, form=form, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest("markPersonMentionAsRead", instance=instance, form=form, auth=True, auth_token=auth_token))
         return res
     
     def getPersonMentions(self, instance:str=None, sort:str=None, page:int=0, limit:int=10, unread_only:bool=True, auth_token:str=None):
@@ -55,7 +55,7 @@ class User():
             "limit"          :limit          ,
             "unread_only"    :unread_only    ,
             }
-        res = self._req.lemmyRequest(HttpType.GET, "getPersonMentions", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest("getPersonMentions", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
         return res
     
     def getReplies(self, instance:str=None, sort:str=None, page:int=0, limit:int=10, unread_only:bool=True, auth_token:str=None):
@@ -66,7 +66,7 @@ class User():
             "limit"          :limit          ,
             "unread_only"    :unread_only    ,
             }
-        res = self._req.lemmyRequest(HttpType.GET, "getReplies", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest("getReplies", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
         return res
     
     def banPerson(self, person_id:int, ban:bool, remove_data:bool=None, reason:str=None, expires:int=None, auth_token:str=None):
@@ -79,7 +79,7 @@ class User():
             "reason"         :reason        ,
             "expires"        :expires
             }
-        res = self._req.lemmyRequest(HttpType.POST, "banPerson", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest("banPerson", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
         return res
     
     def getBannedPersons(self, instance:str=None, auth_token:str=None):
@@ -92,26 +92,26 @@ class User():
             "person_id": person_id,
             "block": block
             }
-        res = self._req.lemmyRequest(HttpType.POST, "blockPerson", instance=instance, form=form, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest("blockPerson", instance=instance, form=form, auth=True, auth_token=auth_token))
         return res
     
     def getCaptcha(self, instance:str=None, auth_token:str=None):
         form={}
-        res = self._req.lemmyRequest(HttpType.GET, "getCaptcha", instance=instance, form=form, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest("getCaptcha", instance=instance, form=form, auth=True, auth_token=auth_token))
         return res
     
     def deleteAccount(self, password, instance:str=None, auth_token:str=None):
         form={
             "password": password
             }
-        res = self._req.lemmyRequest(HttpType.POST, "deleteAccount", instance=instance, form=form, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest("deleteAccount", instance=instance, form=form, auth=True, auth_token=auth_token))
         return res
     
     def passwordReset(self, email, instance:str=None, auth_token:str=None):
         form={
             "email": email
             }
-        res = self._req.lemmyRequest(HttpType.POST, "passwordReset", instance=instance, form=form, auth=False, auth_token=auth_token))
+        res = self._req.lemmyRequest("passwordReset", instance=instance, form=form, auth=False, auth_token=auth_token))
         return res
     def passwordChangeAfterReset(self, token:str, password:str, password_verify:str):
         form={
@@ -119,7 +119,7 @@ class User():
             "password": password,
             "password_verify": password_verify
             }
-        res = self._req.lemmyRequest(HttpType.POST, "passwordChangeAfterReset", instance=instance, form=form, auth=False, auth_token=auth_token))
+        res = self._req.lemmyRequest("passwordChangeAfterReset", instance=instance, form=form, auth=False, auth_token=auth_token))
         return res
     def markAllAsRead(self, instance:str=None, community_view:str=None, site:str=None, moderators:List[str]=None, discussion_languages:List[str]=None, auth_token:str=None)
         form={}
@@ -129,7 +129,7 @@ class User():
             "moderators": moderators,
             "discussion_languages": discussion_languages,
             }
-        res = self._req.lemmyRequest(HttpType.POST, "markAllAsRead", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest("markAllAsRead", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
         return res
     def saveUserSettings(self, 
         instance:str=None,
@@ -177,7 +177,7 @@ class User():
             "discussion_languages"          : discussion_languages       ,
             "generate_totp_2fa"             : generate_totp_2fa          
             }
-        res = self._req.lemmyRequest(HttpType.PUT, "saveUserSettings", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest("saveUserSettings", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token))
         return res
     def changePassword(self, 
         instance:str=None,
@@ -190,5 +190,5 @@ class User():
             "new_password_verify" : new_password_verify,
             "old_password": old_password
         }
-        res = self._req.lemmyRequest(HttpType.PUT, "changePassword", instance=instance, form=form, auth=True, auth_token=auth_token))
+        res = self._req.lemmyRequest("changePassword", instance=instance, form=form, auth=True, auth_token=auth_token))
         return res
