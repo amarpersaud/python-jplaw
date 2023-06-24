@@ -5,9 +5,7 @@ class Comment():
     def __init__(self, _req: Requestor):
         self._req = _req
         
-    def submitComment(self, post_id, content, parent_id=None, instance=None, language_id=None, auth_token=None):
-        url = self.apiURL("submitComment")
-        
+    def submitComment(self, post_id:int, content:str, parent_id:int=None, instance:str=None, language_id:str=None, auth_token:str=None):
         form = {
             "content": content,
             "post_id": post_id,
@@ -20,7 +18,7 @@ class Comment():
         
         return res["comment_view"]
         
-    def likeComment(self, comment_id, score=1, instance=None, auth_token=None):
+    def likeComment(self, comment_id:int, score=1, instance:str=None, auth_token:str=None):
         if(score > 1):
             score = 1
         if(score < -1):
