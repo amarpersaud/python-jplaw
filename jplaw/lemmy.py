@@ -2,6 +2,7 @@ from .requestor import Requestor, HttpType
 from .api_paths import *
 from enum import *
 from .comment import Comment
+from .community import Community
 from .post import Post
 from .user import User
 from .site import Site
