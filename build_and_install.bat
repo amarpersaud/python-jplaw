@@ -1,2 +1,4 @@
 py -m build
-py -m pip install dist/jplaw-0.1.4.tar.gz
+set /p VER=<VERSION
+echo Version is %VER%
+py -m pip install dist/jplaw-%VER%.tar.gz
