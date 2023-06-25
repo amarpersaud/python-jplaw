@@ -1,5 +1,4 @@
 from .requestor import Requestor, HttpType
-from enum import *
 from .comment import Comment
 from .community import Community
 from .post import Post

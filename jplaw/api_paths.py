@@ -1,4 +1,4 @@
-from .http_type import HttpType
+from jplaw.types import HttpType
 
 API_VERSION = "/api/v3"
 API_PATH = {
