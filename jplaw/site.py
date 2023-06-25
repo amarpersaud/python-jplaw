@@ -30,7 +30,7 @@ class Site():
         legal_information: str=None,
         application_email_admins: bool=None,
         hide_modlog_mod_names: bool=None,
-        discussion_languages: List[LanguageId]=None,
+        discussion_languages: List[int]=None,
         slur_filter_regex: str=None,
         actor_name_max_length: int=None,
         rate_limit_message: int=None,
