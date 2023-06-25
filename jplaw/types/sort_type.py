@@ -1,5 +1,5 @@
 from enum import Enum
-class SortType(Enum)=
+class SortType(Enum):
     Active=         "Active"
     Hot=            "Hot"
     New=            "New"
