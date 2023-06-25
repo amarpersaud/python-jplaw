@@ -1,4 +1,4 @@
-from .requestor import Requestor, HttpType
+from .requestor import Requestor
 from .api_paths import *
 from typing import List
 
@@ -6,34 +6,26 @@ class Community():
     def __init__(self, _req: Requestor):
         self._req = _req
         
-    def getCommunity(self, name:str, instance:str=None, auth:bool=True, auth_token:str=None):
+    def get(self, name:str, instance:str=None, auth:bool=True, auth_token:str=None):
         form = {
             "name": name
         }
         res = self._req.lemmyRequest("getCommunity", instance=instance, form=form, auth=auth, auth_token=auth_token)
         return res["community_view"]
         
-    def listCommunities(self, instance:str=None, auth:bool=True, auth_token:str=None): 
+    def list(self, instance:str=None, auth:bool=True, auth_token:str=None): 
         form={}
         res = self._req.lemmyRequest("listCommunities", instance=instance, form=form, auth=auth, auth_token=auth_token)
         return res["communities"]
         
-    def followCommunity(self, community_id:int, follow:bool=True, instance:str=None, auth_token:str=None):
+    def follow(self, community_id:int, follow:bool=True, instance:str=None, auth_token:str=None):
         form={
             "community_id": community_id,
             "follow": follow
         }
         res = self._req.lemmyRequest("followCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res["community_view"]
-    def addModToCommunity(self, community_id:int, person_id:int, added:bool=True, instance:str=None, auth_token:str=None): 
-        form={
-            "community_id": community_id,
-            "person_id": person_id,
-            "added": added,
-        }
-        res = self._req.lemmyRequest("addModToCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
-        return res
-    def addModToCommunity(self, community_id:int, person_id:int, added:bool=True, instance:str=None, auth_token:str=None):
+    def addMod(self, community_id:int, person_id:int, added:bool=True, instance:str=None, auth_token:str=None): 
         form={
             "community_id": community_id,
             "person_id": person_id,
@@ -42,7 +34,7 @@ class Community():
         res = self._req.lemmyRequest("addModToCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res
     
-    def banFromCommunity(self, community_id:int, person_id:int, ban:bool, remove_data:bool=None, reason:str=None, expires:int=None, instance:str=None, auth_token:str=None):
+    def banPerson(self, community_id:int, person_id:int, ban:bool, remove_data:bool=None, reason:str=None, expires:int=None, instance:str=None, auth_token:str=None):
         form={
             "community_id": community_id,
             "person_id": person_id,
@@ -56,7 +48,7 @@ class Community():
         res = self._req.lemmyRequest("banFromCommunity", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res
         
-    def blockCommunity(self, community_id:int, block:bool=True, instance:str=None, auth_token:str=None):
+    def block(self, community_id:int, block:bool=True, instance:str=None, auth_token:str=None):
         form={
             "community_id": community_id,
             "block": block,
@@ -64,7 +56,7 @@ class Community():
         res = self._req.lemmyRequest("blockCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res["community_view"]
         
-    def createCommunity(self, name:str, title:str, description:str=None, icon:str=None, banner:str=None, nsfw:bool=None, posting_restricted_to_mods:bool=None, discussion_languages:List[str]=None, instance:str=None, auth_token:str=None):
+    def create(self, name:str, title:str, description:str=None, icon:str=None, banner:str=None, nsfw:bool=None, posting_restricted_to_mods:bool=None, discussion_languages:List[str]=None, instance:str=None, auth_token:str=None):
         form={
             "name": name,
             "title": title,
@@ -80,7 +72,7 @@ class Community():
         res = self._req.lemmyRequest("createCommunity", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res["community_view"]
         
-    def deleteCommunity(self, community_id:int, deleted:bool=True, instance:str=None, auth_token:str=None):
+    def delete(self, community_id:int, deleted:bool=True, instance:str=None, auth_token:str=None):
         form={
             "community_id": community_id,
             "deleted": deleted,
@@ -88,7 +80,7 @@ class Community():
         res = self._req.lemmyRequest("deleteCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res["community_view"]
     
-    def editCommunity(self, community_id:int, title:str=None, description:str=None, icon:str=None, banner:str=None, nsfw:bool=None, posting_restricted_to_mods:bool=None, discussion_languages:List[str]=None, instance:str=None, auth_token:str=None):
+    def edit(self, community_id:int, title:str=None, description:str=None, icon:str=None, banner:str=None, nsfw:bool=None, posting_restricted_to_mods:bool=None, discussion_languages:List[str]=None, instance:str=None, auth_token:str=None):
         form={
             "community_id": community_id,
             }
@@ -104,7 +96,7 @@ class Community():
         res = self._req.lemmyRequest("createCommunity", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res["community_view"]
         
-    def removeCommunity(self, community_id:int, removed:bool=True, reason:str=None, expires:int=None, instance:str=None, auth_token:str=None):
+    def remove(self, community_id:int, removed:bool=True, reason:str=None, expires:int=None, instance:str=None, auth_token:str=None):
         form={
             "community_id": community_id,
             "removed":removed,
@@ -116,7 +108,7 @@ class Community():
         res = self._req.lemmyRequest("removeCommunity", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res["community_view"]
     
-    def transferCommunity(self, community_id:int, person_id:int, instance:str=None, auth_token:str=None):
+    def transfer(self, community_id:int, person_id:int, instance:str=None, auth_token:str=None):
         form={
             "community_id": community_id,
             "person_id":person_id,

@@ -6,7 +6,7 @@ class PrivateMessage():
     def __init__(self, _req: Requestor):
         self._req = _req
     
-    def getPrivateMessages(self, unread_only:bool=None, page:int=None, limit:int=None, instance:str=None, auth_token:str=None):
+    def list(self, unread_only:bool=None, page:int=None, limit:int=None, instance:str=None, auth_token:str=None):
         form = {}
         optional={
             "unread_only": unread_only,
@@ -15,7 +15,7 @@ class PrivateMessage():
             }
         res = self._req.lemmyRequest("getPrivateMessages", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res
-    def createPrivateMessage(self, content:str, recipient_id:int, instance:str=None, auth_token:str=None):
+    def create(self, content:str, recipient_id:int, instance:str=None, auth_token:str=None):
         form = {
             "content": content,
             "recipient_id": recipient_id,
@@ -23,7 +23,7 @@ class PrivateMessage():
         res = self._req.lemmyRequest("createPrivateMessage", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res
         
-    def createPrivateMessageReport(self, private_message_id:int, reason:str, instance:str=None, auth_token:str=None):
+    def report(self, private_message_id:int, reason:str, instance:str=None, auth_token:str=None):
         form = {
             "private_message_id": private_message_id,
             "reason": reason,
@@ -31,7 +31,7 @@ class PrivateMessage():
         res = self._req.lemmyRequest("createPrivateMessageReport", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res
         
-    def editPrivateMessage(self, private_message_id:int, content:str, instance:str=None, auth_token:str=None):
+    def edit(self, private_message_id:int, content:str, instance:str=None, auth_token:str=None):
         form = {
             "private_message_id": private_message_id,
             "content": content,
@@ -39,14 +39,14 @@ class PrivateMessage():
         res = self._req.lemmyRequest("editPrivateMessage", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res
         
-    def deletePrivateMessage(self, private_message_id:int, instance:str=None, auth_token:str=None):
+    def delete(self, private_message_id:int, instance:str=None, auth_token:str=None):
         form = {
             "private_message_id": private_message_id,
             }
         res = self._req.lemmyRequest("deletePrivateMessage", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res
         
-    def markPrivateMessageAsRead(self, unread_only:bool=None, page:int=None, limit:int=None, instance:str=None, auth_token:str=None):
+    def markAsRead(self, unread_only:bool=None, page:int=None, limit:int=None, instance:str=None, auth_token:str=None):
         form={}
         optional = {
             "unread_only": unread_only,
@@ -56,7 +56,7 @@ class PrivateMessage():
         res = self._req.lemmyRequest("markPrivateMessageAsRead", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res
         
-    def listPrivateMessageReports(self, page:int=None, limit:int=None, unresolved_only:bool=True, instance:str=None, auth_token:str=None):
+    def listReports(self, page:int=None, limit:int=None, unresolved_only:bool=True, instance:str=None, auth_token:str=None):
         form = {}
         optional = {
             "page": page,
@@ -65,7 +65,7 @@ class PrivateMessage():
             }
         res = self._req.lemmyRequest("listPrivateMessageReports", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res
-    def resolvePrivateMessageReport(self, report_id:int, resolved:bool=True, instance:str=None, auth_token:str=None):
+    def resolveReport(self, report_id:int, resolved:bool=True, instance:str=None, auth_token:str=None):
         form = {
             "report_id"  : report_id ,
             "resolved"   : resolved  ,

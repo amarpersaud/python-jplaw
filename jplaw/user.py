@@ -25,7 +25,7 @@ class User():
             }
         res = self._req.lemmyRequest("register", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res
-    def getPersonDetails(self, person_id:str=None, username:str=None, sort:str=None, page:int=0, limit:int=10, community_id:int=None, saved_only:bool=None, instance:str=None, auth:bool=True, auth_token:str=None):
+    def getDetails(self, person_id:str=None, username:str=None, sort:str=None, page:int=0, limit:int=10, community_id:int=None, saved_only:bool=None, instance:str=None, auth:bool=True, auth_token:str=None):
         form={}
         optional={
             "person_id"      :person_id      ,
@@ -39,7 +39,7 @@ class User():
         res = self._req.lemmyRequest("getPersonDetails", instance=instance, form=form, optional=optional, auth=auth, auth_token=auth_token)
         return res
     
-    def markPersonMentionAsRead(self, person_mention_id:int, read:bool=True, instance:str=None, auth_token:str=None):
+    def markMentionAsRead(self, person_mention_id:int, read:bool=True, instance:str=None, auth_token:str=None):
         form={
             "person_mention_id": person_mention_id,
             "read": read
@@ -47,7 +47,7 @@ class User():
         res = self._req.lemmyRequest("markPersonMentionAsRead", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res
     
-    def getPersonMentions(self, sort:str=None, page:int=0, limit:int=10, unread_only:bool=True, instance:str=None, auth_token:str=None):
+    def getMentions(self, sort:str=None, page:int=0, limit:int=10, unread_only:bool=True, instance:str=None, auth_token:str=None):
         form={}
         optional = {
             "sort"           :sort           ,
@@ -69,7 +69,7 @@ class User():
         res = self._req.lemmyRequest("getReplies", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res
     
-    def banPerson(self, person_id:int, ban:bool, remove_data:bool=None, reason:str=None, expires:int=None, instance:str=None, auth_token:str=None):
+    def ban(self, person_id:int, ban:bool, remove_data:bool=None, reason:str=None, expires:int=None, instance:str=None, auth_token:str=None):
         form={
             "person_id"     :person_id,
             "ban"           :ban
@@ -82,12 +82,12 @@ class User():
         res = self._req.lemmyRequest("banPerson", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res
     
-    def getBannedPersons(self, instance:str=None, auth_token:str=None):
+    def getBanned(self, instance:str=None, auth_token:str=None):
         form={}
         res = self._req.lemmyRequest(HttpType.GET, "getBannedPersons", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res
      
-    def blockPerson(self, person_id:int, block:bool, instance:str=None, auth_token:str=None):
+    def block(self, person_id:int, block:bool, instance:str=None, auth_token:str=None):
         form={
             "person_id": person_id,
             "block": block

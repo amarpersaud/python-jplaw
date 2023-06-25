@@ -1,5 +1,4 @@
-from .requestor import Requestor, HttpType
-from enum import *
+from .requestor import Requestor
 from .comment import Comment
 from .community import Community
 from .post import Post
@@ -40,12 +39,12 @@ class Lemmy:
         form={
             "q": obj
         }
-        res = self._req.lemmyRequest(HttpType.GET, "resolveObject", instance=instance, form=form, auth_token=auth_token)
+        res = self._req.lemmyRequest("resolveObject", instance=instance, form=form, auth_token=auth_token)
         return res
         
     def search(self, term, instance=None, auth_token=None):
         form={
             "q": term
         }
-        res = self._req.request(HttpType.GET, "search", instance=instance, auth_token=auth_token, form=form)
+        res = self._req.request("search", instance=instance, auth_token=auth_token, form=form)
         return res
