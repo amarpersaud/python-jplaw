@@ -21,7 +21,18 @@ class Lemmy:
     def __exit__(self, *_args):
         """Handle the context manager close."""
     
-    def __init__(self, instance, username:str = None, password:str = None):
+    def __init__(self, instance:str, username:str = None, password:str = None):
+        """
+        Create a Lemmy object
+        
+        Args:
+            instance (str): URL of instance to log in to or use
+            username (str): username or email to log in with. Defaults to None (no authentication)
+            password (str): password of user. Defaults to None (no authentication)
+        Returns:
+            Lemmy object
+        """
+        
         self.username = username
         
         # Login, get token, and set as header for future
@@ -35,14 +46,34 @@ class Lemmy:
         self.PrivateMessage = PrivateMessage(self._req)
         # print(self._req.headers.get("Authorization"))
         
-    def resolveObject(self, obj, instance=None, auth_token=None):
+    def resolveObject(self, obj, instance:str=None, auth_token:str=None):
+        """
+        Resolves object from another instance
+        
+        Args:
+            obj: Object to resolve from the remote instance
+            instance (str): URL of local instance to request the object from
+            auth_token (str): Authentication token for local instance
+        Returns:
+            Federated object
+        """
         form={
             "q": obj
         }
         res = self._req.lemmyRequest("resolveObject", instance=instance, form=form, auth_token=auth_token)
         return res
         
-    def search(self, term, instance=None, auth_token=None):
+    def search(self, term:str, instance:str=None, auth_token:str=None):
+        """
+        Search for term
+        
+        Args:
+            term (str): Object to resolve from the remote instance
+            instance (str): URL of local instance. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance
+        Returns:
+            Search results
+        """
         form={
             "q": term
         }
