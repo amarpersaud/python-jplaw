@@ -8,11 +8,17 @@ from .private_message import PrivateMessage
 
 class Lemmy:
     Post: Post
+    """Post object. Allows Lemmy.Post functions"""
     Community: Community
+    """Community object. Allows Lemmy.Community functions"""
     Comment: Comment
+    """Comment object. Allows Lemmy.Comment functions"""
     User: User
+    """User object. Allows Lemmy.User functions"""
     Site: Site
+    """Site object. Allows Lemmy.Site functions"""
     PrivateMessage: PrivateMessage
+    """PrivateMessage object. Allows Lemmy.PrivateMessage functions"""
     
     def __enter__(self):
         """Handle the context manager open."""
