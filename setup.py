@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='jplaw',
-    version='0.1.3',
+    version='0.1.4',
     packages=['jplaw', 'jplaw/types'],
     description='A python wrapper for the lemmy HTTP API. Forked from plaw by Benjamin Jablonski (benja810)',
     author='Amar Persaud',
