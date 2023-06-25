@@ -3,6 +3,7 @@ from .api_paths import *
 from typing import List
 from .types.modlog_action_type import ModlogActionType
 from .types.listing_type import ListingType
+from .types.registration_mode import RegistrationMode
 
 class Site():
     def __init__(self, _req: Requestor):
@@ -120,7 +121,7 @@ class Site():
         legal_information: str=None,
         application_email_admins: bool=None,
         hide_modlog_mod_names: bool=None,
-        discussion_languages: List[LanguageId]=None,
+        discussion_languages: List[int]=None,
         slur_filter_regex: str=None,
         actor_name_max_length: int=None,
         rate_limit_message: int=None,
