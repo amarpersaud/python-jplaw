@@ -1,6 +1,6 @@
 from .requestor import Requestor
 from .api_paths import *
-from jplaw.types import PostFeatureType
+from .types.post_feature_type import PostFeatureType
 
 class Post():
     def __init__(self, _req: Requestor):

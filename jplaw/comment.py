@@ -1,7 +1,7 @@
 from .requestor import Requestor
 from .api_paths import *
-from .listing_type import ListingType
-from jplaw.types import CommentSortType
+from .types.listing_type import ListingType
+from .types.comment_sort_type import CommentSortType
 
 class Comment():
     def __init__(self, _req: Requestor):

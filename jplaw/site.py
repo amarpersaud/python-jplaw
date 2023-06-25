@@ -1,7 +1,7 @@
 from .requestor import Requestor
 from .api_paths import *
 from typing import List
-from .modlog_action_type import ModlogActionType
+from .types.modlog_action_type import ModlogActionType
 
 class Site():
     def __init__(self, _req: Requestor):

@@ -3,7 +3,7 @@ import requests
 import json
 from typing import Dict, Any, TypeVar
 from .api_paths import *
-from jplaw.types import HttpType
+from .types.http_type import HttpType
 
 T = TypeVar("T")
 
