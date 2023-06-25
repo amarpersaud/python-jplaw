@@ -1,0 +1,51 @@
+# This workflow will generate documentation using pdoc3 then commit it to the docs/ folder
+
+name: Generate Python Documentation
+
+on:
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  generate_documentation:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    strategy:
+        fail-fast: false
+        matrix:
+          python-version: ["3.8", "3.9", "3.10"]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install build pdoc3
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Set variables
+      run: |
+        VER=$(cat VERSION)
+        echo "VERSION=$VER" >> $GITHUB_ENV
+    - name: Build and install
+      run: |
+        python -m build
+        python -m pip install dist/jplaw-${{ env.VERSION }}.tar.gz
+    - name: Generate Documentation
+      run: |
+        rm -r docs/
+        mkdir docs
+        python -m pydoc -html -o docs/
+    - name: Commit files
+      run: |
+        echo ${{ github.ref }}
+        git add .
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -m "Update Documentation" -a | exit 0
+    - name: Push changes
+      if: github.ref == 'refs/heads/main'
+      uses: ad-m/github-push-action@main
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
