@@ -106,7 +106,7 @@ class Requestor:
         res_data = self.lemmyRequest("login", form=form, instance=instance)
         return res_data["jwt"]
     
-    def AddIfValue(self, name, value, form):
+    def AddIfValue(self, name:str, value, form: Dict[str, Any]):
         """
         Adds items to form if not None
         Args:
