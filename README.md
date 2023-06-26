@@ -12,12 +12,12 @@ Currently, most of the API functions are implemented, but there are likely quite
 
 If you find any bugs, let me know on the [issues page](https://github.com/amarpersaud/python-jplaw/issues)
 
-#Installation
+# Installation
 jplaw can be installed from PYPI through pip:
 
 `python -m pip install jplaw`
 
-#Usage example
+# Usage example
 This example uses python-dotenv to load secrets from the `.env` file, which is not strictly necessary.
 
 ```python
