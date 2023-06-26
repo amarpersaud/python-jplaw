@@ -1,24 +1,70 @@
 from .requestor import Requestor
 from .api_paths import *
 from typing import List
+from .types.listing_type import ListingType
+from .types.sort_type import SortType
 
 class Community():
     def __init__(self, _req: Requestor):
         self._req = _req
         
     def get(self, name:str, instance:str=None, auth:bool=True, auth_token:str=None):
+        """
+        Get community information
+        
+        Args:
+            name (str): Name of the community. Federated communities can be accessed by [community]@[instance] 
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth (str): If true, authenticates using auth_token if given or internal token from login. Optional. Default True
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Community Information. Throws an error if community_not_found (happens if community has not been federated or does not exist)
+        """
         form = {
             "name": name
         }
         res = self._req.lemmyRequest("getCommunity", instance=instance, form=form, auth=auth, auth_token=auth_token)
         return res["community_view"]
         
-    def list(self, instance:str=None, auth:bool=True, auth_token:str=None): 
+    def list(self, type: ListingType=None, sort:SortType=None, page:int=None, limit:int=None, auth:bool=True, auth_token:str=None): 
+        """
+        Get a list of communities (federated or local)
+        
+        Args:
+            type (ListingType): Type of community (all or local). Optional
+            sort (SortType): Sorting Mode. Optional
+            page (int): Page number. Optional
+            limit (int): Limit for number of posts. Optional
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth (str): If true, authenticates using auth_token if given or internal token from login. Optional. Default True
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            List of communities
+        """
         form={}
-        res = self._req.lemmyRequest("listCommunities", instance=instance, form=form, auth=auth, auth_token=auth_token)
+        if(type):
+            form["type"]=type.value
+        if(sort):
+            form["sort"]=sort.value
+        optional={
+            "page": page,
+            "limit": limit
+            }
+        res = self._req.lemmyRequest("listCommunities", instance=instance, form=form, optional=optional, auth=auth, auth_token=auth_token)
         return res["communities"]
         
     def follow(self, community_id:int, follow:bool=True, instance:str=None, auth_token:str=None):
+        """
+        Follow or subscribe to a community
+        
+        Args:
+            community_id (int): ID of the community
+            follow (bool): If true, subscribed to or following the community. Optional. Defaults to True
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            List of communities
+        """
         form={
             "community_id": community_id,
             "follow": follow
@@ -26,6 +72,18 @@ class Community():
         res = self._req.lemmyRequest("followCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res["community_view"]
     def addMod(self, community_id:int, person_id:int, added:bool=True, instance:str=None, auth_token:str=None): 
+        """
+        Add or remove a moderator from a community
+        
+        Args:
+            community_id (int): ID of the community
+            person_id (int): User ID of the person to add as a moderator
+            added (bool): If true, person is added as a moderator. If false, person is removed as a moderator. Optonal. Default True
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Added moderator response
+        """
         form={
             "community_id": community_id,
             "person_id": person_id,
@@ -35,6 +93,21 @@ class Community():
         return res
     
     def banPerson(self, community_id:int, person_id:int, ban:bool, remove_data:bool=None, reason:str=None, expires:int=None, instance:str=None, auth_token:str=None):
+        """
+        Ban a person from a community
+        
+        Args:
+            community_id (int): ID of the community
+            person_id (int): User ID of the person to ban
+            ban (bool): If true, person is banned. If false, person is unbanned Optonal. Default True
+            remove_data (bool): ??? Presumably removes the user's posts and comments or removes their data from the instance. Optional.
+            reason (str): Reason for banning user. Optional
+            expires (int): Unix timestamp of ban expiry (seconds)
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Banned community response
+        """
         form={
             "community_id": community_id,
             "person_id": person_id,
@@ -49,6 +122,17 @@ class Community():
         return res
         
     def block(self, community_id:int, block:bool=True, instance:str=None, auth_token:str=None):
+        """
+        Block a community
+        
+        Args:
+            community_id (int): ID of the community
+            ban (bool): If true, community blocked. If false, community is unblocked. Optonal. Default True
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Blocked community response
+        """
         form={
             "community_id": community_id,
             "block": block,
@@ -56,7 +140,24 @@ class Community():
         res = self._req.lemmyRequest("blockCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res["community_view"]
         
-    def create(self, name:str, title:str, description:str=None, icon:str=None, banner:str=None, nsfw:bool=None, posting_restricted_to_mods:bool=None, discussion_languages:List[str]=None, instance:str=None, auth_token:str=None):
+    def create(self, name:str, title:str, description:str=None, icon:str=None, banner:str=None, nsfw:bool=None, posting_restricted_to_mods:bool=None, discussion_languages:List[int]=None, instance:str=None, auth_token:str=None):
+        """
+        Create a community
+        
+        Args:
+            name (str): Name of the community
+            title (str): Title of the community. Can have spaces.
+            description (str): Description of the community. Optional.
+            icon (str): URL of the community icon. Optional.
+            banner (str): URL of the community banner image. Optional.
+            nsfw (bool): If true, community is NSFW. Optional.
+            posting_restricted_to_mods (bool): If true, only moderators can post. Optional.
+            discussion_languages (List[int]): List of langages in community. Optional.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Created community response
+        """
         form={
             "name": name,
             "title": title,
@@ -73,6 +174,17 @@ class Community():
         return res["community_view"]
         
     def delete(self, community_id:int, deleted:bool=True, instance:str=None, auth_token:str=None):
+        """
+        Delete a community
+        
+        Args:
+            community_id (int): ID of the community
+            deleted (bool): If true, community is deleted. If false, community is not deleted. Optonal. Default True
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Deleted community response
+        """
         form={
             "community_id": community_id,
             "deleted": deleted,
@@ -81,6 +193,23 @@ class Community():
         return res["community_view"]
     
     def edit(self, community_id:int, title:str=None, description:str=None, icon:str=None, banner:str=None, nsfw:bool=None, posting_restricted_to_mods:bool=None, discussion_languages:List[str]=None, instance:str=None, auth_token:str=None):
+        """
+        Edit a community. Excluding optional items does not edit those items.
+        
+        Args:
+            community_id (int): ID of the community to edit
+            title (str): Title of the community. Can have spaces. Optional
+            description (str): Description of the community. Optional.
+            icon (str): URL of the community icon. Optional.
+            banner (str): URL of the community banner image. Optional.
+            nsfw (bool): If true, community is NSFW. Optional.
+            posting_restricted_to_mods (bool): If true, only moderators can post. Optional.
+            discussion_languages (List[int]): List of langages in community. Optional.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Edited community response
+        """
         form={
             "community_id": community_id,
             }
@@ -97,6 +226,19 @@ class Community():
         return res["community_view"]
         
     def remove(self, community_id:int, removed:bool=True, reason:str=None, expires:int=None, instance:str=None, auth_token:str=None):
+        """
+        Remove a community
+        
+        Args:
+            community_id (int): ID of the community
+            removed (bool): If true, community is removed. If false, community is restored. Optonal. Default True
+            reason (str): Reason for community removal. Optional.
+            expires (int): Unix timestamp (seconds) of expiry.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Removed community response
+        """
         form={
             "community_id": community_id,
             "removed":removed,
@@ -109,6 +251,17 @@ class Community():
         return res["community_view"]
     
     def transfer(self, community_id:int, person_id:int, instance:str=None, auth_token:str=None):
+        """
+        Transfer ownership of a community
+        
+        Args:
+            community_id (int): ID of the community
+            person_id (int): User ID of the person to transfer ownership to
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Removed community response
+        """
         form={
             "community_id": community_id,
             "person_id":person_id,
