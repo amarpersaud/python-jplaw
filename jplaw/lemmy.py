@@ -4,6 +4,7 @@ from .community import Community
 from .post import Post
 from .user import User
 from .site import Site
+from .emoji import Emoji
 from .private_message import PrivateMessage
 
 class Lemmy:
@@ -21,6 +22,8 @@ class Lemmy:
     """User object. Allows Lemmy.User functions"""
     Site: Site
     """Site object. Allows Lemmy.Site functions"""
+    Emoji: Emoji
+    """Emoji object. Allows Lemmy.Emoji functions"""
     PrivateMessage: PrivateMessage
     """PrivateMessage object. Allows Lemmy.PrivateMessage functions"""
     
@@ -48,10 +51,12 @@ class Lemmy:
         # Login, get token, and set as header for future
         self._req = Requestor(instance=instance, username=username, password=password, headers={})
         
+        # Create objects for function access
         self.Post = Post(self._req)
         self.Community = Community(self._req)
         self.Comment = Comment(self._req)
         self.User = User(self._req)
         self.Site = Site(self._req)
+        this.Emoji = Emoji(self._req)
         self.PrivateMessage = PrivateMessage(self._req)
         # print(self._req.headers.get("Authorization"))
