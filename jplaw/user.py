@@ -3,6 +3,9 @@ from .api_paths import *
 from typing import List
 
 class User():
+    """
+    User class. Designed to allow Lemmy.User functions.
+    """
     def __init__(self, _req: Requestor):
         self._req = _req
     def leaveAdmin(self, instance:str=None, auth_token:str=None):

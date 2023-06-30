@@ -5,6 +5,9 @@ from .types.listing_type import ListingType
 from .types.sort_type import SortType
 
 class Post():
+    """
+    Post class. Designed to allow Lemmy.Post functions.
+    """
     def __init__(self, _req: Requestor):
         self._req = _req
         

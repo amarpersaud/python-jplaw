@@ -5,6 +5,9 @@ from .types.listing_type import ListingType
 from .types.sort_type import SortType
 
 class Community():
+    """
+    Community class. Designed to allow Lemmy.Community functions.
+    """
     def __init__(self, _req: Requestor):
         self._req = _req
         
@@ -140,7 +143,16 @@ class Community():
         res = self._req.lemmyRequest("blockCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res["community_view"]
         
-    def create(self, name:str, title:str, description:str=None, icon:str=None, banner:str=None, nsfw:bool=None, posting_restricted_to_mods:bool=None, discussion_languages:List[int]=None, instance:str=None, auth_token:str=None):
+    def create(self, name:str, 
+        title:str, 
+        description:str=None, 
+        icon:str=None, 
+        banner:str=None, 
+        nsfw:bool=None, 
+        posting_restricted_to_mods:bool=None, 
+        discussion_languages:List[int]=None, 
+        instance:str=None, 
+        auth_token:str=None):
         """
         Create a community
         
@@ -192,7 +204,17 @@ class Community():
         res = self._req.lemmyRequest("deleteCommunity", instance=instance, form=form, auth=True, auth_token=auth_token)
         return res["community_view"]
     
-    def edit(self, community_id:int, title:str=None, description:str=None, icon:str=None, banner:str=None, nsfw:bool=None, posting_restricted_to_mods:bool=None, discussion_languages:List[str]=None, instance:str=None, auth_token:str=None):
+    def edit(self, 
+        community_id:int, 
+        title:str=None, 
+        description:str=None, 
+        icon:str=None, 
+        banner:str=None, 
+        nsfw:bool=None, 
+        posting_restricted_to_mods:bool=None, 
+        discussion_languages:List[int]=None, 
+        instance:str=None, 
+        auth_token:str=None):
         """
         Edit a community. Excluding optional items does not edit those items.
         

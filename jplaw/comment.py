@@ -4,6 +4,9 @@ from .types.listing_type import ListingType
 from .types.comment_sort_type import CommentSortType
 
 class Comment():
+    """
+    Comment class. Designed to allow Lemmy.Comment functions.
+    """
     def __init__(self, _req: Requestor):
         self._req = _req
         

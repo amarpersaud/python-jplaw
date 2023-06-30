@@ -7,6 +7,10 @@ from .site import Site
 from .private_message import PrivateMessage
 
 class Lemmy:
+    """
+    Lemmy object. Used to interract with a lemmy site
+    """
+    
     Post: Post
     """Post object. Allows Lemmy.Post functions"""
     Community: Community
@@ -51,37 +55,3 @@ class Lemmy:
         self.Site = Site(self._req)
         self.PrivateMessage = PrivateMessage(self._req)
         # print(self._req.headers.get("Authorization"))
-        
-    def resolveObject(self, obj, instance:str=None, auth_token:str=None):
-        """
-        Resolves object from another instance
-        
-        Args:
-            obj: Object to resolve from the remote instance
-            instance (str): URL of local instance to request the object from
-            auth_token (str): Authentication token for local instance
-        Returns:
-            Federated object
-        """
-        form={
-            "q": obj
-        }
-        res = self._req.lemmyRequest("resolveObject", instance=instance, form=form, auth_token=auth_token)
-        return res
-        
-    def search(self, term:str, instance:str=None, auth_token:str=None):
-        """
-        Search for term
-        
-        Args:
-            term (str): Object to resolve from the remote instance
-            instance (str): URL of local instance. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance
-        Returns:
-            Search results
-        """
-        form={
-            "q": term
-        }
-        res = self._req.request("search", instance=instance, auth_token=auth_token, form=form)
-        return res
