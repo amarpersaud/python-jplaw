@@ -3,8 +3,10 @@
 name: Generate Python Documentation
 
 on:
-  pull_request:
+  push:
     branches: [ "main" ]
+  workflow_dispatch:
+
 jobs:
   generate_documentation:
     if: github.event.pull_request.merged == true
