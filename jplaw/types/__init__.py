@@ -8,4 +8,3 @@ from jplaw.types.sort_type import SortType
 from jplaw.types.subscribed_type import SubscribedType
 __version__ = "0.1.4"
 __name__ = "jplaw.types"
-__all__ = ["__version__", "__name__"]
