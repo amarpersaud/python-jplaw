@@ -1,10 +1,10 @@
-    <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>jplaw API documentation</title>
+<title>jplaw.types.search_type API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -14,57 +14,157 @@
 <style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
 <script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
-<script>
-    
-	
-	
-	//From https://stackoverflow.com/questions/12460378/how-to-get-json-from-url-in-javascript
-	async function loadVersions() {
-		let url = './VERSIONS.json';
-		
-		//Load the 
-		let response = await fetch(url);
-		let obj = await response.json();
-		let versionItemTemplate = document.querySelector('#version-template');
-		let targetList = document.querySelector("#version-list");
-		for(let i = obj.Versions.length; i >= 0; i--){
-			let version = obj.Versions[i];
-			let clone = document.importNode(versionItemTemplate.content, true);
-
-			// Find the relevant elements within the cloned template
-			let versionLink = clone.querySelector("a");
-			
-			// Update the href and text content with the current version
-			versionLink.href = version + "/index.html";
-			versionLink.textContent = version;
-
-			// Append the modified clone to the target ul element
-			targetList.appendChild(clone);
-		}
-	}
-	
-</script>
 </head>
-<body onload="loadVersions()">
+<body>
 <main>
 <article id="content">
 <header>
-<h1 class="title"><code>jplaw</code> Documentation</h1>
+<h1 class="title">Module <code>jplaw.types.search_type</code></h1>
 </header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from enum import Enum
+class SearchType(Enum):
+    All           =     &#34;All&#34;           
+    Comments      =     &#34;Comments&#34;      
+    Posts         =     &#34;Posts&#34;         
+    Communities   =     &#34;Communities&#34;   
+    Users         =     &#34;Users&#34;         
+    Url           =     &#34;Url&#34;           
+
+  
+  
+  
+  
+  
+  </code></pre>
+</details>
+</section>
 <section>
-<h2 class="section-title" id="header-submodules">Project Description</h2>
-<p>
-    jplaw is a python library for accessing the API of Lemmy instances. This is the documentation for the jplaw library. To see the documentation, select the version on the sidebar.
-</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="jplaw.types.search_type.SearchType"><code class="flex name class">
+<span>class <span class="ident">SearchType</span></span>
+<span>(</span><span>*args, **kwds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a collection of name/value pairs.</p>
+<p>Example enumeration:</p>
+<pre><code class="language-python-repl">&gt;&gt;&gt; class Color(Enum):
+...     RED = 1
+...     BLUE = 2
+...     GREEN = 3
+</code></pre>
+<p>Access them by:</p>
+<ul>
+<li>attribute access::</li>
+</ul>
+<pre><code class="language-python-repl">&gt;&gt;&gt; Color.RED
+&lt;Color.RED: 1&gt;
+</code></pre>
+<ul>
+<li>value lookup:</li>
+</ul>
+<pre><code class="language-python-repl">&gt;&gt;&gt; Color(1)
+&lt;Color.RED: 1&gt;
+</code></pre>
+<ul>
+<li>name lookup:</li>
+</ul>
+<pre><code class="language-python-repl">&gt;&gt;&gt; Color['RED']
+&lt;Color.RED: 1&gt;
+</code></pre>
+<p>Enumerations can be iterated over, and know how many members they have:</p>
+<pre><code class="language-python-repl">&gt;&gt;&gt; len(Color)
+3
+</code></pre>
+<pre><code class="language-python-repl">&gt;&gt;&gt; list(Color)
+[&lt;Color.RED: 1&gt;, &lt;Color.BLUE: 2&gt;, &lt;Color.GREEN: 3&gt;]
+</code></pre>
+<p>Methods can be added to enumerations, and members can have their own
+attributes &ndash; see the documentation for details.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SearchType(Enum):
+    All           =     &#34;All&#34;           
+    Comments      =     &#34;Comments&#34;      
+    Posts         =     &#34;Posts&#34;         
+    Communities   =     &#34;Communities&#34;   
+    Users         =     &#34;Users&#34;         
+    Url           =     &#34;Url&#34;           </code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="jplaw.types.search_type.SearchType.All"><code class="name">var <span class="ident">All</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="jplaw.types.search_type.SearchType.Comments"><code class="name">var <span class="ident">Comments</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="jplaw.types.search_type.SearchType.Communities"><code class="name">var <span class="ident">Communities</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="jplaw.types.search_type.SearchType.Posts"><code class="name">var <span class="ident">Posts</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="jplaw.types.search_type.SearchType.Url"><code class="name">var <span class="ident">Url</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="jplaw.types.search_type.SearchType.Users"><code class="name">var <span class="ident">Users</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
 </section>
 </article>
 <nav id="sidebar">
-<h1>Versions</h1>
-<template id="version-template">
-<li><code><a title="VERSION" href="VERSION/index.html">VERSION</a></code></li>
-</template>
-<ul id="version-list">
-<li><h3><a>Versions</a></h3></li>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="jplaw.types" href="index.html">jplaw.types</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="jplaw.types.search_type.SearchType" href="#jplaw.types.search_type.SearchType">SearchType</a></code></h4>
+<ul class="two-column">
+<li><code><a title="jplaw.types.search_type.SearchType.All" href="#jplaw.types.search_type.SearchType.All">All</a></code></li>
+<li><code><a title="jplaw.types.search_type.SearchType.Comments" href="#jplaw.types.search_type.SearchType.Comments">Comments</a></code></li>
+<li><code><a title="jplaw.types.search_type.SearchType.Communities" href="#jplaw.types.search_type.SearchType.Communities">Communities</a></code></li>
+<li><code><a title="jplaw.types.search_type.SearchType.Posts" href="#jplaw.types.search_type.SearchType.Posts">Posts</a></code></li>
+<li><code><a title="jplaw.types.search_type.SearchType.Url" href="#jplaw.types.search_type.SearchType.Url">Url</a></code></li>
+<li><code><a title="jplaw.types.search_type.SearchType.Users" href="#jplaw.types.search_type.SearchType.Users">Users</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </nav>
 </main>

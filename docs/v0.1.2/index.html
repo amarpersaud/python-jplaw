@@ -1,4 +1,4 @@
-    <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -14,57 +14,133 @@
 <style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
 <script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
-<script>
-    
-	
-	
-	//From https://stackoverflow.com/questions/12460378/how-to-get-json-from-url-in-javascript
-	async function loadVersions() {
-		let url = './VERSIONS.json';
-		
-		//Load the 
-		let response = await fetch(url);
-		let obj = await response.json();
-		let versionItemTemplate = document.querySelector('#version-template');
-		let targetList = document.querySelector("#version-list");
-		for(let i = obj.Versions.length; i >= 0; i--){
-			let version = obj.Versions[i];
-			let clone = document.importNode(versionItemTemplate.content, true);
-
-			// Find the relevant elements within the cloned template
-			let versionLink = clone.querySelector("a");
-			
-			// Update the href and text content with the current version
-			versionLink.href = version + "/index.html";
-			versionLink.textContent = version;
-
-			// Append the modified clone to the target ul element
-			targetList.appendChild(clone);
-		}
-	}
-	
-</script>
 </head>
-<body onload="loadVersions()">
+<body>
 <main>
 <article id="content">
 <header>
-<h1 class="title"><code>jplaw</code> Documentation</h1>
+<h1 class="title">Package <code>jplaw</code></h1>
 </header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from .lemmy import Lemmy</code></pre>
+</details>
+</section>
 <section>
-<h2 class="section-title" id="header-submodules">Project Description</h2>
-<p>
-    jplaw is a python library for accessing the API of Lemmy instances. This is the documentation for the jplaw library. To see the documentation, select the version on the sidebar.
-</p>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="jplaw.api_paths" href="api_paths.html">jplaw.api_paths</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.comment" href="comment.html">jplaw.comment</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.comment_sort_type" href="comment_sort_type.html">jplaw.comment_sort_type</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.community" href="community.html">jplaw.community</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.http_type" href="http_type.html">jplaw.http_type</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.language" href="language.html">jplaw.language</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.lemmy" href="lemmy.html">jplaw.lemmy</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.listing_type" href="listing_type.html">jplaw.listing_type</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.modlog_action_type" href="modlog_action_type.html">jplaw.modlog_action_type</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.post" href="post.html">jplaw.post</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.post_feature_type" href="post_feature_type.html">jplaw.post_feature_type</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.private_message" href="private_message.html">jplaw.private_message</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.requestor" href="requestor.html">jplaw.requestor</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.search_type" href="search_type.html">jplaw.search_type</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.site" href="site.html">jplaw.site</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.sort_type" href="sort_type.html">jplaw.sort_type</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.subscribed_type" href="subscribed_type.html">jplaw.subscribed_type</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="jplaw.user" href="user.html">jplaw.user</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
 </section>
 </article>
 <nav id="sidebar">
-<h1>Versions</h1>
-<template id="version-template">
-<li><code><a title="VERSION" href="VERSION/index.html">VERSION</a></code></li>
-</template>
-<ul id="version-list">
-<li><h3><a>Versions</a></h3></li>
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="jplaw.api_paths" href="api_paths.html">jplaw.api_paths</a></code></li>
+<li><code><a title="jplaw.comment" href="comment.html">jplaw.comment</a></code></li>
+<li><code><a title="jplaw.comment_sort_type" href="comment_sort_type.html">jplaw.comment_sort_type</a></code></li>
+<li><code><a title="jplaw.community" href="community.html">jplaw.community</a></code></li>
+<li><code><a title="jplaw.http_type" href="http_type.html">jplaw.http_type</a></code></li>
+<li><code><a title="jplaw.language" href="language.html">jplaw.language</a></code></li>
+<li><code><a title="jplaw.lemmy" href="lemmy.html">jplaw.lemmy</a></code></li>
+<li><code><a title="jplaw.listing_type" href="listing_type.html">jplaw.listing_type</a></code></li>
+<li><code><a title="jplaw.modlog_action_type" href="modlog_action_type.html">jplaw.modlog_action_type</a></code></li>
+<li><code><a title="jplaw.post" href="post.html">jplaw.post</a></code></li>
+<li><code><a title="jplaw.post_feature_type" href="post_feature_type.html">jplaw.post_feature_type</a></code></li>
+<li><code><a title="jplaw.private_message" href="private_message.html">jplaw.private_message</a></code></li>
+<li><code><a title="jplaw.requestor" href="requestor.html">jplaw.requestor</a></code></li>
+<li><code><a title="jplaw.search_type" href="search_type.html">jplaw.search_type</a></code></li>
+<li><code><a title="jplaw.site" href="site.html">jplaw.site</a></code></li>
+<li><code><a title="jplaw.sort_type" href="sort_type.html">jplaw.sort_type</a></code></li>
+<li><code><a title="jplaw.subscribed_type" href="subscribed_type.html">jplaw.subscribed_type</a></code></li>
+<li><code><a title="jplaw.user" href="user.html">jplaw.user</a></code></li>
+</ul>
+</li>
 </ul>
 </nav>
 </main>
