@@ -26,7 +26,7 @@
 		let response = await fetch(url);
 		let obj = await response.json();
 		let versionItemTemplate = document.querySelector('#version-template');
-		let targetList = document.getElementById("version-list");
+		let targetList = document.getElementById("#version-list");
 		for(let i = 0; i < obj.Versions.length; i++){
 			let version = obj.Versions[i];
 			let clone = document.importNode(versionItemTemplate.content, true);
@@ -63,7 +63,7 @@
 <template id="version-template">
 <li><code><a title="VERSION" href="VERSION/index.html">VERSION</a></code></li>
 </template>
-<ul id="index">
+<ul id="version-list">
 <li><h3><a>Versions</a></h3></li>
 </ul>
 </nav>
