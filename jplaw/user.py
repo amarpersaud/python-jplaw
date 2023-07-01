@@ -1,6 +1,8 @@
 from .requestor import Requestor
 from .api_paths import *
 from typing import List
+from .types.listing_type import ListingType
+from .types.sort_type import SortType
 
 class User():
     """
