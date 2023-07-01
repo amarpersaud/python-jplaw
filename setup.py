@@ -9,9 +9,6 @@ with open(ver_path) as ver_file:
     
 VER = main_ns['__version__']
 
-with open("VERSION", "w+") as f:
-    # Writing to a file
-    f.write(VER)
 setup(
     name='jplaw',
     version=VER,
