@@ -24,8 +24,7 @@
 		
 		//Load the 
 		let response = await fetch(url);
-		let VersionJson = await response.json();
-		let obj = JSON.parse(VersionJson);
+		let obj = await response.json();
 		let versionItemTemplate = document.querySelector('#version-template');
 		let targetList = document.getElementById("version-list");
 		for(let i = 0; i < len(obj.Versions); i++){
