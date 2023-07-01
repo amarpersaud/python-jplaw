@@ -39,4 +39,5 @@ print(lem.Community.list())
 print(lem.Community.get("test@lemmy.ml"))
 ```
 
-For more methods, see the documentation (to come in v0.1.4)
+# Documentation
+See [the documentation](https://amarpersaud.github.io/python-jplaw/) for more information on how to use jplaw.
