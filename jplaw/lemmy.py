@@ -1,18 +1,57 @@
-from .requestor import Requestor
-from .comment import Comment
-from .community import Community
-from .post import Post
-from .user import User
-from .site import Site
-from .private_message import PrivateMessage
+"""
+The Lemmy object is used to interract with a Lemmy instance.
+
+Creation can be done 
+
+```python
+import jplaw
+
+my_instance = "..."
+my_username = "..."
+my_password = "..."
+
+lem = jplaw.Lemmy(
+    instance=my_instance, 
+    username=my_username, 
+    password=my_password
+    )
+```
+
+Functions of subtypes can be done like so:
+
+```python
+print(lem.Community.list())
+
+print(lem.Post.create(community_id=..., title="Test", body="test"))
+```
+
+"""
+
+from jplaw.requestor import Requestor
+from jplaw.comment import Comment
+from jplaw.community import Community
+from jplaw.post import Post
+from jplaw.user import User
+from jplaw.site import Site
+from jplaw.emoji import Emoji
+from jplaw.private_message import PrivateMessage
 
 class Lemmy:
+    
     Post: Post
+    """Post object. Allows Lemmy.Post functions"""
     Community: Community
+    """Community object. Allows Lemmy.Community functions"""
     Comment: Comment
+    """Comment object. Allows Lemmy.Comment functions"""
     User: User
+    """User object. Allows Lemmy.User functions"""
     Site: Site
+    """Site object. Allows Lemmy.Site functions"""
+    Emoji: Emoji
+    """Emoji object. Allows Lemmy.Emoji functions"""
     PrivateMessage: PrivateMessage
+    """PrivateMessage object. Allows Lemmy.PrivateMessage functions"""
     
     def __enter__(self):
         """Handle the context manager open."""
@@ -21,30 +60,29 @@ class Lemmy:
     def __exit__(self, *_args):
         """Handle the context manager close."""
     
-    def __init__(self, instance, username:str = None, password:str = None):
+    def __init__(self, instance:str, username:str = None, password:str = None):
+        """
+        Create a Lemmy object
+        
+        Args:
+            instance (str): URL of instance to log in to or use
+            username (str): username or email to log in with. Defaults to None (no authentication)
+            password (str): password of user. Defaults to None (no authentication)
+        Returns:
+            Lemmy object
+        """
+        
         self.username = username
         
         # Login, get token, and set as header for future
         self._req = Requestor(instance=instance, username=username, password=password, headers={})
         
+        # Create objects for function access
         self.Post = Post(self._req)
         self.Community = Community(self._req)
         self.Comment = Comment(self._req)
         self.User = User(self._req)
         self.Site = Site(self._req)
+        self.Emoji = Emoji(self._req)
         self.PrivateMessage = PrivateMessage(self._req)
         # print(self._req.headers.get("Authorization"))
-        
-    def resolveObject(self, obj, instance=None, auth_token=None):
-        form={
-            "q": obj
-        }
-        res = self._req.lemmyRequest("resolveObject", instance=instance, form=form, auth_token=auth_token)
-        return res
-        
-    def search(self, term, instance=None, auth_token=None):
-        form={
-            "q": term
-        }
-        res = self._req.request("search", instance=instance, auth_token=auth_token, form=form)
-        return res

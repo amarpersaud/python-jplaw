@@ -1,13 +1,22 @@
+import os
 from setuptools import setup, find_packages
+from distutils.util import convert_path
+
+main_ns = {}
+ver_path = convert_path('jplaw/__init__.py')
+with open(ver_path) as ver_file:
+    exec(ver_file.read(), main_ns)
+    
+VER = main_ns['__version__']
 
 setup(
     name='jplaw',
-    version='0.1.3',
+    version=VER,
     packages=['jplaw', 'jplaw/types'],
     description='A python wrapper for the lemmy HTTP API. Forked from plaw by Benjamin Jablonski (benja810)',
     author='Amar Persaud',
     author_email='amar.d.persaud@gmail.com',
-    install_requires=["requests >=2.6.0, <3.0"],
+    install_requires=["requests >=2.6.0, <3.0", "tomli >=2.0.0"],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',

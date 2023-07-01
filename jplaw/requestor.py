@@ -1,16 +1,19 @@
+"""
+Requestor allows HTTP communication.
+"""
 from enum import Enum
 import requests
 import json
 from typing import Dict, Any, TypeVar
-from .api_paths import *
-from .types.http_type import HttpType
+from jplaw.api_paths import *
+from jplaw.types.http_type import HttpType
 
 T = TypeVar("T")
 
 class Requestor:
     def __init__(self, instance:str, username:str, password:str, headers: Dict[str, str]):
         """
-        Make an HTTP request
+        Make an HTTP requestor
         
         Args:
             instance (str): URL of instance to log in to or use

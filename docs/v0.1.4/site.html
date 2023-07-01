@@ -1,0 +1,2212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>jplaw.site API documentation</title>
+<meta name="description" content="Site class. Designed to allow Lemmy.Site functions." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>jplaw.site</code></h1>
+</header>
+<section id="section-intro">
+<p>Site class. Designed to allow Lemmy.Site functions.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+Site class. Designed to allow Lemmy.Site functions.
+&#34;&#34;&#34;
+from .requestor import Requestor
+from .api_paths import *
+from typing import List
+from .types.modlog_action_type import ModlogActionType
+from .types.listing_type import ListingType
+from .types.registration_mode import RegistrationMode
+
+class Site():
+    def __init__(self, _req: Requestor):
+        self._req = _req
+    
+    def getSite(self, instance:str=None, auth:bool=True, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the site details
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth (bool): Whether or not to authenticate. Optional. Defaults to True.
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Instance details response
+        &#34;&#34;&#34;
+        form = {}
+        res = self._req.lemmyRequest(&#34;getSite&#34;, instance=instance, form=form, auth=auth, auth_token=auth_token)
+        return res
+    
+    def create(self,    
+        name: str,
+        sidebar: str=None,
+        description: str=None,
+        icon: str=None,
+        banner: str=None,
+        enable_downvotes: bool=None,
+        enable_nsfw: bool=None,
+        community_creation_admin_only: bool=None,
+        require_email_verification: bool=None,
+        application_question: str=None,
+        private_instance: bool=None,
+        default_theme: str=None,
+        default_post_listing_type: ListingType=None,
+        legal_information: str=None,
+        application_email_admins: bool=None,
+        hide_modlog_mod_names: bool=None,
+        discussion_languages: List[int]=None,
+        slur_filter_regex: str=None,
+        actor_name_max_length: int=None,
+        rate_limit_message: int=None,
+        rate_limit_message_per_second: int=None,
+        rate_limit_post: int=None,
+        rate_limit_post_per_second: int=None,
+        rate_limit_register: int=None,
+        rate_limit_register_per_second: int=None,
+        rate_limit_image: int=None,
+        rate_limit_image_per_second: int=None,
+        rate_limit_comment: int=None,
+        rate_limit_comment_per_second: int=None,
+        rate_limit_search: int=None,
+        rate_limit_search_per_second: int=None,
+        federation_enabled: bool=None,
+        federation_debug: bool=None,
+        federation_worker_count: int=None,
+        captcha_enabled: bool=None,
+        captcha_difficulty: str=None,
+        allowed_instances: List[str]=None,
+        blocked_instances: List[str]=None,
+        taglines: List[str]=None,
+        registration_mode: RegistrationMode=None,
+        instance:str=None, 
+        auth_token:str=None):
+        &#34;&#34;&#34;
+        Create the lemmy instance
+        
+        Args:
+            name (str): Name of the website                 
+            sidebar (str): Text of the sidebar of the website. Optional.
+            description (str): Description of the website. Optional.
+            icon (str): URL to icon for webstite. Optional.
+            banner (str): URL for banner of website. Optional.
+            enable_downvotes (bool): If true, downvotes are enabled. Optional.
+            enable_nsfw (bool): If true, NSFW content is allowed. Optional.
+            community_creation_admin_only (bool): If true, only adminstrators can create communities. Optional.
+            require_email_verification (bool): If true, email verification is required. Optional.
+            application_question (str): Question shown on application. Optional.
+            private_instance (bool): If true, instance is private. Optional.
+            default_theme (str): Default theme for the site. Optional.
+            default_post_listing_type (ListingType): Default listing type for posts. Optional.
+            legal_information (str): Legal information for the site. Optional.
+            application_email_admins (bool): If applications send an email to the admins. Optional.
+            hide_modlog_mod_names (bool): If true, moderator names are hidden in the modlog. Optional.
+            discussion_languages (List[int]): List of discussion languages in the instance. Optional.
+            slur_filter_regex (str): Regex to match for slurs or to block certain text. 
+            actor_name_max_length (int): Maximum name length for actors ???. Optional. 
+            rate_limit_message (int): Message rate limit. Optional.
+            rate_limit_message_per_second (int): Message per second rate limit. Optional.
+            rate_limit_post (int): Post rate limit. Optional.
+            rate_limit_post_per_second (int): Post per second rate limit. Optional.
+            rate_limit_register (int): Registration rate limit. Optional.
+            rate_limit_register_per_second (int): Registrations per second rate limit. Optional.
+            rate_limit_image (int): Image rate limit. Optional.
+            rate_limit_image_per_second (int): Image rate limit per second. Optional.
+            rate_limit_comment (int): Comment rate limit. Optional.
+            rate_limit_comment_per_second (int): Comment per second rate limit. Optional.
+            rate_limit_search (int): Search rate limit. Optional.
+            rate_limit_search_per_second (int): Search per second rate limit. Optional.
+            federation_enabled (bool): If federation is enabled. Optional.
+            federation_debug (bool): If federation debugging is enabled. Optional.
+            federation_worker_count (int): Number of federation workers. This is the number of threads dedicated to federating content. Optional.
+            captcha_enabled (bool): If captcha is enabled. Optional.
+            captcha_difficulty (str): Difficulty of the captcha. Text: easy, medium or hard.
+            allowed_instances (List[str]): List of allowed instances. Optional.
+            blocked_instances (List[str]: List of blocked or defederated instances. Optional.
+            taglines (List[str]: List of taglines shown at top of front page). Optional.
+            registration_mode (RegistrationMode): Mode of registration (Closed/Application/Open). Optional.
+            reports_email_admins (bool): if reporting emails the admins. Optional.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Create site response
+        &#34;&#34;&#34;
+        form = {
+            &#34;name&#34;                              : name                              ,
+            }
+        optional = {
+            &#34;sidebar&#34;                           : sidebar                           ,
+            &#34;description&#34;                       : description                       ,
+            &#34;icon&#34;                              : icon                              ,
+            &#34;banner&#34;                            : banner                            ,
+            &#34;enable_downvotes&#34;                  : enable_downvotes                  ,
+            &#34;enable_nsfw&#34;                       : enable_nsfw                       ,
+            &#34;community_creation_admin_only&#34;     : community_creation_admin_only     ,
+            &#34;require_email_verification&#34;        : require_email_verification        ,
+            &#34;application_question&#34;              : application_question              ,
+            &#34;private_instance&#34;                  : private_instance                  ,
+            &#34;default_theme&#34;                     : default_theme                     ,
+            &#34;default_post_listing_type&#34;         : default_post_listing_type         ,
+            &#34;legal_information&#34;                 : legal_information                 ,
+            &#34;application_email_admins&#34;          : application_email_admins          ,
+            &#34;hide_modlog_mod_names&#34;             : hide_modlog_mod_names             ,
+            &#34;discussion_languages&#34;              : discussion_languages              ,
+            &#34;slur_filter_regex&#34;                 : slur_filter_regex                 ,
+            &#34;actor_name_max_length&#34;             : actor_name_max_length             ,
+            &#34;rate_limit_message&#34;                : rate_limit_message                ,
+            &#34;rate_limit_message_per_second&#34;     : rate_limit_message_per_second     ,
+            &#34;rate_limit_post&#34;                   : rate_limit_post                   ,
+            &#34;rate_limit_post_per_second&#34;        : rate_limit_post_per_second        ,
+            &#34;rate_limit_register&#34;               : rate_limit_register               ,
+            &#34;rate_limit_register_per_second&#34;    : rate_limit_register_per_second    ,
+            &#34;rate_limit_image&#34;                  : rate_limit_image                  ,
+            &#34;rate_limit_image_per_second&#34;       : rate_limit_image_per_second       ,
+            &#34;rate_limit_comment&#34;                : rate_limit_comment                ,
+            &#34;rate_limit_comment_per_second&#34;     : rate_limit_comment_per_second     ,
+            &#34;rate_limit_search&#34;                 : rate_limit_search                 ,
+            &#34;rate_limit_search_per_second&#34;      : rate_limit_search_per_second      ,
+            &#34;federation_enabled&#34;                : federation_enabled                ,
+            &#34;federation_debug&#34;                  : federation_debug                  ,
+            &#34;federation_worker_count&#34;           : federation_worker_count           ,
+            &#34;captcha_enabled&#34;                   : captcha_enabled                   ,
+            &#34;captcha_difficulty&#34;                : captcha_difficulty                ,
+            &#34;allowed_instances&#34;                 : allowed_instances                 ,
+            &#34;blocked_instances&#34;                 : blocked_instances                 ,
+            &#34;taglines&#34;                          : taglines                          ,
+            &#34;registration_mode&#34;                 : registration_mode                 ,
+            }
+        res = self._req.lemmyRequest(&#34;createSite&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    
+    def edit(self,         
+        name: str=None,
+        sidebar: str=None,
+        description: str=None,
+        icon: str=None,
+        banner: str=None,
+        enable_downvotes: bool=None,
+        enable_nsfw: bool=None,
+        community_creation_admin_only: bool=None,
+        require_email_verification: bool=None,
+        application_question: str=None,
+        private_instance: bool=None,
+        default_theme: str=None,
+        default_post_listing_type: ListingType=None,
+        legal_information: str=None,
+        application_email_admins: bool=None,
+        hide_modlog_mod_names: bool=None,
+        discussion_languages: List[int]=None,
+        slur_filter_regex: str=None,
+        actor_name_max_length: int=None,
+        rate_limit_message: int=None,
+        rate_limit_message_per_second: int=None,
+        rate_limit_post: int=None,
+        rate_limit_post_per_second: int=None,
+        rate_limit_register: int=None,
+        rate_limit_register_per_second: int=None,
+        rate_limit_image: int=None,
+        rate_limit_image_per_second: int=None,
+        rate_limit_comment: int=None,
+        rate_limit_comment_per_second: int=None,
+        rate_limit_search: int=None,
+        rate_limit_search_per_second: int=None,
+        federation_enabled: bool=None,
+        federation_debug: bool=None,
+        federation_worker_count: int=None,
+        captcha_enabled: bool=None,
+        captcha_difficulty: str=None,
+        allowed_instances: List[str]=None,
+        blocked_instances: List[str]=None,
+        taglines: List[str]=None,
+        registration_mode: RegistrationMode=None,
+        reports_email_admins:bool=None,
+        instance:str=None, 
+        auth_token:str=None):
+        &#34;&#34;&#34;
+        Edit the site details. Optional arguments can be excluded to leave them as is.
+        
+        Args:
+            name (str): Name of the website. Optional            
+            sidebar (str): Text of the sidebar of the website. Optional.
+            description (str): Description of the website. Optional.
+            icon (str): URL to icon for webstite. Optional.
+            banner (str): URL for banner of website. Optional.
+            enable_downvotes (bool): If true, downvotes are enabled. Optional.
+            enable_nsfw (bool): If true, NSFW content is allowed. Optional.
+            community_creation_admin_only (bool): If true, only adminstrators can create communities. Optional.
+            require_email_verification (bool): If true, email verification is required. Optional.
+            application_question (str): Question shown on application. Optional.
+            private_instance (bool): If true, instance is private. Optional.
+            default_theme (str): Default theme for the site. Optional.
+            default_post_listing_type (ListingType): Default listing type for posts. Optional.
+            legal_information (str): Legal information for the site. Optional.
+            application_email_admins (bool): If applications send an email to the admins. Optional.
+            hide_modlog_mod_names (bool): If true, moderator names are hidden in the modlog. Optional.
+            discussion_languages (List[int]): List of discussion languages in the instance. Optional.
+            slur_filter_regex (str): Regex to match for slurs or to block certain text. 
+            actor_name_max_length (int): Maximum name length for actors ???. Optional. 
+            rate_limit_message (int): Message rate limit. Optional.
+            rate_limit_message_per_second (int): Message per second rate limit. Optional.
+            rate_limit_post (int): Post rate limit. Optional.
+            rate_limit_post_per_second (int): Post per second rate limit. Optional.
+            rate_limit_register (int): Registration rate limit. Optional.
+            rate_limit_register_per_second (int): Registrations per second rate limit. Optional.
+            rate_limit_image (int): Image rate limit. Optional.
+            rate_limit_image_per_second (int): Image rate limit per second. Optional.
+            rate_limit_comment (int): Comment rate limit. Optional.
+            rate_limit_comment_per_second (int): Comment per second rate limit. Optional.
+            rate_limit_search (int): Search rate limit. Optional.
+            rate_limit_search_per_second (int): Search per second rate limit. Optional.
+            federation_enabled (bool): If federation is enabled. Optional.
+            federation_debug (bool): If federation debugging is enabled. Optional.
+            federation_worker_count (int): Number of federation workers. This is the number of threads dedicated to federating content. Optional.
+            captcha_enabled (bool): If captcha is enabled. Optional.
+            captcha_difficulty (str): Difficulty of the captcha. Text: easy, medium or hard.
+            allowed_instances (List[str]): List of allowed instances. Optional.
+            blocked_instances (List[str]: List of blocked or defederated instances. Optional.
+            taglines (List[str]: List of taglines shown at top of front page). Optional.
+            registration_mode (RegistrationMode): Mode of registration (Closed/Application/Open). Optional.
+            reports_email_admins (bool): if reporting emails the admins. Optional.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Edit site response
+        &#34;&#34;&#34;
+        form = {}
+        optional = {
+            &#34;name&#34;                              : name                              ,
+            &#34;sidebar&#34;                           : sidebar                           ,
+            &#34;description&#34;                       : description                       ,
+            &#34;icon&#34;                              : icon                              ,
+            &#34;banner&#34;                            : banner                            ,
+            &#34;enable_downvotes&#34;                  : enable_downvotes                  ,
+            &#34;enable_nsfw&#34;                       : enable_nsfw                       ,
+            &#34;community_creation_admin_only&#34;     : community_creation_admin_only     ,
+            &#34;require_email_verification&#34;        : require_email_verification        ,
+            &#34;application_question&#34;              : application_question              ,
+            &#34;private_instance&#34;                  : private_instance                  ,
+            &#34;default_theme&#34;                     : default_theme                     ,
+            &#34;default_post_listing_type&#34;         : default_post_listing_type         ,
+            &#34;legal_information&#34;                 : legal_information                 ,
+            &#34;application_email_admins&#34;          : application_email_admins          ,
+            &#34;hide_modlog_mod_names&#34;             : hide_modlog_mod_names             ,
+            &#34;discussion_languages&#34;              : discussion_languages              ,
+            &#34;slur_filter_regex&#34;                 : slur_filter_regex                 ,
+            &#34;actor_name_max_length&#34;             : actor_name_max_length             ,
+            &#34;rate_limit_message&#34;                : rate_limit_message                ,
+            &#34;rate_limit_message_per_second&#34;     : rate_limit_message_per_second     ,
+            &#34;rate_limit_post&#34;                   : rate_limit_post                   ,
+            &#34;rate_limit_post_per_second&#34;        : rate_limit_post_per_second        ,
+            &#34;rate_limit_register&#34;               : rate_limit_register               ,
+            &#34;rate_limit_register_per_second&#34;    : rate_limit_register_per_second    ,
+            &#34;rate_limit_image&#34;                  : rate_limit_image                  ,
+            &#34;rate_limit_image_per_second&#34;       : rate_limit_image_per_second       ,
+            &#34;rate_limit_comment&#34;                : rate_limit_comment                ,
+            &#34;rate_limit_comment_per_second&#34;     : rate_limit_comment_per_second     ,
+            &#34;rate_limit_search&#34;                 : rate_limit_search                 ,
+            &#34;rate_limit_search_per_second&#34;      : rate_limit_search_per_second      ,
+            &#34;federation_enabled&#34;                : federation_enabled                ,
+            &#34;federation_debug&#34;                  : federation_debug                  ,
+            &#34;federation_worker_count&#34;           : federation_worker_count           ,
+            &#34;captcha_enabled&#34;                   : captcha_enabled                   ,
+            &#34;captcha_difficulty&#34;                : captcha_difficulty                ,
+            &#34;allowed_instances&#34;                 : allowed_instances                 ,
+            &#34;blocked_instances&#34;                 : blocked_instances                 ,
+            &#34;taglines&#34;                          : taglines                          ,
+            &#34;registration_mode&#34;                 : registration_mode                 ,
+            &#34;reports_email_admins&#34;              : reports_email_admins              ,
+            }
+        res = self._req.lemmyRequest(&#34;editSite&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+        
+    def getFederatedInstances(self, instance:str=None, auth:bool=True, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the list of federated instances from the site
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth (bool): Whether or not to use authentication. Optional. Defaults to True.
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Federated instances response
+        &#34;&#34;&#34;
+        res = self._req.lemmyRequest(&#34;getFederatedInstances&#34;, instance=instance, auth=auth, auth_token=auth_token)
+        return res
+    
+    def addAdmin(self, person_id:int, added:bool=True, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Add an administrator to the site
+        
+        Args:
+            person_id (int): ID of user to add as administrator
+            added (bool): If person is added as an administrator to the site. Optional. Defaults to True.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Administrator added response
+        &#34;&#34;&#34;
+        form={
+            &#34;person_id&#34;: person_id,
+            &#34;added&#34;: added
+            }
+        res = self._req.lemmyRequest(&#34;addAdmin&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+        
+    def getUnreadRegistrationApplicationCount(self, instance:str=None, auth_token=None):
+        &#34;&#34;&#34;
+        Get the number of unread registration applications
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Unread registration application count response
+        &#34;&#34;&#34;
+        form={}
+        res = self._req.lemmyRequest(&#34;getUnreadRegistrationApplicationCount&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+        
+    def listRegistrationApplications(self, unread_only:bool=None, page:int=None, limit:str=None, instance:str=None, auth_token=None):
+        &#34;&#34;&#34;
+        Get a list of registration applications
+        
+        Args:
+            unread_only (bool): Get only unread applications. Optional.
+            page (int): Page of applications to get. Optional.
+            limit (int): Limit for number of applications to get. Optional.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            List of registration applications 
+        &#34;&#34;&#34;
+        form={}
+        optional={
+            &#34;page&#34;: page,
+            &#34;limit&#34;: limit,
+            &#34;unread_only&#34;: unread_only
+            }
+        res = self._req.lemmyRequest(&#34;listRegistrationApplications&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+        
+    def approveRegistrationApplication(self, application_id:int, approve:bool=True, deny_reason:str=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Approve a registration application
+        
+        Args:
+            application_id (int): ID of the application
+            approve (bool): If registration application has been approved. Optional. Defaults to True
+            dent_reason (str): Reason for denying the application, if denied. Optional.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Approved registration response
+        &#34;&#34;&#34;
+        form={
+            &#34;application_id&#34;: application_id,
+            &#34;approve&#34;: approve,
+            }
+        optional={
+            &#34;deny_reason&#34;: deny_reason
+            }
+        res = self._req.lemmyRequest(&#34;approveRegistrationApplication&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+        
+    def getModlog(self, mod_person_id:int=None, community_id:int=None, page:int=None, limit:int=None, type_:ModlogActionType=None, other_person_id:int=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the moderation log of the site
+        
+        Args:
+            mod_person_id (int): Filter by moderator id. Optional
+            community_id (int): Filter by community id. Optional
+            page (int): Page number to view. Optional
+            limit (int): Limit for number of results to get. Optional
+            type_ (ModlogActionType): Filter by type of moderator action. Optional
+            other_person_id (int): ID of the user who made the comment, post or community. Optional
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Moderator log response
+        &#34;&#34;&#34;
+        form={}
+        optional={
+            &#34;mod_person_id&#34;: mod_person_id,
+            &#34;community_id&#34;: community_id,
+            &#34;page&#34;: page,
+            &#34;limit&#34;: limit,
+            &#34;type_&#34;: type_,
+            &#34;other_person_id&#34;: other_person_id,
+            }
+        res = self._req.lemmyRequest(&#34;getModlog&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+        
+    def purgeComment(self, comment_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Purge a comment from the site
+        
+        Args:
+            comment_id (int): ID of the comment to purge
+            reason (str): Reason for purging the comment. Optional
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Purged comment response
+        &#34;&#34;&#34;
+        form={
+            &#34;comment_id&#34;: comment_id
+            }
+        optional={
+            &#34;reason&#34;: reason,
+            }
+        res = self._req.lemmyRequest(&#34;purgeComment&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    def purgeCommunity(self, community_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Purge a community from the site
+        
+        Args:
+            community_id (int): ID of the user to purge
+            reason (str): Reason for purging the community. Optional
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Purged community response
+        &#34;&#34;&#34;
+        form={
+            &#34;community_id&#34;: community_id
+            }
+        optional={
+            &#34;reason&#34;: reason,
+            }
+        res = self._req.lemmyRequest(&#34;purgeCommunity&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    def purgePost(self, post_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Purge a post from the site
+        
+        Args:
+            post_id (int): ID of the post to purge
+            reason (str): Reason for purging the post. Optional
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Purged post response
+        &#34;&#34;&#34;
+        form={
+            &#34;post_id&#34;: post_id
+            }
+        optional={
+            &#34;reason&#34;: reason,
+            }
+        res = self._req.lemmyRequest(&#34;purgePost&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    def purgePerson(self, person_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Purge a person from the site
+        
+        Args:
+            person_id (int): ID of the user to purge
+            reason (str): Reason for purging the person. Optional
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Purged person response
+        &#34;&#34;&#34;
+        form={
+            &#34;person_id&#34;: person_id
+            }
+        optional={
+            &#34;reason&#34;: reason,
+            }
+        res = self._req.lemmyRequest(&#34;purgePerson&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    
+    def resolveObject(self, obj, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Resolves object from another instance
+        
+        Args:
+            obj: Object to resolve from the remote instance
+            instance (str): URL of local instance to request the object from
+            auth_token (str): Authentication token for local instance
+        Returns:
+            Federated object
+        &#34;&#34;&#34;
+        form={
+            &#34;q&#34;: obj
+        }
+        res = self._req.lemmyRequest(&#34;resolveObject&#34;, instance=instance, form=form, auth_token=auth_token)
+        return res
+        
+    def search(self, term:str, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Search for term
+        
+        Args:
+            term (str): Object to resolve from the remote instance
+            instance (str): URL of local instance. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance
+        Returns:
+            Search results
+        &#34;&#34;&#34;
+        form={
+            &#34;q&#34;: term
+        }
+        res = self._req.request(&#34;search&#34;, instance=instance, auth_token=auth_token, form=form)
+        return res</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="jplaw.site.Site"><code class="flex name class">
+<span>class <span class="ident">Site</span></span>
+<span>(</span><span>_req: <a title="jplaw.requestor.Requestor" href="requestor.html#jplaw.requestor.Requestor">Requestor</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Site():
+    def __init__(self, _req: Requestor):
+        self._req = _req
+    
+    def getSite(self, instance:str=None, auth:bool=True, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the site details
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth (bool): Whether or not to authenticate. Optional. Defaults to True.
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Instance details response
+        &#34;&#34;&#34;
+        form = {}
+        res = self._req.lemmyRequest(&#34;getSite&#34;, instance=instance, form=form, auth=auth, auth_token=auth_token)
+        return res
+    
+    def create(self,    
+        name: str,
+        sidebar: str=None,
+        description: str=None,
+        icon: str=None,
+        banner: str=None,
+        enable_downvotes: bool=None,
+        enable_nsfw: bool=None,
+        community_creation_admin_only: bool=None,
+        require_email_verification: bool=None,
+        application_question: str=None,
+        private_instance: bool=None,
+        default_theme: str=None,
+        default_post_listing_type: ListingType=None,
+        legal_information: str=None,
+        application_email_admins: bool=None,
+        hide_modlog_mod_names: bool=None,
+        discussion_languages: List[int]=None,
+        slur_filter_regex: str=None,
+        actor_name_max_length: int=None,
+        rate_limit_message: int=None,
+        rate_limit_message_per_second: int=None,
+        rate_limit_post: int=None,
+        rate_limit_post_per_second: int=None,
+        rate_limit_register: int=None,
+        rate_limit_register_per_second: int=None,
+        rate_limit_image: int=None,
+        rate_limit_image_per_second: int=None,
+        rate_limit_comment: int=None,
+        rate_limit_comment_per_second: int=None,
+        rate_limit_search: int=None,
+        rate_limit_search_per_second: int=None,
+        federation_enabled: bool=None,
+        federation_debug: bool=None,
+        federation_worker_count: int=None,
+        captcha_enabled: bool=None,
+        captcha_difficulty: str=None,
+        allowed_instances: List[str]=None,
+        blocked_instances: List[str]=None,
+        taglines: List[str]=None,
+        registration_mode: RegistrationMode=None,
+        instance:str=None, 
+        auth_token:str=None):
+        &#34;&#34;&#34;
+        Create the lemmy instance
+        
+        Args:
+            name (str): Name of the website                 
+            sidebar (str): Text of the sidebar of the website. Optional.
+            description (str): Description of the website. Optional.
+            icon (str): URL to icon for webstite. Optional.
+            banner (str): URL for banner of website. Optional.
+            enable_downvotes (bool): If true, downvotes are enabled. Optional.
+            enable_nsfw (bool): If true, NSFW content is allowed. Optional.
+            community_creation_admin_only (bool): If true, only adminstrators can create communities. Optional.
+            require_email_verification (bool): If true, email verification is required. Optional.
+            application_question (str): Question shown on application. Optional.
+            private_instance (bool): If true, instance is private. Optional.
+            default_theme (str): Default theme for the site. Optional.
+            default_post_listing_type (ListingType): Default listing type for posts. Optional.
+            legal_information (str): Legal information for the site. Optional.
+            application_email_admins (bool): If applications send an email to the admins. Optional.
+            hide_modlog_mod_names (bool): If true, moderator names are hidden in the modlog. Optional.
+            discussion_languages (List[int]): List of discussion languages in the instance. Optional.
+            slur_filter_regex (str): Regex to match for slurs or to block certain text. 
+            actor_name_max_length (int): Maximum name length for actors ???. Optional. 
+            rate_limit_message (int): Message rate limit. Optional.
+            rate_limit_message_per_second (int): Message per second rate limit. Optional.
+            rate_limit_post (int): Post rate limit. Optional.
+            rate_limit_post_per_second (int): Post per second rate limit. Optional.
+            rate_limit_register (int): Registration rate limit. Optional.
+            rate_limit_register_per_second (int): Registrations per second rate limit. Optional.
+            rate_limit_image (int): Image rate limit. Optional.
+            rate_limit_image_per_second (int): Image rate limit per second. Optional.
+            rate_limit_comment (int): Comment rate limit. Optional.
+            rate_limit_comment_per_second (int): Comment per second rate limit. Optional.
+            rate_limit_search (int): Search rate limit. Optional.
+            rate_limit_search_per_second (int): Search per second rate limit. Optional.
+            federation_enabled (bool): If federation is enabled. Optional.
+            federation_debug (bool): If federation debugging is enabled. Optional.
+            federation_worker_count (int): Number of federation workers. This is the number of threads dedicated to federating content. Optional.
+            captcha_enabled (bool): If captcha is enabled. Optional.
+            captcha_difficulty (str): Difficulty of the captcha. Text: easy, medium or hard.
+            allowed_instances (List[str]): List of allowed instances. Optional.
+            blocked_instances (List[str]: List of blocked or defederated instances. Optional.
+            taglines (List[str]: List of taglines shown at top of front page). Optional.
+            registration_mode (RegistrationMode): Mode of registration (Closed/Application/Open). Optional.
+            reports_email_admins (bool): if reporting emails the admins. Optional.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Create site response
+        &#34;&#34;&#34;
+        form = {
+            &#34;name&#34;                              : name                              ,
+            }
+        optional = {
+            &#34;sidebar&#34;                           : sidebar                           ,
+            &#34;description&#34;                       : description                       ,
+            &#34;icon&#34;                              : icon                              ,
+            &#34;banner&#34;                            : banner                            ,
+            &#34;enable_downvotes&#34;                  : enable_downvotes                  ,
+            &#34;enable_nsfw&#34;                       : enable_nsfw                       ,
+            &#34;community_creation_admin_only&#34;     : community_creation_admin_only     ,
+            &#34;require_email_verification&#34;        : require_email_verification        ,
+            &#34;application_question&#34;              : application_question              ,
+            &#34;private_instance&#34;                  : private_instance                  ,
+            &#34;default_theme&#34;                     : default_theme                     ,
+            &#34;default_post_listing_type&#34;         : default_post_listing_type         ,
+            &#34;legal_information&#34;                 : legal_information                 ,
+            &#34;application_email_admins&#34;          : application_email_admins          ,
+            &#34;hide_modlog_mod_names&#34;             : hide_modlog_mod_names             ,
+            &#34;discussion_languages&#34;              : discussion_languages              ,
+            &#34;slur_filter_regex&#34;                 : slur_filter_regex                 ,
+            &#34;actor_name_max_length&#34;             : actor_name_max_length             ,
+            &#34;rate_limit_message&#34;                : rate_limit_message                ,
+            &#34;rate_limit_message_per_second&#34;     : rate_limit_message_per_second     ,
+            &#34;rate_limit_post&#34;                   : rate_limit_post                   ,
+            &#34;rate_limit_post_per_second&#34;        : rate_limit_post_per_second        ,
+            &#34;rate_limit_register&#34;               : rate_limit_register               ,
+            &#34;rate_limit_register_per_second&#34;    : rate_limit_register_per_second    ,
+            &#34;rate_limit_image&#34;                  : rate_limit_image                  ,
+            &#34;rate_limit_image_per_second&#34;       : rate_limit_image_per_second       ,
+            &#34;rate_limit_comment&#34;                : rate_limit_comment                ,
+            &#34;rate_limit_comment_per_second&#34;     : rate_limit_comment_per_second     ,
+            &#34;rate_limit_search&#34;                 : rate_limit_search                 ,
+            &#34;rate_limit_search_per_second&#34;      : rate_limit_search_per_second      ,
+            &#34;federation_enabled&#34;                : federation_enabled                ,
+            &#34;federation_debug&#34;                  : federation_debug                  ,
+            &#34;federation_worker_count&#34;           : federation_worker_count           ,
+            &#34;captcha_enabled&#34;                   : captcha_enabled                   ,
+            &#34;captcha_difficulty&#34;                : captcha_difficulty                ,
+            &#34;allowed_instances&#34;                 : allowed_instances                 ,
+            &#34;blocked_instances&#34;                 : blocked_instances                 ,
+            &#34;taglines&#34;                          : taglines                          ,
+            &#34;registration_mode&#34;                 : registration_mode                 ,
+            }
+        res = self._req.lemmyRequest(&#34;createSite&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    
+    def edit(self,         
+        name: str=None,
+        sidebar: str=None,
+        description: str=None,
+        icon: str=None,
+        banner: str=None,
+        enable_downvotes: bool=None,
+        enable_nsfw: bool=None,
+        community_creation_admin_only: bool=None,
+        require_email_verification: bool=None,
+        application_question: str=None,
+        private_instance: bool=None,
+        default_theme: str=None,
+        default_post_listing_type: ListingType=None,
+        legal_information: str=None,
+        application_email_admins: bool=None,
+        hide_modlog_mod_names: bool=None,
+        discussion_languages: List[int]=None,
+        slur_filter_regex: str=None,
+        actor_name_max_length: int=None,
+        rate_limit_message: int=None,
+        rate_limit_message_per_second: int=None,
+        rate_limit_post: int=None,
+        rate_limit_post_per_second: int=None,
+        rate_limit_register: int=None,
+        rate_limit_register_per_second: int=None,
+        rate_limit_image: int=None,
+        rate_limit_image_per_second: int=None,
+        rate_limit_comment: int=None,
+        rate_limit_comment_per_second: int=None,
+        rate_limit_search: int=None,
+        rate_limit_search_per_second: int=None,
+        federation_enabled: bool=None,
+        federation_debug: bool=None,
+        federation_worker_count: int=None,
+        captcha_enabled: bool=None,
+        captcha_difficulty: str=None,
+        allowed_instances: List[str]=None,
+        blocked_instances: List[str]=None,
+        taglines: List[str]=None,
+        registration_mode: RegistrationMode=None,
+        reports_email_admins:bool=None,
+        instance:str=None, 
+        auth_token:str=None):
+        &#34;&#34;&#34;
+        Edit the site details. Optional arguments can be excluded to leave them as is.
+        
+        Args:
+            name (str): Name of the website. Optional            
+            sidebar (str): Text of the sidebar of the website. Optional.
+            description (str): Description of the website. Optional.
+            icon (str): URL to icon for webstite. Optional.
+            banner (str): URL for banner of website. Optional.
+            enable_downvotes (bool): If true, downvotes are enabled. Optional.
+            enable_nsfw (bool): If true, NSFW content is allowed. Optional.
+            community_creation_admin_only (bool): If true, only adminstrators can create communities. Optional.
+            require_email_verification (bool): If true, email verification is required. Optional.
+            application_question (str): Question shown on application. Optional.
+            private_instance (bool): If true, instance is private. Optional.
+            default_theme (str): Default theme for the site. Optional.
+            default_post_listing_type (ListingType): Default listing type for posts. Optional.
+            legal_information (str): Legal information for the site. Optional.
+            application_email_admins (bool): If applications send an email to the admins. Optional.
+            hide_modlog_mod_names (bool): If true, moderator names are hidden in the modlog. Optional.
+            discussion_languages (List[int]): List of discussion languages in the instance. Optional.
+            slur_filter_regex (str): Regex to match for slurs or to block certain text. 
+            actor_name_max_length (int): Maximum name length for actors ???. Optional. 
+            rate_limit_message (int): Message rate limit. Optional.
+            rate_limit_message_per_second (int): Message per second rate limit. Optional.
+            rate_limit_post (int): Post rate limit. Optional.
+            rate_limit_post_per_second (int): Post per second rate limit. Optional.
+            rate_limit_register (int): Registration rate limit. Optional.
+            rate_limit_register_per_second (int): Registrations per second rate limit. Optional.
+            rate_limit_image (int): Image rate limit. Optional.
+            rate_limit_image_per_second (int): Image rate limit per second. Optional.
+            rate_limit_comment (int): Comment rate limit. Optional.
+            rate_limit_comment_per_second (int): Comment per second rate limit. Optional.
+            rate_limit_search (int): Search rate limit. Optional.
+            rate_limit_search_per_second (int): Search per second rate limit. Optional.
+            federation_enabled (bool): If federation is enabled. Optional.
+            federation_debug (bool): If federation debugging is enabled. Optional.
+            federation_worker_count (int): Number of federation workers. This is the number of threads dedicated to federating content. Optional.
+            captcha_enabled (bool): If captcha is enabled. Optional.
+            captcha_difficulty (str): Difficulty of the captcha. Text: easy, medium or hard.
+            allowed_instances (List[str]): List of allowed instances. Optional.
+            blocked_instances (List[str]: List of blocked or defederated instances. Optional.
+            taglines (List[str]: List of taglines shown at top of front page). Optional.
+            registration_mode (RegistrationMode): Mode of registration (Closed/Application/Open). Optional.
+            reports_email_admins (bool): if reporting emails the admins. Optional.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Edit site response
+        &#34;&#34;&#34;
+        form = {}
+        optional = {
+            &#34;name&#34;                              : name                              ,
+            &#34;sidebar&#34;                           : sidebar                           ,
+            &#34;description&#34;                       : description                       ,
+            &#34;icon&#34;                              : icon                              ,
+            &#34;banner&#34;                            : banner                            ,
+            &#34;enable_downvotes&#34;                  : enable_downvotes                  ,
+            &#34;enable_nsfw&#34;                       : enable_nsfw                       ,
+            &#34;community_creation_admin_only&#34;     : community_creation_admin_only     ,
+            &#34;require_email_verification&#34;        : require_email_verification        ,
+            &#34;application_question&#34;              : application_question              ,
+            &#34;private_instance&#34;                  : private_instance                  ,
+            &#34;default_theme&#34;                     : default_theme                     ,
+            &#34;default_post_listing_type&#34;         : default_post_listing_type         ,
+            &#34;legal_information&#34;                 : legal_information                 ,
+            &#34;application_email_admins&#34;          : application_email_admins          ,
+            &#34;hide_modlog_mod_names&#34;             : hide_modlog_mod_names             ,
+            &#34;discussion_languages&#34;              : discussion_languages              ,
+            &#34;slur_filter_regex&#34;                 : slur_filter_regex                 ,
+            &#34;actor_name_max_length&#34;             : actor_name_max_length             ,
+            &#34;rate_limit_message&#34;                : rate_limit_message                ,
+            &#34;rate_limit_message_per_second&#34;     : rate_limit_message_per_second     ,
+            &#34;rate_limit_post&#34;                   : rate_limit_post                   ,
+            &#34;rate_limit_post_per_second&#34;        : rate_limit_post_per_second        ,
+            &#34;rate_limit_register&#34;               : rate_limit_register               ,
+            &#34;rate_limit_register_per_second&#34;    : rate_limit_register_per_second    ,
+            &#34;rate_limit_image&#34;                  : rate_limit_image                  ,
+            &#34;rate_limit_image_per_second&#34;       : rate_limit_image_per_second       ,
+            &#34;rate_limit_comment&#34;                : rate_limit_comment                ,
+            &#34;rate_limit_comment_per_second&#34;     : rate_limit_comment_per_second     ,
+            &#34;rate_limit_search&#34;                 : rate_limit_search                 ,
+            &#34;rate_limit_search_per_second&#34;      : rate_limit_search_per_second      ,
+            &#34;federation_enabled&#34;                : federation_enabled                ,
+            &#34;federation_debug&#34;                  : federation_debug                  ,
+            &#34;federation_worker_count&#34;           : federation_worker_count           ,
+            &#34;captcha_enabled&#34;                   : captcha_enabled                   ,
+            &#34;captcha_difficulty&#34;                : captcha_difficulty                ,
+            &#34;allowed_instances&#34;                 : allowed_instances                 ,
+            &#34;blocked_instances&#34;                 : blocked_instances                 ,
+            &#34;taglines&#34;                          : taglines                          ,
+            &#34;registration_mode&#34;                 : registration_mode                 ,
+            &#34;reports_email_admins&#34;              : reports_email_admins              ,
+            }
+        res = self._req.lemmyRequest(&#34;editSite&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+        
+    def getFederatedInstances(self, instance:str=None, auth:bool=True, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the list of federated instances from the site
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth (bool): Whether or not to use authentication. Optional. Defaults to True.
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Federated instances response
+        &#34;&#34;&#34;
+        res = self._req.lemmyRequest(&#34;getFederatedInstances&#34;, instance=instance, auth=auth, auth_token=auth_token)
+        return res
+    
+    def addAdmin(self, person_id:int, added:bool=True, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Add an administrator to the site
+        
+        Args:
+            person_id (int): ID of user to add as administrator
+            added (bool): If person is added as an administrator to the site. Optional. Defaults to True.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Administrator added response
+        &#34;&#34;&#34;
+        form={
+            &#34;person_id&#34;: person_id,
+            &#34;added&#34;: added
+            }
+        res = self._req.lemmyRequest(&#34;addAdmin&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+        
+    def getUnreadRegistrationApplicationCount(self, instance:str=None, auth_token=None):
+        &#34;&#34;&#34;
+        Get the number of unread registration applications
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Unread registration application count response
+        &#34;&#34;&#34;
+        form={}
+        res = self._req.lemmyRequest(&#34;getUnreadRegistrationApplicationCount&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+        
+    def listRegistrationApplications(self, unread_only:bool=None, page:int=None, limit:str=None, instance:str=None, auth_token=None):
+        &#34;&#34;&#34;
+        Get a list of registration applications
+        
+        Args:
+            unread_only (bool): Get only unread applications. Optional.
+            page (int): Page of applications to get. Optional.
+            limit (int): Limit for number of applications to get. Optional.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            List of registration applications 
+        &#34;&#34;&#34;
+        form={}
+        optional={
+            &#34;page&#34;: page,
+            &#34;limit&#34;: limit,
+            &#34;unread_only&#34;: unread_only
+            }
+        res = self._req.lemmyRequest(&#34;listRegistrationApplications&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+        
+    def approveRegistrationApplication(self, application_id:int, approve:bool=True, deny_reason:str=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Approve a registration application
+        
+        Args:
+            application_id (int): ID of the application
+            approve (bool): If registration application has been approved. Optional. Defaults to True
+            dent_reason (str): Reason for denying the application, if denied. Optional.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Approved registration response
+        &#34;&#34;&#34;
+        form={
+            &#34;application_id&#34;: application_id,
+            &#34;approve&#34;: approve,
+            }
+        optional={
+            &#34;deny_reason&#34;: deny_reason
+            }
+        res = self._req.lemmyRequest(&#34;approveRegistrationApplication&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+        
+    def getModlog(self, mod_person_id:int=None, community_id:int=None, page:int=None, limit:int=None, type_:ModlogActionType=None, other_person_id:int=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the moderation log of the site
+        
+        Args:
+            mod_person_id (int): Filter by moderator id. Optional
+            community_id (int): Filter by community id. Optional
+            page (int): Page number to view. Optional
+            limit (int): Limit for number of results to get. Optional
+            type_ (ModlogActionType): Filter by type of moderator action. Optional
+            other_person_id (int): ID of the user who made the comment, post or community. Optional
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Moderator log response
+        &#34;&#34;&#34;
+        form={}
+        optional={
+            &#34;mod_person_id&#34;: mod_person_id,
+            &#34;community_id&#34;: community_id,
+            &#34;page&#34;: page,
+            &#34;limit&#34;: limit,
+            &#34;type_&#34;: type_,
+            &#34;other_person_id&#34;: other_person_id,
+            }
+        res = self._req.lemmyRequest(&#34;getModlog&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+        
+    def purgeComment(self, comment_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Purge a comment from the site
+        
+        Args:
+            comment_id (int): ID of the comment to purge
+            reason (str): Reason for purging the comment. Optional
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Purged comment response
+        &#34;&#34;&#34;
+        form={
+            &#34;comment_id&#34;: comment_id
+            }
+        optional={
+            &#34;reason&#34;: reason,
+            }
+        res = self._req.lemmyRequest(&#34;purgeComment&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    def purgeCommunity(self, community_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Purge a community from the site
+        
+        Args:
+            community_id (int): ID of the user to purge
+            reason (str): Reason for purging the community. Optional
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Purged community response
+        &#34;&#34;&#34;
+        form={
+            &#34;community_id&#34;: community_id
+            }
+        optional={
+            &#34;reason&#34;: reason,
+            }
+        res = self._req.lemmyRequest(&#34;purgeCommunity&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    def purgePost(self, post_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Purge a post from the site
+        
+        Args:
+            post_id (int): ID of the post to purge
+            reason (str): Reason for purging the post. Optional
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Purged post response
+        &#34;&#34;&#34;
+        form={
+            &#34;post_id&#34;: post_id
+            }
+        optional={
+            &#34;reason&#34;: reason,
+            }
+        res = self._req.lemmyRequest(&#34;purgePost&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    def purgePerson(self, person_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Purge a person from the site
+        
+        Args:
+            person_id (int): ID of the user to purge
+            reason (str): Reason for purging the person. Optional
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Purged person response
+        &#34;&#34;&#34;
+        form={
+            &#34;person_id&#34;: person_id
+            }
+        optional={
+            &#34;reason&#34;: reason,
+            }
+        res = self._req.lemmyRequest(&#34;purgePerson&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    
+    def resolveObject(self, obj, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Resolves object from another instance
+        
+        Args:
+            obj: Object to resolve from the remote instance
+            instance (str): URL of local instance to request the object from
+            auth_token (str): Authentication token for local instance
+        Returns:
+            Federated object
+        &#34;&#34;&#34;
+        form={
+            &#34;q&#34;: obj
+        }
+        res = self._req.lemmyRequest(&#34;resolveObject&#34;, instance=instance, form=form, auth_token=auth_token)
+        return res
+        
+    def search(self, term:str, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Search for term
+        
+        Args:
+            term (str): Object to resolve from the remote instance
+            instance (str): URL of local instance. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance
+        Returns:
+            Search results
+        &#34;&#34;&#34;
+        form={
+            &#34;q&#34;: term
+        }
+        res = self._req.request(&#34;search&#34;, instance=instance, auth_token=auth_token, form=form)
+        return res</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="jplaw.site.Site.addAdmin"><code class="name flex">
+<span>def <span class="ident">addAdmin</span></span>(<span>self, person_id: int, added: bool = True, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add an administrator to the site</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>person_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of user to add as administrator</dd>
+<dt><strong><code>added</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If person is added as an administrator to the site. Optional. Defaults to True.</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Administrator added response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addAdmin(self, person_id:int, added:bool=True, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Add an administrator to the site
+    
+    Args:
+        person_id (int): ID of user to add as administrator
+        added (bool): If person is added as an administrator to the site. Optional. Defaults to True.
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Administrator added response
+    &#34;&#34;&#34;
+    form={
+        &#34;person_id&#34;: person_id,
+        &#34;added&#34;: added
+        }
+    res = self._req.lemmyRequest(&#34;addAdmin&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.site.Site.approveRegistrationApplication"><code class="name flex">
+<span>def <span class="ident">approveRegistrationApplication</span></span>(<span>self, application_id: int, approve: bool = True, deny_reason: str = None, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Approve a registration application</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>application_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the application</dd>
+<dt><strong><code>approve</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If registration application has been approved. Optional. Defaults to True</dd>
+<dt><strong><code>dent_reason</code></strong> :&ensp;<code>str</code></dt>
+<dd>Reason for denying the application, if denied. Optional.</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Approved registration response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def approveRegistrationApplication(self, application_id:int, approve:bool=True, deny_reason:str=None, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Approve a registration application
+    
+    Args:
+        application_id (int): ID of the application
+        approve (bool): If registration application has been approved. Optional. Defaults to True
+        dent_reason (str): Reason for denying the application, if denied. Optional.
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Approved registration response
+    &#34;&#34;&#34;
+    form={
+        &#34;application_id&#34;: application_id,
+        &#34;approve&#34;: approve,
+        }
+    optional={
+        &#34;deny_reason&#34;: deny_reason
+        }
+    res = self._req.lemmyRequest(&#34;approveRegistrationApplication&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.site.Site.create"><code class="name flex">
+<span>def <span class="ident">create</span></span>(<span>self, name: str, sidebar: str = None, description: str = None, icon: str = None, banner: str = None, enable_downvotes: bool = None, enable_nsfw: bool = None, community_creation_admin_only: bool = None, require_email_verification: bool = None, application_question: str = None, private_instance: bool = None, default_theme: str = None, default_post_listing_type: <a title="jplaw.types.listing_type.ListingType" href="types/listing_type.html#jplaw.types.listing_type.ListingType">ListingType</a> = None, legal_information: str = None, application_email_admins: bool = None, hide_modlog_mod_names: bool = None, discussion_languages: List[int] = None, slur_filter_regex: str = None, actor_name_max_length: int = None, rate_limit_message: int = None, rate_limit_message_per_second: int = None, rate_limit_post: int = None, rate_limit_post_per_second: int = None, rate_limit_register: int = None, rate_limit_register_per_second: int = None, rate_limit_image: int = None, rate_limit_image_per_second: int = None, rate_limit_comment: int = None, rate_limit_comment_per_second: int = None, rate_limit_search: int = None, rate_limit_search_per_second: int = None, federation_enabled: bool = None, federation_debug: bool = None, federation_worker_count: int = None, captcha_enabled: bool = None, captcha_difficulty: str = None, allowed_instances: List[str] = None, blocked_instances: List[str] = None, taglines: List[str] = None, registration_mode: <a title="jplaw.types.registration_mode.RegistrationMode" href="types/registration_mode.html#jplaw.types.registration_mode.RegistrationMode">RegistrationMode</a> = None, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create the lemmy instance</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the website
+</dd>
+<dt><strong><code>sidebar</code></strong> :&ensp;<code>str</code></dt>
+<dd>Text of the sidebar of the website. Optional.</dd>
+<dt><strong><code>description</code></strong> :&ensp;<code>str</code></dt>
+<dd>Description of the website. Optional.</dd>
+<dt><strong><code>icon</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL to icon for webstite. Optional.</dd>
+<dt><strong><code>banner</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL for banner of website. Optional.</dd>
+<dt><strong><code>enable_downvotes</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, downvotes are enabled. Optional.</dd>
+<dt><strong><code>enable_nsfw</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, NSFW content is allowed. Optional.</dd>
+<dt><strong><code>community_creation_admin_only</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, only adminstrators can create communities. Optional.</dd>
+<dt><strong><code>require_email_verification</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, email verification is required. Optional.</dd>
+<dt><strong><code>application_question</code></strong> :&ensp;<code>str</code></dt>
+<dd>Question shown on application. Optional.</dd>
+<dt><strong><code>private_instance</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, instance is private. Optional.</dd>
+<dt><strong><code>default_theme</code></strong> :&ensp;<code>str</code></dt>
+<dd>Default theme for the site. Optional.</dd>
+<dt><strong><code>default_post_listing_type</code></strong> :&ensp;<code>ListingType</code></dt>
+<dd>Default listing type for posts. Optional.</dd>
+<dt><strong><code>legal_information</code></strong> :&ensp;<code>str</code></dt>
+<dd>Legal information for the site. Optional.</dd>
+<dt><strong><code>application_email_admins</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If applications send an email to the admins. Optional.</dd>
+<dt><strong><code>hide_modlog_mod_names</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, moderator names are hidden in the modlog. Optional.</dd>
+<dt><strong><code>discussion_languages</code></strong> :&ensp;<code>List[int]</code></dt>
+<dd>List of discussion languages in the instance. Optional.</dd>
+<dt><strong><code>slur_filter_regex</code></strong> :&ensp;<code>str</code></dt>
+<dd>Regex to match for slurs or to block certain text. </dd>
+<dt><strong><code>actor_name_max_length</code></strong> :&ensp;<code>int</code></dt>
+<dd>Maximum name length for actors ???. Optional. </dd>
+<dt><strong><code>rate_limit_message</code></strong> :&ensp;<code>int</code></dt>
+<dd>Message rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_message_per_second</code></strong> :&ensp;<code>int</code></dt>
+<dd>Message per second rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_post</code></strong> :&ensp;<code>int</code></dt>
+<dd>Post rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_post_per_second</code></strong> :&ensp;<code>int</code></dt>
+<dd>Post per second rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_register</code></strong> :&ensp;<code>int</code></dt>
+<dd>Registration rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_register_per_second</code></strong> :&ensp;<code>int</code></dt>
+<dd>Registrations per second rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_image</code></strong> :&ensp;<code>int</code></dt>
+<dd>Image rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_image_per_second</code></strong> :&ensp;<code>int</code></dt>
+<dd>Image rate limit per second. Optional.</dd>
+<dt><strong><code>rate_limit_comment</code></strong> :&ensp;<code>int</code></dt>
+<dd>Comment rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_comment_per_second</code></strong> :&ensp;<code>int</code></dt>
+<dd>Comment per second rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_search</code></strong> :&ensp;<code>int</code></dt>
+<dd>Search rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_search_per_second</code></strong> :&ensp;<code>int</code></dt>
+<dd>Search per second rate limit. Optional.</dd>
+<dt><strong><code>federation_enabled</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If federation is enabled. Optional.</dd>
+<dt><strong><code>federation_debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If federation debugging is enabled. Optional.</dd>
+<dt><strong><code>federation_worker_count</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of federation workers. This is the number of threads dedicated to federating content. Optional.</dd>
+<dt><strong><code>captcha_enabled</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If captcha is enabled. Optional.</dd>
+<dt><strong><code>captcha_difficulty</code></strong> :&ensp;<code>str</code></dt>
+<dd>Difficulty of the captcha. Text: easy, medium or hard.</dd>
+<dt><strong><code>allowed_instances</code></strong> :&ensp;<code>List[str]</code></dt>
+<dd>List of allowed instances. Optional.</dd>
+<dt>blocked_instances (List[str]: List of blocked or defederated instances. Optional.</dt>
+<dt>taglines (List[str]: List of taglines shown at top of front page). Optional.</dt>
+<dt><strong><code>registration_mode</code></strong> :&ensp;<code>RegistrationMode</code></dt>
+<dd>Mode of registration (Closed/Application/Open). Optional.</dd>
+<dt><strong><code>reports_email_admins</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if reporting emails the admins. Optional.</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Create site response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create(self,    
+    name: str,
+    sidebar: str=None,
+    description: str=None,
+    icon: str=None,
+    banner: str=None,
+    enable_downvotes: bool=None,
+    enable_nsfw: bool=None,
+    community_creation_admin_only: bool=None,
+    require_email_verification: bool=None,
+    application_question: str=None,
+    private_instance: bool=None,
+    default_theme: str=None,
+    default_post_listing_type: ListingType=None,
+    legal_information: str=None,
+    application_email_admins: bool=None,
+    hide_modlog_mod_names: bool=None,
+    discussion_languages: List[int]=None,
+    slur_filter_regex: str=None,
+    actor_name_max_length: int=None,
+    rate_limit_message: int=None,
+    rate_limit_message_per_second: int=None,
+    rate_limit_post: int=None,
+    rate_limit_post_per_second: int=None,
+    rate_limit_register: int=None,
+    rate_limit_register_per_second: int=None,
+    rate_limit_image: int=None,
+    rate_limit_image_per_second: int=None,
+    rate_limit_comment: int=None,
+    rate_limit_comment_per_second: int=None,
+    rate_limit_search: int=None,
+    rate_limit_search_per_second: int=None,
+    federation_enabled: bool=None,
+    federation_debug: bool=None,
+    federation_worker_count: int=None,
+    captcha_enabled: bool=None,
+    captcha_difficulty: str=None,
+    allowed_instances: List[str]=None,
+    blocked_instances: List[str]=None,
+    taglines: List[str]=None,
+    registration_mode: RegistrationMode=None,
+    instance:str=None, 
+    auth_token:str=None):
+    &#34;&#34;&#34;
+    Create the lemmy instance
+    
+    Args:
+        name (str): Name of the website                 
+        sidebar (str): Text of the sidebar of the website. Optional.
+        description (str): Description of the website. Optional.
+        icon (str): URL to icon for webstite. Optional.
+        banner (str): URL for banner of website. Optional.
+        enable_downvotes (bool): If true, downvotes are enabled. Optional.
+        enable_nsfw (bool): If true, NSFW content is allowed. Optional.
+        community_creation_admin_only (bool): If true, only adminstrators can create communities. Optional.
+        require_email_verification (bool): If true, email verification is required. Optional.
+        application_question (str): Question shown on application. Optional.
+        private_instance (bool): If true, instance is private. Optional.
+        default_theme (str): Default theme for the site. Optional.
+        default_post_listing_type (ListingType): Default listing type for posts. Optional.
+        legal_information (str): Legal information for the site. Optional.
+        application_email_admins (bool): If applications send an email to the admins. Optional.
+        hide_modlog_mod_names (bool): If true, moderator names are hidden in the modlog. Optional.
+        discussion_languages (List[int]): List of discussion languages in the instance. Optional.
+        slur_filter_regex (str): Regex to match for slurs or to block certain text. 
+        actor_name_max_length (int): Maximum name length for actors ???. Optional. 
+        rate_limit_message (int): Message rate limit. Optional.
+        rate_limit_message_per_second (int): Message per second rate limit. Optional.
+        rate_limit_post (int): Post rate limit. Optional.
+        rate_limit_post_per_second (int): Post per second rate limit. Optional.
+        rate_limit_register (int): Registration rate limit. Optional.
+        rate_limit_register_per_second (int): Registrations per second rate limit. Optional.
+        rate_limit_image (int): Image rate limit. Optional.
+        rate_limit_image_per_second (int): Image rate limit per second. Optional.
+        rate_limit_comment (int): Comment rate limit. Optional.
+        rate_limit_comment_per_second (int): Comment per second rate limit. Optional.
+        rate_limit_search (int): Search rate limit. Optional.
+        rate_limit_search_per_second (int): Search per second rate limit. Optional.
+        federation_enabled (bool): If federation is enabled. Optional.
+        federation_debug (bool): If federation debugging is enabled. Optional.
+        federation_worker_count (int): Number of federation workers. This is the number of threads dedicated to federating content. Optional.
+        captcha_enabled (bool): If captcha is enabled. Optional.
+        captcha_difficulty (str): Difficulty of the captcha. Text: easy, medium or hard.
+        allowed_instances (List[str]): List of allowed instances. Optional.
+        blocked_instances (List[str]: List of blocked or defederated instances. Optional.
+        taglines (List[str]: List of taglines shown at top of front page). Optional.
+        registration_mode (RegistrationMode): Mode of registration (Closed/Application/Open). Optional.
+        reports_email_admins (bool): if reporting emails the admins. Optional.
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Create site response
+    &#34;&#34;&#34;
+    form = {
+        &#34;name&#34;                              : name                              ,
+        }
+    optional = {
+        &#34;sidebar&#34;                           : sidebar                           ,
+        &#34;description&#34;                       : description                       ,
+        &#34;icon&#34;                              : icon                              ,
+        &#34;banner&#34;                            : banner                            ,
+        &#34;enable_downvotes&#34;                  : enable_downvotes                  ,
+        &#34;enable_nsfw&#34;                       : enable_nsfw                       ,
+        &#34;community_creation_admin_only&#34;     : community_creation_admin_only     ,
+        &#34;require_email_verification&#34;        : require_email_verification        ,
+        &#34;application_question&#34;              : application_question              ,
+        &#34;private_instance&#34;                  : private_instance                  ,
+        &#34;default_theme&#34;                     : default_theme                     ,
+        &#34;default_post_listing_type&#34;         : default_post_listing_type         ,
+        &#34;legal_information&#34;                 : legal_information                 ,
+        &#34;application_email_admins&#34;          : application_email_admins          ,
+        &#34;hide_modlog_mod_names&#34;             : hide_modlog_mod_names             ,
+        &#34;discussion_languages&#34;              : discussion_languages              ,
+        &#34;slur_filter_regex&#34;                 : slur_filter_regex                 ,
+        &#34;actor_name_max_length&#34;             : actor_name_max_length             ,
+        &#34;rate_limit_message&#34;                : rate_limit_message                ,
+        &#34;rate_limit_message_per_second&#34;     : rate_limit_message_per_second     ,
+        &#34;rate_limit_post&#34;                   : rate_limit_post                   ,
+        &#34;rate_limit_post_per_second&#34;        : rate_limit_post_per_second        ,
+        &#34;rate_limit_register&#34;               : rate_limit_register               ,
+        &#34;rate_limit_register_per_second&#34;    : rate_limit_register_per_second    ,
+        &#34;rate_limit_image&#34;                  : rate_limit_image                  ,
+        &#34;rate_limit_image_per_second&#34;       : rate_limit_image_per_second       ,
+        &#34;rate_limit_comment&#34;                : rate_limit_comment                ,
+        &#34;rate_limit_comment_per_second&#34;     : rate_limit_comment_per_second     ,
+        &#34;rate_limit_search&#34;                 : rate_limit_search                 ,
+        &#34;rate_limit_search_per_second&#34;      : rate_limit_search_per_second      ,
+        &#34;federation_enabled&#34;                : federation_enabled                ,
+        &#34;federation_debug&#34;                  : federation_debug                  ,
+        &#34;federation_worker_count&#34;           : federation_worker_count           ,
+        &#34;captcha_enabled&#34;                   : captcha_enabled                   ,
+        &#34;captcha_difficulty&#34;                : captcha_difficulty                ,
+        &#34;allowed_instances&#34;                 : allowed_instances                 ,
+        &#34;blocked_instances&#34;                 : blocked_instances                 ,
+        &#34;taglines&#34;                          : taglines                          ,
+        &#34;registration_mode&#34;                 : registration_mode                 ,
+        }
+    res = self._req.lemmyRequest(&#34;createSite&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.site.Site.edit"><code class="name flex">
+<span>def <span class="ident">edit</span></span>(<span>self, name: str = None, sidebar: str = None, description: str = None, icon: str = None, banner: str = None, enable_downvotes: bool = None, enable_nsfw: bool = None, community_creation_admin_only: bool = None, require_email_verification: bool = None, application_question: str = None, private_instance: bool = None, default_theme: str = None, default_post_listing_type: <a title="jplaw.types.listing_type.ListingType" href="types/listing_type.html#jplaw.types.listing_type.ListingType">ListingType</a> = None, legal_information: str = None, application_email_admins: bool = None, hide_modlog_mod_names: bool = None, discussion_languages: List[int] = None, slur_filter_regex: str = None, actor_name_max_length: int = None, rate_limit_message: int = None, rate_limit_message_per_second: int = None, rate_limit_post: int = None, rate_limit_post_per_second: int = None, rate_limit_register: int = None, rate_limit_register_per_second: int = None, rate_limit_image: int = None, rate_limit_image_per_second: int = None, rate_limit_comment: int = None, rate_limit_comment_per_second: int = None, rate_limit_search: int = None, rate_limit_search_per_second: int = None, federation_enabled: bool = None, federation_debug: bool = None, federation_worker_count: int = None, captcha_enabled: bool = None, captcha_difficulty: str = None, allowed_instances: List[str] = None, blocked_instances: List[str] = None, taglines: List[str] = None, registration_mode: <a title="jplaw.types.registration_mode.RegistrationMode" href="types/registration_mode.html#jplaw.types.registration_mode.RegistrationMode">RegistrationMode</a> = None, reports_email_admins: bool = None, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Edit the site details. Optional arguments can be excluded to leave them as is.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the website. Optional
+</dd>
+<dt><strong><code>sidebar</code></strong> :&ensp;<code>str</code></dt>
+<dd>Text of the sidebar of the website. Optional.</dd>
+<dt><strong><code>description</code></strong> :&ensp;<code>str</code></dt>
+<dd>Description of the website. Optional.</dd>
+<dt><strong><code>icon</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL to icon for webstite. Optional.</dd>
+<dt><strong><code>banner</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL for banner of website. Optional.</dd>
+<dt><strong><code>enable_downvotes</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, downvotes are enabled. Optional.</dd>
+<dt><strong><code>enable_nsfw</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, NSFW content is allowed. Optional.</dd>
+<dt><strong><code>community_creation_admin_only</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, only adminstrators can create communities. Optional.</dd>
+<dt><strong><code>require_email_verification</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, email verification is required. Optional.</dd>
+<dt><strong><code>application_question</code></strong> :&ensp;<code>str</code></dt>
+<dd>Question shown on application. Optional.</dd>
+<dt><strong><code>private_instance</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, instance is private. Optional.</dd>
+<dt><strong><code>default_theme</code></strong> :&ensp;<code>str</code></dt>
+<dd>Default theme for the site. Optional.</dd>
+<dt><strong><code>default_post_listing_type</code></strong> :&ensp;<code>ListingType</code></dt>
+<dd>Default listing type for posts. Optional.</dd>
+<dt><strong><code>legal_information</code></strong> :&ensp;<code>str</code></dt>
+<dd>Legal information for the site. Optional.</dd>
+<dt><strong><code>application_email_admins</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If applications send an email to the admins. Optional.</dd>
+<dt><strong><code>hide_modlog_mod_names</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, moderator names are hidden in the modlog. Optional.</dd>
+<dt><strong><code>discussion_languages</code></strong> :&ensp;<code>List[int]</code></dt>
+<dd>List of discussion languages in the instance. Optional.</dd>
+<dt><strong><code>slur_filter_regex</code></strong> :&ensp;<code>str</code></dt>
+<dd>Regex to match for slurs or to block certain text. </dd>
+<dt><strong><code>actor_name_max_length</code></strong> :&ensp;<code>int</code></dt>
+<dd>Maximum name length for actors ???. Optional. </dd>
+<dt><strong><code>rate_limit_message</code></strong> :&ensp;<code>int</code></dt>
+<dd>Message rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_message_per_second</code></strong> :&ensp;<code>int</code></dt>
+<dd>Message per second rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_post</code></strong> :&ensp;<code>int</code></dt>
+<dd>Post rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_post_per_second</code></strong> :&ensp;<code>int</code></dt>
+<dd>Post per second rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_register</code></strong> :&ensp;<code>int</code></dt>
+<dd>Registration rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_register_per_second</code></strong> :&ensp;<code>int</code></dt>
+<dd>Registrations per second rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_image</code></strong> :&ensp;<code>int</code></dt>
+<dd>Image rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_image_per_second</code></strong> :&ensp;<code>int</code></dt>
+<dd>Image rate limit per second. Optional.</dd>
+<dt><strong><code>rate_limit_comment</code></strong> :&ensp;<code>int</code></dt>
+<dd>Comment rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_comment_per_second</code></strong> :&ensp;<code>int</code></dt>
+<dd>Comment per second rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_search</code></strong> :&ensp;<code>int</code></dt>
+<dd>Search rate limit. Optional.</dd>
+<dt><strong><code>rate_limit_search_per_second</code></strong> :&ensp;<code>int</code></dt>
+<dd>Search per second rate limit. Optional.</dd>
+<dt><strong><code>federation_enabled</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If federation is enabled. Optional.</dd>
+<dt><strong><code>federation_debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If federation debugging is enabled. Optional.</dd>
+<dt><strong><code>federation_worker_count</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of federation workers. This is the number of threads dedicated to federating content. Optional.</dd>
+<dt><strong><code>captcha_enabled</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If captcha is enabled. Optional.</dd>
+<dt><strong><code>captcha_difficulty</code></strong> :&ensp;<code>str</code></dt>
+<dd>Difficulty of the captcha. Text: easy, medium or hard.</dd>
+<dt><strong><code>allowed_instances</code></strong> :&ensp;<code>List[str]</code></dt>
+<dd>List of allowed instances. Optional.</dd>
+<dt>blocked_instances (List[str]: List of blocked or defederated instances. Optional.</dt>
+<dt>taglines (List[str]: List of taglines shown at top of front page). Optional.</dt>
+<dt><strong><code>registration_mode</code></strong> :&ensp;<code>RegistrationMode</code></dt>
+<dd>Mode of registration (Closed/Application/Open). Optional.</dd>
+<dt><strong><code>reports_email_admins</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if reporting emails the admins. Optional.</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Edit site response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def edit(self,         
+    name: str=None,
+    sidebar: str=None,
+    description: str=None,
+    icon: str=None,
+    banner: str=None,
+    enable_downvotes: bool=None,
+    enable_nsfw: bool=None,
+    community_creation_admin_only: bool=None,
+    require_email_verification: bool=None,
+    application_question: str=None,
+    private_instance: bool=None,
+    default_theme: str=None,
+    default_post_listing_type: ListingType=None,
+    legal_information: str=None,
+    application_email_admins: bool=None,
+    hide_modlog_mod_names: bool=None,
+    discussion_languages: List[int]=None,
+    slur_filter_regex: str=None,
+    actor_name_max_length: int=None,
+    rate_limit_message: int=None,
+    rate_limit_message_per_second: int=None,
+    rate_limit_post: int=None,
+    rate_limit_post_per_second: int=None,
+    rate_limit_register: int=None,
+    rate_limit_register_per_second: int=None,
+    rate_limit_image: int=None,
+    rate_limit_image_per_second: int=None,
+    rate_limit_comment: int=None,
+    rate_limit_comment_per_second: int=None,
+    rate_limit_search: int=None,
+    rate_limit_search_per_second: int=None,
+    federation_enabled: bool=None,
+    federation_debug: bool=None,
+    federation_worker_count: int=None,
+    captcha_enabled: bool=None,
+    captcha_difficulty: str=None,
+    allowed_instances: List[str]=None,
+    blocked_instances: List[str]=None,
+    taglines: List[str]=None,
+    registration_mode: RegistrationMode=None,
+    reports_email_admins:bool=None,
+    instance:str=None, 
+    auth_token:str=None):
+    &#34;&#34;&#34;
+    Edit the site details. Optional arguments can be excluded to leave them as is.
+    
+    Args:
+        name (str): Name of the website. Optional            
+        sidebar (str): Text of the sidebar of the website. Optional.
+        description (str): Description of the website. Optional.
+        icon (str): URL to icon for webstite. Optional.
+        banner (str): URL for banner of website. Optional.
+        enable_downvotes (bool): If true, downvotes are enabled. Optional.
+        enable_nsfw (bool): If true, NSFW content is allowed. Optional.
+        community_creation_admin_only (bool): If true, only adminstrators can create communities. Optional.
+        require_email_verification (bool): If true, email verification is required. Optional.
+        application_question (str): Question shown on application. Optional.
+        private_instance (bool): If true, instance is private. Optional.
+        default_theme (str): Default theme for the site. Optional.
+        default_post_listing_type (ListingType): Default listing type for posts. Optional.
+        legal_information (str): Legal information for the site. Optional.
+        application_email_admins (bool): If applications send an email to the admins. Optional.
+        hide_modlog_mod_names (bool): If true, moderator names are hidden in the modlog. Optional.
+        discussion_languages (List[int]): List of discussion languages in the instance. Optional.
+        slur_filter_regex (str): Regex to match for slurs or to block certain text. 
+        actor_name_max_length (int): Maximum name length for actors ???. Optional. 
+        rate_limit_message (int): Message rate limit. Optional.
+        rate_limit_message_per_second (int): Message per second rate limit. Optional.
+        rate_limit_post (int): Post rate limit. Optional.
+        rate_limit_post_per_second (int): Post per second rate limit. Optional.
+        rate_limit_register (int): Registration rate limit. Optional.
+        rate_limit_register_per_second (int): Registrations per second rate limit. Optional.
+        rate_limit_image (int): Image rate limit. Optional.
+        rate_limit_image_per_second (int): Image rate limit per second. Optional.
+        rate_limit_comment (int): Comment rate limit. Optional.
+        rate_limit_comment_per_second (int): Comment per second rate limit. Optional.
+        rate_limit_search (int): Search rate limit. Optional.
+        rate_limit_search_per_second (int): Search per second rate limit. Optional.
+        federation_enabled (bool): If federation is enabled. Optional.
+        federation_debug (bool): If federation debugging is enabled. Optional.
+        federation_worker_count (int): Number of federation workers. This is the number of threads dedicated to federating content. Optional.
+        captcha_enabled (bool): If captcha is enabled. Optional.
+        captcha_difficulty (str): Difficulty of the captcha. Text: easy, medium or hard.
+        allowed_instances (List[str]): List of allowed instances. Optional.
+        blocked_instances (List[str]: List of blocked or defederated instances. Optional.
+        taglines (List[str]: List of taglines shown at top of front page). Optional.
+        registration_mode (RegistrationMode): Mode of registration (Closed/Application/Open). Optional.
+        reports_email_admins (bool): if reporting emails the admins. Optional.
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Edit site response
+    &#34;&#34;&#34;
+    form = {}
+    optional = {
+        &#34;name&#34;                              : name                              ,
+        &#34;sidebar&#34;                           : sidebar                           ,
+        &#34;description&#34;                       : description                       ,
+        &#34;icon&#34;                              : icon                              ,
+        &#34;banner&#34;                            : banner                            ,
+        &#34;enable_downvotes&#34;                  : enable_downvotes                  ,
+        &#34;enable_nsfw&#34;                       : enable_nsfw                       ,
+        &#34;community_creation_admin_only&#34;     : community_creation_admin_only     ,
+        &#34;require_email_verification&#34;        : require_email_verification        ,
+        &#34;application_question&#34;              : application_question              ,
+        &#34;private_instance&#34;                  : private_instance                  ,
+        &#34;default_theme&#34;                     : default_theme                     ,
+        &#34;default_post_listing_type&#34;         : default_post_listing_type         ,
+        &#34;legal_information&#34;                 : legal_information                 ,
+        &#34;application_email_admins&#34;          : application_email_admins          ,
+        &#34;hide_modlog_mod_names&#34;             : hide_modlog_mod_names             ,
+        &#34;discussion_languages&#34;              : discussion_languages              ,
+        &#34;slur_filter_regex&#34;                 : slur_filter_regex                 ,
+        &#34;actor_name_max_length&#34;             : actor_name_max_length             ,
+        &#34;rate_limit_message&#34;                : rate_limit_message                ,
+        &#34;rate_limit_message_per_second&#34;     : rate_limit_message_per_second     ,
+        &#34;rate_limit_post&#34;                   : rate_limit_post                   ,
+        &#34;rate_limit_post_per_second&#34;        : rate_limit_post_per_second        ,
+        &#34;rate_limit_register&#34;               : rate_limit_register               ,
+        &#34;rate_limit_register_per_second&#34;    : rate_limit_register_per_second    ,
+        &#34;rate_limit_image&#34;                  : rate_limit_image                  ,
+        &#34;rate_limit_image_per_second&#34;       : rate_limit_image_per_second       ,
+        &#34;rate_limit_comment&#34;                : rate_limit_comment                ,
+        &#34;rate_limit_comment_per_second&#34;     : rate_limit_comment_per_second     ,
+        &#34;rate_limit_search&#34;                 : rate_limit_search                 ,
+        &#34;rate_limit_search_per_second&#34;      : rate_limit_search_per_second      ,
+        &#34;federation_enabled&#34;                : federation_enabled                ,
+        &#34;federation_debug&#34;                  : federation_debug                  ,
+        &#34;federation_worker_count&#34;           : federation_worker_count           ,
+        &#34;captcha_enabled&#34;                   : captcha_enabled                   ,
+        &#34;captcha_difficulty&#34;                : captcha_difficulty                ,
+        &#34;allowed_instances&#34;                 : allowed_instances                 ,
+        &#34;blocked_instances&#34;                 : blocked_instances                 ,
+        &#34;taglines&#34;                          : taglines                          ,
+        &#34;registration_mode&#34;                 : registration_mode                 ,
+        &#34;reports_email_admins&#34;              : reports_email_admins              ,
+        }
+    res = self._req.lemmyRequest(&#34;editSite&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.site.Site.getFederatedInstances"><code class="name flex">
+<span>def <span class="ident">getFederatedInstances</span></span>(<span>self, instance: str = None, auth: bool = True, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the list of federated instances from the site</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Whether or not to use authentication. Optional. Defaults to True.</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Federated instances response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getFederatedInstances(self, instance:str=None, auth:bool=True, auth_token:str=None):
+    &#34;&#34;&#34;
+    Get the list of federated instances from the site
+    
+    Args:
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth (bool): Whether or not to use authentication. Optional. Defaults to True.
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Federated instances response
+    &#34;&#34;&#34;
+    res = self._req.lemmyRequest(&#34;getFederatedInstances&#34;, instance=instance, auth=auth, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.site.Site.getModlog"><code class="name flex">
+<span>def <span class="ident">getModlog</span></span>(<span>self, mod_person_id: int = None, community_id: int = None, page: int = None, limit: int = None, type_: <a title="jplaw.types.modlog_action_type.ModlogActionType" href="types/modlog_action_type.html#jplaw.types.modlog_action_type.ModlogActionType">ModlogActionType</a> = None, other_person_id: int = None, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the moderation log of the site</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>mod_person_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>Filter by moderator id. Optional</dd>
+<dt><strong><code>community_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>Filter by community id. Optional</dd>
+<dt><strong><code>page</code></strong> :&ensp;<code>int</code></dt>
+<dd>Page number to view. Optional</dd>
+<dt><strong><code>limit</code></strong> :&ensp;<code>int</code></dt>
+<dd>Limit for number of results to get. Optional</dd>
+<dt><strong><code>type_</code></strong> :&ensp;<code>ModlogActionType</code></dt>
+<dd>Filter by type of moderator action. Optional</dd>
+<dt><strong><code>other_person_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the user who made the comment, post or community. Optional</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Moderator log response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getModlog(self, mod_person_id:int=None, community_id:int=None, page:int=None, limit:int=None, type_:ModlogActionType=None, other_person_id:int=None, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Get the moderation log of the site
+    
+    Args:
+        mod_person_id (int): Filter by moderator id. Optional
+        community_id (int): Filter by community id. Optional
+        page (int): Page number to view. Optional
+        limit (int): Limit for number of results to get. Optional
+        type_ (ModlogActionType): Filter by type of moderator action. Optional
+        other_person_id (int): ID of the user who made the comment, post or community. Optional
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Moderator log response
+    &#34;&#34;&#34;
+    form={}
+    optional={
+        &#34;mod_person_id&#34;: mod_person_id,
+        &#34;community_id&#34;: community_id,
+        &#34;page&#34;: page,
+        &#34;limit&#34;: limit,
+        &#34;type_&#34;: type_,
+        &#34;other_person_id&#34;: other_person_id,
+        }
+    res = self._req.lemmyRequest(&#34;getModlog&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.site.Site.getSite"><code class="name flex">
+<span>def <span class="ident">getSite</span></span>(<span>self, instance: str = None, auth: bool = True, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the site details</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Whether or not to authenticate. Optional. Defaults to True.</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Instance details response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getSite(self, instance:str=None, auth:bool=True, auth_token:str=None):
+    &#34;&#34;&#34;
+    Get the site details
+    
+    Args:
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth (bool): Whether or not to authenticate. Optional. Defaults to True.
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Instance details response
+    &#34;&#34;&#34;
+    form = {}
+    res = self._req.lemmyRequest(&#34;getSite&#34;, instance=instance, form=form, auth=auth, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.site.Site.getUnreadRegistrationApplicationCount"><code class="name flex">
+<span>def <span class="ident">getUnreadRegistrationApplicationCount</span></span>(<span>self, instance: str = None, auth_token=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the number of unread registration applications</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Unread registration application count response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getUnreadRegistrationApplicationCount(self, instance:str=None, auth_token=None):
+    &#34;&#34;&#34;
+    Get the number of unread registration applications
+    
+    Args:
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Unread registration application count response
+    &#34;&#34;&#34;
+    form={}
+    res = self._req.lemmyRequest(&#34;getUnreadRegistrationApplicationCount&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.site.Site.listRegistrationApplications"><code class="name flex">
+<span>def <span class="ident">listRegistrationApplications</span></span>(<span>self, unread_only: bool = None, page: int = None, limit: str = None, instance: str = None, auth_token=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a list of registration applications</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>unread_only</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Get only unread applications. Optional.</dd>
+<dt><strong><code>page</code></strong> :&ensp;<code>int</code></dt>
+<dd>Page of applications to get. Optional.</dd>
+<dt><strong><code>limit</code></strong> :&ensp;<code>int</code></dt>
+<dd>Limit for number of applications to get. Optional.</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>List of registration applications</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def listRegistrationApplications(self, unread_only:bool=None, page:int=None, limit:str=None, instance:str=None, auth_token=None):
+    &#34;&#34;&#34;
+    Get a list of registration applications
+    
+    Args:
+        unread_only (bool): Get only unread applications. Optional.
+        page (int): Page of applications to get. Optional.
+        limit (int): Limit for number of applications to get. Optional.
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        List of registration applications 
+    &#34;&#34;&#34;
+    form={}
+    optional={
+        &#34;page&#34;: page,
+        &#34;limit&#34;: limit,
+        &#34;unread_only&#34;: unread_only
+        }
+    res = self._req.lemmyRequest(&#34;listRegistrationApplications&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.site.Site.purgeComment"><code class="name flex">
+<span>def <span class="ident">purgeComment</span></span>(<span>self, comment_id: int, reason: str = None, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Purge a comment from the site</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>comment_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the comment to purge</dd>
+<dt><strong><code>reason</code></strong> :&ensp;<code>str</code></dt>
+<dd>Reason for purging the comment. Optional</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Purged comment response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def purgeComment(self, comment_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Purge a comment from the site
+    
+    Args:
+        comment_id (int): ID of the comment to purge
+        reason (str): Reason for purging the comment. Optional
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Purged comment response
+    &#34;&#34;&#34;
+    form={
+        &#34;comment_id&#34;: comment_id
+        }
+    optional={
+        &#34;reason&#34;: reason,
+        }
+    res = self._req.lemmyRequest(&#34;purgeComment&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.site.Site.purgeCommunity"><code class="name flex">
+<span>def <span class="ident">purgeCommunity</span></span>(<span>self, community_id: int, reason: str = None, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Purge a community from the site</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>community_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the user to purge</dd>
+<dt><strong><code>reason</code></strong> :&ensp;<code>str</code></dt>
+<dd>Reason for purging the community. Optional</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Purged community response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def purgeCommunity(self, community_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Purge a community from the site
+    
+    Args:
+        community_id (int): ID of the user to purge
+        reason (str): Reason for purging the community. Optional
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Purged community response
+    &#34;&#34;&#34;
+    form={
+        &#34;community_id&#34;: community_id
+        }
+    optional={
+        &#34;reason&#34;: reason,
+        }
+    res = self._req.lemmyRequest(&#34;purgeCommunity&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.site.Site.purgePerson"><code class="name flex">
+<span>def <span class="ident">purgePerson</span></span>(<span>self, person_id: int, reason: str = None, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Purge a person from the site</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>person_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the user to purge</dd>
+<dt><strong><code>reason</code></strong> :&ensp;<code>str</code></dt>
+<dd>Reason for purging the person. Optional</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Purged person response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def purgePerson(self, person_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Purge a person from the site
+    
+    Args:
+        person_id (int): ID of the user to purge
+        reason (str): Reason for purging the person. Optional
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Purged person response
+    &#34;&#34;&#34;
+    form={
+        &#34;person_id&#34;: person_id
+        }
+    optional={
+        &#34;reason&#34;: reason,
+        }
+    res = self._req.lemmyRequest(&#34;purgePerson&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.site.Site.purgePost"><code class="name flex">
+<span>def <span class="ident">purgePost</span></span>(<span>self, post_id: int, reason: str = None, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Purge a post from the site</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>post_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the post to purge</dd>
+<dt><strong><code>reason</code></strong> :&ensp;<code>str</code></dt>
+<dd>Reason for purging the post. Optional</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Purged post response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def purgePost(self, post_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Purge a post from the site
+    
+    Args:
+        post_id (int): ID of the post to purge
+        reason (str): Reason for purging the post. Optional
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Purged post response
+    &#34;&#34;&#34;
+    form={
+        &#34;post_id&#34;: post_id
+        }
+    optional={
+        &#34;reason&#34;: reason,
+        }
+    res = self._req.lemmyRequest(&#34;purgePost&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.site.Site.resolveObject"><code class="name flex">
+<span>def <span class="ident">resolveObject</span></span>(<span>self, obj, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Resolves object from another instance</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>obj</code></strong></dt>
+<dd>Object to resolve from the remote instance</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance to request the object from</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Federated object</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def resolveObject(self, obj, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Resolves object from another instance
+    
+    Args:
+        obj: Object to resolve from the remote instance
+        instance (str): URL of local instance to request the object from
+        auth_token (str): Authentication token for local instance
+    Returns:
+        Federated object
+    &#34;&#34;&#34;
+    form={
+        &#34;q&#34;: obj
+    }
+    res = self._req.lemmyRequest(&#34;resolveObject&#34;, instance=instance, form=form, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.site.Site.search"><code class="name flex">
+<span>def <span class="ident">search</span></span>(<span>self, term: str, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Search for term</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>term</code></strong> :&ensp;<code>str</code></dt>
+<dd>Object to resolve from the remote instance</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Search results</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def search(self, term:str, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Search for term
+    
+    Args:
+        term (str): Object to resolve from the remote instance
+        instance (str): URL of local instance. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance
+    Returns:
+        Search results
+    &#34;&#34;&#34;
+    form={
+        &#34;q&#34;: term
+    }
+    res = self._req.request(&#34;search&#34;, instance=instance, auth_token=auth_token, form=form)
+    return res</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="jplaw" href="index.html">jplaw</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="jplaw.site.Site" href="#jplaw.site.Site">Site</a></code></h4>
+<ul class="">
+<li><code><a title="jplaw.site.Site.addAdmin" href="#jplaw.site.Site.addAdmin">addAdmin</a></code></li>
+<li><code><a title="jplaw.site.Site.approveRegistrationApplication" href="#jplaw.site.Site.approveRegistrationApplication">approveRegistrationApplication</a></code></li>
+<li><code><a title="jplaw.site.Site.create" href="#jplaw.site.Site.create">create</a></code></li>
+<li><code><a title="jplaw.site.Site.edit" href="#jplaw.site.Site.edit">edit</a></code></li>
+<li><code><a title="jplaw.site.Site.getFederatedInstances" href="#jplaw.site.Site.getFederatedInstances">getFederatedInstances</a></code></li>
+<li><code><a title="jplaw.site.Site.getModlog" href="#jplaw.site.Site.getModlog">getModlog</a></code></li>
+<li><code><a title="jplaw.site.Site.getSite" href="#jplaw.site.Site.getSite">getSite</a></code></li>
+<li><code><a title="jplaw.site.Site.getUnreadRegistrationApplicationCount" href="#jplaw.site.Site.getUnreadRegistrationApplicationCount">getUnreadRegistrationApplicationCount</a></code></li>
+<li><code><a title="jplaw.site.Site.listRegistrationApplications" href="#jplaw.site.Site.listRegistrationApplications">listRegistrationApplications</a></code></li>
+<li><code><a title="jplaw.site.Site.purgeComment" href="#jplaw.site.Site.purgeComment">purgeComment</a></code></li>
+<li><code><a title="jplaw.site.Site.purgeCommunity" href="#jplaw.site.Site.purgeCommunity">purgeCommunity</a></code></li>
+<li><code><a title="jplaw.site.Site.purgePerson" href="#jplaw.site.Site.purgePerson">purgePerson</a></code></li>
+<li><code><a title="jplaw.site.Site.purgePost" href="#jplaw.site.Site.purgePost">purgePost</a></code></li>
+<li><code><a title="jplaw.site.Site.resolveObject" href="#jplaw.site.Site.resolveObject">resolveObject</a></code></li>
+<li><code><a title="jplaw.site.Site.search" href="#jplaw.site.Site.search">search</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
