@@ -15,28 +15,36 @@
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
 <script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
 <script>
-    //From https://stackoverflow.com/questions/12460378/how-to-get-json-from-url-in-javascript
-    let url = './VERSIONS.json';
-    //Load the 
-	let response = await fetch(url);
-    let VersionJson = await response.json();
-    let obj = JSON.parse(VersionJson);
-    let versionItemTemplate = document.querySelector('#version-template');
-    let targetList = document.getElementById("version-list");
-    for(let i = 0; i < len(obj.Versions); i++){
-        let version = obj.Versions[i];
-        let clone = document.importNode(template.content, true);
+    
+	
+	
+	//From https://stackoverflow.com/questions/12460378/how-to-get-json-from-url-in-javascript
+	async function loadVersions() {
+		let url = './VERSIONS.json';
+		
+		//Load the 
+		let response = await fetch(url);
+		let VersionJson = await response.json();
+		let obj = JSON.parse(VersionJson);
+		let versionItemTemplate = document.querySelector('#version-template');
+		let targetList = document.getElementById("version-list");
+		for(let i = 0; i < len(obj.Versions); i++){
+			let version = obj.Versions[i];
+			let clone = document.importNode(template.content, true);
 
-        // Find the relevant elements within the cloned template
-        let versionLink = clone.querySelector("a");
-        
-        // Update the href and text content with the current version
-        versionLink.href = version + "/index.html";
-        versionLink.textContent = version;
+			// Find the relevant elements within the cloned template
+			let versionLink = clone.querySelector("a");
+			
+			// Update the href and text content with the current version
+			versionLink.href = version + "/index.html";
+			versionLink.textContent = version;
 
-        // Append the modified clone to the target ul element
-        targetList.appendChild(clone);
-    }
+			// Append the modified clone to the target ul element
+			targetList.appendChild(clone);
+		}
+	}
+	body.addEventListener("load", loadVersions);
+	
 </script>
 </head>
 <body>
