@@ -1,11 +1,11 @@
-from .requestor import Requestor
-from .comment import Comment
-from .community import Community
-from .post import Post
-from .user import User
-from .site import Site
-from .emoji import Emoji
-from .private_message import PrivateMessage
+from jplaw.requestor import Requestor
+from jplaw.comment import Comment
+from jplaw.community import Community
+from jplaw.post import Post
+from jplaw.user import User
+from jplaw.site import Site
+from jplaw.emoji import Emoji
+from jplaw.private_message import PrivateMessage
 
 class Lemmy:
     """

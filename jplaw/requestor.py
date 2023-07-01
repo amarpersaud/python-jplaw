@@ -2,8 +2,8 @@ from enum import Enum
 import requests
 import json
 from typing import Dict, Any, TypeVar
-from .api_paths import *
-from .types.http_type import HttpType
+from jplaw.api_paths import *
+from jplaw.types.http_type import HttpType
 
 T = TypeVar("T")
 

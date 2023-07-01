@@ -1,8 +1,8 @@
-from .requestor import Requestor
-from .api_paths import *
-from .types.post_feature_type import PostFeatureType
-from .types.listing_type import ListingType
-from .types.sort_type import SortType
+from jplaw.requestor import Requestor
+from jplaw.api_paths import *
+from jplaw.types.post_feature_type import PostFeatureType
+from jplaw.types.listing_type import ListingType
+from jplaw.types.sort_type import SortType
 
 class Post():
     """

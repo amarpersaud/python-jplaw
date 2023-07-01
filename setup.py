@@ -1,19 +1,17 @@
 import os
 from setuptools import setup, find_packages
-import tomli
+from distutils.util import convert_path
 
-toml_file=[]
-with open("pyproject.toml", mode="rb") as config:
-    toml_file = tomli.load(config)
-
-VER = toml_file['project']['version']
-
-if(VER == ""):
-    raise Exception("Failed to load version from toml file")
+main_ns = {}
+ver_path = convert_path('jplaw/__init__.py')
+with open(ver_path) as ver_file:
+    exec(ver_file.read(), main_ns)
+    
+VER = main_ns['__version__']
 
 with open("VERSION", "w+") as f:
-    # Reading from a file
-    VER=f.write(VER)
+    # Writing to a file
+    f.write(VER)
 setup(
     name='jplaw',
     version=VER,

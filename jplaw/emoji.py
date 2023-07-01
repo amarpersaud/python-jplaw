@@ -1,9 +1,9 @@
-from .requestor import Requestor
-from .api_paths import *
+from jplaw.requestor import Requestor
+from jplaw.api_paths import *
 from typing import List
-from .types.modlog_action_type import ModlogActionType
-from .types.listing_type import ListingType
-from .types.registration_mode import RegistrationMode
+from jplaw.types.modlog_action_type import ModlogActionType
+from jplaw.types.listing_type import ListingType
+from jplaw.types.registration_mode import RegistrationMode
 
 class Emoji():
     """

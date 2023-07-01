@@ -1,7 +1,7 @@
-from .requestor import Requestor
-from .api_paths import *
-from .types.listing_type import ListingType
-from .types.comment_sort_type import CommentSortType
+from jplaw.requestor import Requestor
+from jplaw.api_paths import *
+from jplaw.types.listing_type import ListingType
+from jplaw.types.comment_sort_type import CommentSortType
 
 class Comment():
     """

@@ -1,5 +1,5 @@
-from .requestor import Requestor
-from .api_paths import *
+from jplaw.requestor import Requestor
+from jplaw.api_paths import *
 
 
 class PrivateMessage():

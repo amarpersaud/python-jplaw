@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "jplaw"
-version = "0.1.4"
+dynamic = ["version"]
 authors = [
   { name="Amar Persaud", email="tehspartaa@gmail.com" },
 ]
@@ -20,3 +20,5 @@ classifiers = [
 "Homepage" = "https://github.com/amarpersaud/python-jplaw"
 "Bug Tracker" = "https://github.com/amarpersaud/python-jplaw/issues"
 
+[tool.setuptools.dynamic]
+version = {attr = "jplaw.__version__"}
