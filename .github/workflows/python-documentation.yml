@@ -49,6 +49,6 @@ jobs:
         git commit -m "Update Documentation" -a | exit 0
     - name: Push changes
       if: github.ref == 'refs/heads/main'
-      uses: ad-m/github-push-action@main
+      uses: ad-m/github-push-action@v0.6.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
