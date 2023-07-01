@@ -26,7 +26,7 @@
 		let response = await fetch(url);
 		let obj = await response.json();
 		let versionItemTemplate = document.querySelector('#version-template');
-		let targetList = document.getElementById("#version-list");
+		let targetList = document.querySelector("#version-list");
 		for(let i = 0; i < obj.Versions.length; i++){
 			let version = obj.Versions[i];
 			let clone = document.importNode(versionItemTemplate.content, true);
