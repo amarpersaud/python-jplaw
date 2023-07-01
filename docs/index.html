@@ -16,7 +16,7 @@
 <script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
 <script>
     //From https://stackoverflow.com/questions/12460378/how-to-get-json-from-url-in-javascript
-    let url = './VERSION.json';
+    let url = './VERSIONS.json';
     //Load the 
     let VersionJson = fetch(url).then(res => res.json());
     let obj = JSON.parse(VersionJson);
