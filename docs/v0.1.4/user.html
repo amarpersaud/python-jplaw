@@ -1,0 +1,1930 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>jplaw.user API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>jplaw.user</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from .requestor import Requestor
+from .api_paths import *
+from typing import List
+from .types.listing_type import ListingType
+from .types.sort_type import SortType
+
+class User():
+    &#34;&#34;&#34;
+    User class. Designed to allow Lemmy.User functions.
+    &#34;&#34;&#34;
+    def __init__(self, _req: Requestor):
+        self._req = _req
+    def leaveAdmin(self, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Leave the administrator team of a site
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Removed community response
+        &#34;&#34;&#34;
+        form = {}
+        res = self._req.lemmyRequest(&#34;leaveAdmin&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+    def register(self, username:str, password:str, password_verify:str, show_nsfw:bool, email:str=None, captcha_uuid:str=None, captcha_answer:str=None, honeypot:str=None, answer:str=None, instance:str=None):
+        &#34;&#34;&#34;
+        Register at an instance
+        
+        Args:
+            username (str): Username to use for account
+            password (str): Password for account
+            password_verify (str): Password repeated for verification
+            show_nsfw (bool): If NSFW posts should be shown
+            email (str): Email address associated with the account. Optional
+            captcha_uuid (str): UUID of the captcha. Optional. Required if site requires captcha.
+            captcha_answer (str): Answer to the captcha. Optional. Required if site requires captcha.
+            honeypot (str): Honeypot field. Used for detecting bots which autofill all fields. Do not use unless trying to explicitly trigger honeypot
+            answer (str): Answer to sign up question
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Removed community response
+        &#34;&#34;&#34;
+        form={
+            &#34;username&#34;: username,
+            &#34;password&#34;: password,
+            &#34;password_verify&#34;: password_verify,
+            &#34;show_nsfw&#34;: show_nsfw
+            }
+        optional = {       
+            &#34;email&#34;          :email          ,
+            &#34;captcha_uuid&#34;   :captcha_uuid   ,
+            &#34;captcha_uuid&#34;   :captcha_uuid   ,
+            &#34;limit&#34;          :limit          ,
+            &#34;honeypot&#34;       :honeypot       ,
+            &#34;answer&#34;         :answer         ,
+            }
+        res = self._req.lemmyRequest(&#34;register&#34;, instance=instance, form=form, optional=optional, auth=False)
+        return res
+    def getDetails(self, person_id:str=None, username:str=None, sort:SortType=None, page:int=None, limit:int=None, community_id:int=None, saved_only:bool=None, instance:str=None, auth:bool=True, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get details of a user
+        
+        Args:
+            person_id (int): User ID of the person to get the details of. Optional.
+            username (str): Username of the user to get the details of. Optional
+            sort (SortType): Sort order of user list. Optional
+            page (int): Page number to get.
+            limit (int): Limit for number of users to return
+            community_id (int): Community to filter by for user
+            saved_only (bool): Show only saved objects
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth (bool): If true, authenticate using auth_token or login respectively. Defaults to True.
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            List of items which follow the filters given
+        &#34;&#34;&#34;
+        form={}
+        if(sort is not None):
+            form[&#34;sort&#34;] = sort.value
+        optional={
+            &#34;person_id&#34;      :person_id      ,
+            &#34;username&#34;       :username       ,
+            &#34;page&#34;           :page           ,
+            &#34;limit&#34;          :limit          ,
+            &#34;community_id&#34;   :community_id   ,
+            &#34;saved_only&#34;     :saved_only     ,
+            }
+        res = self._req.lemmyRequest(&#34;getPersonDetails&#34;, instance=instance, form=form, optional=optional, auth=auth, auth_token=auth_token)
+        return res
+    
+    def markMentionAsRead(self, person_mention_id:int, read:bool=True, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Mark a mention as read or unread
+        
+        Args:
+            person_mention_id (int): ID of the mention
+            read (bool): If true, marks mention as read. False marks unread. Defaults to True. Optional.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            List of items which follow the filters given
+        &#34;&#34;&#34;
+        form={
+            &#34;person_mention_id&#34;: person_mention_id,
+            &#34;read&#34;: read
+            }
+        res = self._req.lemmyRequest(&#34;markPersonMentionAsRead&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+    
+    def getMentions(self, sort:SortType=None, page:int=None, limit:int=None, unread_only:bool=True, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the list of mentions
+        
+        Args:
+            sort (SortType): Sort order of mention list. Optional
+            page (int): Page number to get. Optional.
+            limit (int): Limit for number of mentions to return. Optional.
+            unread_only (bool): Show only unread mentions. Optional. Defaults to true.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            List of mentions
+        &#34;&#34;&#34;
+        form={}
+        if(sort is not None):
+            form[&#34;sort&#34;] = sort.value
+        optional = {
+            &#34;sort&#34;           :sort           ,
+            &#34;page&#34;           :page           ,
+            &#34;limit&#34;          :limit          ,
+            &#34;unread_only&#34;    :unread_only    ,
+            }
+        res = self._req.lemmyRequest(&#34;getPersonMentions&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    
+    def getReplies(self, sort:SortType=None, page:int=None, limit:int=None, unread_only:bool=True, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the list of replies
+        
+        Args:
+            sort (SortType): Sort order of reply list. Optional
+            page (int): Page number to get. Optional.
+            limit (int): Limit for number of replies to return. Optional.
+            unread_only (bool): Show only unread replies. Optional. Defaults to true.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            List of replies
+        &#34;&#34;&#34;
+        form={}
+        if(sort is not None):
+            form[&#34;sort&#34;] = sort.value
+        optional = {
+            &#34;sort&#34;           :sort           ,
+            &#34;page&#34;           :page           ,
+            &#34;limit&#34;          :limit          ,
+            &#34;unread_only&#34;    :unread_only    ,
+            }
+        res = self._req.lemmyRequest(&#34;getReplies&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    
+    def ban(self, person_id:int, ban:bool, remove_data:bool=None, reason:str=None, expires:int=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Ban a user from the instance
+        
+        Args:
+            person_id (int): User ID of the person to ban
+            ban (bool): If the user is banned from the instance.
+            remove_data (bool): Remove the data of the user. Optional.
+            expires (int): Unix Timestamp of ban expiration (seconds). Optional.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Banned user 
+        &#34;&#34;&#34;
+        form={
+            &#34;person_id&#34;     :person_id,
+            &#34;ban&#34;           :ban
+            }
+        optional = {
+            &#34;remove_data&#34;    :remove_data   ,
+            &#34;reason&#34;         :reason        ,
+            &#34;expires&#34;        :expires
+            }
+        res = self._req.lemmyRequest(&#34;banPerson&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    
+    def getBanned(self, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the list of banned users
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            List of banned users
+        &#34;&#34;&#34;
+        form={}
+        res = self._req.lemmyRequest(HttpType.GET, &#34;getBannedPersons&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+     
+    def block(self, person_id:int, block:bool, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;&#34;
+        Block or unblock a user
+        
+        Args:
+            person_id (int): ID of the user to block
+            block (bool): True to block user. False to unblock user. 
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Blocked user response
+        &#34;&#34;&#34;
+        form={
+            &#34;person_id&#34;: person_id,
+            &#34;block&#34;: block
+            }
+        res = self._req.lemmyRequest(&#34;blockPerson&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+    
+    def getCaptcha(self, instance:str=None, auth_token:str=None): 
+        &#34;&#34;&#34;
+        Get a new captcha from an instance
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Captcha
+        &#34;&#34;&#34;
+        form={}
+        res = self._req.lemmyRequest(&#34;getCaptcha&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+    
+    def deleteAccount(self, password:str, instance:str=None, auth_token:str=None): 
+        &#34;&#34;&#34;
+        Delete an account
+        
+        Args:
+            password (str): password to verify account deletion
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Deleted account response
+        &#34;&#34;&#34;
+        form={
+            &#34;password&#34;: password
+            }
+        res = self._req.lemmyRequest(&#34;deleteAccount&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+    
+    def passwordReset(self, email:str, instance:str=None, auth_token:str=None): 
+        &#34;&#34;&#34;
+        Reset an account password associated with an email
+        
+        Args:
+            email (str): Email address an account is associated with
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Pasword reset response
+        &#34;&#34;&#34;
+        form={
+            &#34;email&#34;: email
+            }
+        res = self._req.lemmyRequest(&#34;passwordReset&#34;, instance=instance, form=form, auth=False, auth_token=auth_token)
+        return res
+        
+    def passwordChangeAfterReset(self, token:str, password:str, password_verify:str, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Change a password after reset request
+        
+        Args:
+            token (str): Reset token sent to email address
+            password (str): New password
+            password_verify (str): New password repeated for verification
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Password reset response
+        &#34;&#34;&#34;
+        form={
+            &#34;token&#34;: token,
+            &#34;password&#34;: password,
+            &#34;password_verify&#34;: password_verify
+            }
+        res = self._req.lemmyRequest(&#34;passwordChangeAfterReset&#34;, instance=instance, form=form, auth=False, auth_token=auth_token)
+        return res
+        
+    def markAllAsRead(self, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Mark all as read
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Mark read response
+        &#34;&#34;&#34;
+        form={}
+        res = self._req.lemmyRequest(&#34;markAllAsRead&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+        
+    def saveUserSettings(self,
+        show_nsfw: bool=None,
+        show_scores: bool=None,
+        theme: str=None,
+        default_sort_type: SortType=None,
+        default_listing_type: ListingType=None,
+        interface_language: str=None,
+        avatar: str=None,
+        banner: str=None,
+        display_name: str=None,
+        email: str=None,
+        bio: str=None,
+        matrix_user_id: str=None,
+        show_avatars: bool=None,
+        send_notifications_to_email: bool=None,
+        bot_account: bool=None,
+        show_bot_accounts: bool=None,
+        show_read_posts: bool=None, 
+        show_new_post_notifs: bool=None, 
+        discussion_languages: List[int]=None, 
+        generate_totp_2fa: bool=None, 
+        instance:str=None,
+        auth_token:str=None):
+        &#34;&#34;&#34;
+        Save user settings to account
+        
+        Args:
+            show_nsfw (bool): If NSFW posts and communities should be shown. Optional
+            show_scores (bool) If scores should be shown. Optional
+            theme (str): Site theme. Optional
+            default_sort_type (SortType): Sort type for the site. Optional
+            default_listing_type (ListingType): Default listing type. Allows viewing Local or All communities. Optional
+            interface_language (str): Interface language string. Optional
+            avatar (str): URL of avatar. Optional
+            banner (str): URL of user banner. Optional
+            display_name (str): DIsplay name of the user. Optional
+            email (str): Email address associated with the account. Optional
+            bio (str): User Bio/Description. Optional
+            matrix_user_id (str): Matrix user ID. Optional
+            show_avatars (bool): If user avatars should be shown next to names. Optional 
+            send_notifications_to_email (bool): If email notifications should be sent to the user. Optional
+            bot_account (bool): If this is a bot account. Optional
+            show_bot_accounts (bool): If bot accounts should be hidden. Optional 
+            show_read_posts (bool): If read posts should be shown or hidden . Optional
+            show_new_post_notifs (bool): If new posts should send a notification. Optional
+            discussion_languages (List[int]): List of langages to show. Using undefined may cause no posts to show
+            generate_totp_2fa (bool); Use TOTP 2FA
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            User settings saved response
+        &#34;&#34;&#34; 
+        form = {}
+        optional = {
+            &#34;show_nsfw&#34;                     : show_nsfw                  ,
+            &#34;show_scores&#34;                   : show_scores                ,
+            &#34;theme&#34;                         : theme                      ,
+            &#34;default_sort_type&#34;             : default_sort_type          ,
+            &#34;default_listing_type&#34;          : default_listing_type       ,
+            &#34;interface_language&#34;            : interface_language         ,
+            &#34;avatar&#34;                        : avatar                     ,
+            &#34;banner&#34;                        : banner                     ,
+            &#34;display_name&#34;                  : display_name               ,
+            &#34;email&#34;                         : email                      ,
+            &#34;bio&#34;                           : bio                        ,
+            &#34;matrix_user_id&#34;                : matrix_user_id             ,
+            &#34;show_avatars&#34;                  : show_avatars               ,
+            &#34;send_notifications_to_email&#34;   : send_notifications_to_email,
+            &#34;bot_account&#34;                   : bot_account                ,
+            &#34;show_bot_accounts&#34;             : show_bot_accounts          ,
+            &#34;show_read_posts&#34;               : show_read_posts            ,
+            &#34;show_new_post_notifs&#34;          : show_new_post_notifs       ,
+            &#34;discussion_languages&#34;          : discussion_languages       ,
+            &#34;generate_totp_2fa&#34;             : generate_totp_2fa          
+            }
+        res = self._req.lemmyRequest(&#34;saveUserSettings&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    def changePassword(self, 
+        new_password: str,
+        new_password_verify: str,
+        old_password: str,
+        instance:str=None,
+        auth_token:str=None):
+        &#34;&#34;&#34;
+        Change password
+        
+        Args:
+            new_password (str): New password
+            new_password_verify (str): New password repeated for verification
+            old_password (str): Old password to verify identity
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Password changed response
+        &#34;&#34;&#34;
+        form = {
+            &#34;new_password&#34;: new_password,
+            &#34;new_password_verify&#34; : new_password_verify,
+            &#34;old_password&#34;: old_password
+        }
+        res = self._req.lemmyRequest(&#34;changePassword&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+        
+    def getReportCount(self,community_id:int=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the report count
+        
+        Args:
+            community_id (int): ID of the community. Optional
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Report count response
+        &#34;&#34;&#34;
+        form={}
+        optional={
+            &#34;community_id&#34;: community_id
+            }
+        res = self._req.lemmyRequest(&#34;getReportCount&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+        
+    def getUnreadCount(self, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the unread count
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Unread count response
+        &#34;&#34;&#34;
+        form={}
+        res = self._req.lemmyRequest(&#34;getUnreadCount&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+        
+    def verifyEmail(self, instance:str=None, token:str=None):
+        &#34;&#34;&#34;
+        Verify an email address
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            token (str): Authentication token from email
+        Returns:
+            Password changed response
+        &#34;&#34;&#34;
+        form={ &#34;token&#34;: token }
+        res = self._req.lemmyRequest(&#34;verifyEmail&#34;, instance=instance, form=form, auth=False)
+        return res</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="jplaw.user.User"><code class="flex name class">
+<span>class <span class="ident">User</span></span>
+<span>(</span><span>_req: <a title="jplaw.requestor.Requestor" href="requestor.html#jplaw.requestor.Requestor">Requestor</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>User class. Designed to allow Lemmy.User functions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class User():
+    &#34;&#34;&#34;
+    User class. Designed to allow Lemmy.User functions.
+    &#34;&#34;&#34;
+    def __init__(self, _req: Requestor):
+        self._req = _req
+    def leaveAdmin(self, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Leave the administrator team of a site
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Removed community response
+        &#34;&#34;&#34;
+        form = {}
+        res = self._req.lemmyRequest(&#34;leaveAdmin&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+    def register(self, username:str, password:str, password_verify:str, show_nsfw:bool, email:str=None, captcha_uuid:str=None, captcha_answer:str=None, honeypot:str=None, answer:str=None, instance:str=None):
+        &#34;&#34;&#34;
+        Register at an instance
+        
+        Args:
+            username (str): Username to use for account
+            password (str): Password for account
+            password_verify (str): Password repeated for verification
+            show_nsfw (bool): If NSFW posts should be shown
+            email (str): Email address associated with the account. Optional
+            captcha_uuid (str): UUID of the captcha. Optional. Required if site requires captcha.
+            captcha_answer (str): Answer to the captcha. Optional. Required if site requires captcha.
+            honeypot (str): Honeypot field. Used for detecting bots which autofill all fields. Do not use unless trying to explicitly trigger honeypot
+            answer (str): Answer to sign up question
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Removed community response
+        &#34;&#34;&#34;
+        form={
+            &#34;username&#34;: username,
+            &#34;password&#34;: password,
+            &#34;password_verify&#34;: password_verify,
+            &#34;show_nsfw&#34;: show_nsfw
+            }
+        optional = {       
+            &#34;email&#34;          :email          ,
+            &#34;captcha_uuid&#34;   :captcha_uuid   ,
+            &#34;captcha_uuid&#34;   :captcha_uuid   ,
+            &#34;limit&#34;          :limit          ,
+            &#34;honeypot&#34;       :honeypot       ,
+            &#34;answer&#34;         :answer         ,
+            }
+        res = self._req.lemmyRequest(&#34;register&#34;, instance=instance, form=form, optional=optional, auth=False)
+        return res
+    def getDetails(self, person_id:str=None, username:str=None, sort:SortType=None, page:int=None, limit:int=None, community_id:int=None, saved_only:bool=None, instance:str=None, auth:bool=True, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get details of a user
+        
+        Args:
+            person_id (int): User ID of the person to get the details of. Optional.
+            username (str): Username of the user to get the details of. Optional
+            sort (SortType): Sort order of user list. Optional
+            page (int): Page number to get.
+            limit (int): Limit for number of users to return
+            community_id (int): Community to filter by for user
+            saved_only (bool): Show only saved objects
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth (bool): If true, authenticate using auth_token or login respectively. Defaults to True.
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            List of items which follow the filters given
+        &#34;&#34;&#34;
+        form={}
+        if(sort is not None):
+            form[&#34;sort&#34;] = sort.value
+        optional={
+            &#34;person_id&#34;      :person_id      ,
+            &#34;username&#34;       :username       ,
+            &#34;page&#34;           :page           ,
+            &#34;limit&#34;          :limit          ,
+            &#34;community_id&#34;   :community_id   ,
+            &#34;saved_only&#34;     :saved_only     ,
+            }
+        res = self._req.lemmyRequest(&#34;getPersonDetails&#34;, instance=instance, form=form, optional=optional, auth=auth, auth_token=auth_token)
+        return res
+    
+    def markMentionAsRead(self, person_mention_id:int, read:bool=True, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Mark a mention as read or unread
+        
+        Args:
+            person_mention_id (int): ID of the mention
+            read (bool): If true, marks mention as read. False marks unread. Defaults to True. Optional.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            List of items which follow the filters given
+        &#34;&#34;&#34;
+        form={
+            &#34;person_mention_id&#34;: person_mention_id,
+            &#34;read&#34;: read
+            }
+        res = self._req.lemmyRequest(&#34;markPersonMentionAsRead&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+    
+    def getMentions(self, sort:SortType=None, page:int=None, limit:int=None, unread_only:bool=True, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the list of mentions
+        
+        Args:
+            sort (SortType): Sort order of mention list. Optional
+            page (int): Page number to get. Optional.
+            limit (int): Limit for number of mentions to return. Optional.
+            unread_only (bool): Show only unread mentions. Optional. Defaults to true.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            List of mentions
+        &#34;&#34;&#34;
+        form={}
+        if(sort is not None):
+            form[&#34;sort&#34;] = sort.value
+        optional = {
+            &#34;sort&#34;           :sort           ,
+            &#34;page&#34;           :page           ,
+            &#34;limit&#34;          :limit          ,
+            &#34;unread_only&#34;    :unread_only    ,
+            }
+        res = self._req.lemmyRequest(&#34;getPersonMentions&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    
+    def getReplies(self, sort:SortType=None, page:int=None, limit:int=None, unread_only:bool=True, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the list of replies
+        
+        Args:
+            sort (SortType): Sort order of reply list. Optional
+            page (int): Page number to get. Optional.
+            limit (int): Limit for number of replies to return. Optional.
+            unread_only (bool): Show only unread replies. Optional. Defaults to true.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            List of replies
+        &#34;&#34;&#34;
+        form={}
+        if(sort is not None):
+            form[&#34;sort&#34;] = sort.value
+        optional = {
+            &#34;sort&#34;           :sort           ,
+            &#34;page&#34;           :page           ,
+            &#34;limit&#34;          :limit          ,
+            &#34;unread_only&#34;    :unread_only    ,
+            }
+        res = self._req.lemmyRequest(&#34;getReplies&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    
+    def ban(self, person_id:int, ban:bool, remove_data:bool=None, reason:str=None, expires:int=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Ban a user from the instance
+        
+        Args:
+            person_id (int): User ID of the person to ban
+            ban (bool): If the user is banned from the instance.
+            remove_data (bool): Remove the data of the user. Optional.
+            expires (int): Unix Timestamp of ban expiration (seconds). Optional.
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Banned user 
+        &#34;&#34;&#34;
+        form={
+            &#34;person_id&#34;     :person_id,
+            &#34;ban&#34;           :ban
+            }
+        optional = {
+            &#34;remove_data&#34;    :remove_data   ,
+            &#34;reason&#34;         :reason        ,
+            &#34;expires&#34;        :expires
+            }
+        res = self._req.lemmyRequest(&#34;banPerson&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    
+    def getBanned(self, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the list of banned users
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            List of banned users
+        &#34;&#34;&#34;
+        form={}
+        res = self._req.lemmyRequest(HttpType.GET, &#34;getBannedPersons&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+     
+    def block(self, person_id:int, block:bool, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;&#34;
+        Block or unblock a user
+        
+        Args:
+            person_id (int): ID of the user to block
+            block (bool): True to block user. False to unblock user. 
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Blocked user response
+        &#34;&#34;&#34;
+        form={
+            &#34;person_id&#34;: person_id,
+            &#34;block&#34;: block
+            }
+        res = self._req.lemmyRequest(&#34;blockPerson&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+    
+    def getCaptcha(self, instance:str=None, auth_token:str=None): 
+        &#34;&#34;&#34;
+        Get a new captcha from an instance
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Captcha
+        &#34;&#34;&#34;
+        form={}
+        res = self._req.lemmyRequest(&#34;getCaptcha&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+    
+    def deleteAccount(self, password:str, instance:str=None, auth_token:str=None): 
+        &#34;&#34;&#34;
+        Delete an account
+        
+        Args:
+            password (str): password to verify account deletion
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Deleted account response
+        &#34;&#34;&#34;
+        form={
+            &#34;password&#34;: password
+            }
+        res = self._req.lemmyRequest(&#34;deleteAccount&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+    
+    def passwordReset(self, email:str, instance:str=None, auth_token:str=None): 
+        &#34;&#34;&#34;
+        Reset an account password associated with an email
+        
+        Args:
+            email (str): Email address an account is associated with
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Pasword reset response
+        &#34;&#34;&#34;
+        form={
+            &#34;email&#34;: email
+            }
+        res = self._req.lemmyRequest(&#34;passwordReset&#34;, instance=instance, form=form, auth=False, auth_token=auth_token)
+        return res
+        
+    def passwordChangeAfterReset(self, token:str, password:str, password_verify:str, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Change a password after reset request
+        
+        Args:
+            token (str): Reset token sent to email address
+            password (str): New password
+            password_verify (str): New password repeated for verification
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Password reset response
+        &#34;&#34;&#34;
+        form={
+            &#34;token&#34;: token,
+            &#34;password&#34;: password,
+            &#34;password_verify&#34;: password_verify
+            }
+        res = self._req.lemmyRequest(&#34;passwordChangeAfterReset&#34;, instance=instance, form=form, auth=False, auth_token=auth_token)
+        return res
+        
+    def markAllAsRead(self, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Mark all as read
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Mark read response
+        &#34;&#34;&#34;
+        form={}
+        res = self._req.lemmyRequest(&#34;markAllAsRead&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+        
+    def saveUserSettings(self,
+        show_nsfw: bool=None,
+        show_scores: bool=None,
+        theme: str=None,
+        default_sort_type: SortType=None,
+        default_listing_type: ListingType=None,
+        interface_language: str=None,
+        avatar: str=None,
+        banner: str=None,
+        display_name: str=None,
+        email: str=None,
+        bio: str=None,
+        matrix_user_id: str=None,
+        show_avatars: bool=None,
+        send_notifications_to_email: bool=None,
+        bot_account: bool=None,
+        show_bot_accounts: bool=None,
+        show_read_posts: bool=None, 
+        show_new_post_notifs: bool=None, 
+        discussion_languages: List[int]=None, 
+        generate_totp_2fa: bool=None, 
+        instance:str=None,
+        auth_token:str=None):
+        &#34;&#34;&#34;
+        Save user settings to account
+        
+        Args:
+            show_nsfw (bool): If NSFW posts and communities should be shown. Optional
+            show_scores (bool) If scores should be shown. Optional
+            theme (str): Site theme. Optional
+            default_sort_type (SortType): Sort type for the site. Optional
+            default_listing_type (ListingType): Default listing type. Allows viewing Local or All communities. Optional
+            interface_language (str): Interface language string. Optional
+            avatar (str): URL of avatar. Optional
+            banner (str): URL of user banner. Optional
+            display_name (str): DIsplay name of the user. Optional
+            email (str): Email address associated with the account. Optional
+            bio (str): User Bio/Description. Optional
+            matrix_user_id (str): Matrix user ID. Optional
+            show_avatars (bool): If user avatars should be shown next to names. Optional 
+            send_notifications_to_email (bool): If email notifications should be sent to the user. Optional
+            bot_account (bool): If this is a bot account. Optional
+            show_bot_accounts (bool): If bot accounts should be hidden. Optional 
+            show_read_posts (bool): If read posts should be shown or hidden . Optional
+            show_new_post_notifs (bool): If new posts should send a notification. Optional
+            discussion_languages (List[int]): List of langages to show. Using undefined may cause no posts to show
+            generate_totp_2fa (bool); Use TOTP 2FA
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            User settings saved response
+        &#34;&#34;&#34; 
+        form = {}
+        optional = {
+            &#34;show_nsfw&#34;                     : show_nsfw                  ,
+            &#34;show_scores&#34;                   : show_scores                ,
+            &#34;theme&#34;                         : theme                      ,
+            &#34;default_sort_type&#34;             : default_sort_type          ,
+            &#34;default_listing_type&#34;          : default_listing_type       ,
+            &#34;interface_language&#34;            : interface_language         ,
+            &#34;avatar&#34;                        : avatar                     ,
+            &#34;banner&#34;                        : banner                     ,
+            &#34;display_name&#34;                  : display_name               ,
+            &#34;email&#34;                         : email                      ,
+            &#34;bio&#34;                           : bio                        ,
+            &#34;matrix_user_id&#34;                : matrix_user_id             ,
+            &#34;show_avatars&#34;                  : show_avatars               ,
+            &#34;send_notifications_to_email&#34;   : send_notifications_to_email,
+            &#34;bot_account&#34;                   : bot_account                ,
+            &#34;show_bot_accounts&#34;             : show_bot_accounts          ,
+            &#34;show_read_posts&#34;               : show_read_posts            ,
+            &#34;show_new_post_notifs&#34;          : show_new_post_notifs       ,
+            &#34;discussion_languages&#34;          : discussion_languages       ,
+            &#34;generate_totp_2fa&#34;             : generate_totp_2fa          
+            }
+        res = self._req.lemmyRequest(&#34;saveUserSettings&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+    def changePassword(self, 
+        new_password: str,
+        new_password_verify: str,
+        old_password: str,
+        instance:str=None,
+        auth_token:str=None):
+        &#34;&#34;&#34;
+        Change password
+        
+        Args:
+            new_password (str): New password
+            new_password_verify (str): New password repeated for verification
+            old_password (str): Old password to verify identity
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Password changed response
+        &#34;&#34;&#34;
+        form = {
+            &#34;new_password&#34;: new_password,
+            &#34;new_password_verify&#34; : new_password_verify,
+            &#34;old_password&#34;: old_password
+        }
+        res = self._req.lemmyRequest(&#34;changePassword&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+        
+    def getReportCount(self,community_id:int=None, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the report count
+        
+        Args:
+            community_id (int): ID of the community. Optional
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Report count response
+        &#34;&#34;&#34;
+        form={}
+        optional={
+            &#34;community_id&#34;: community_id
+            }
+        res = self._req.lemmyRequest(&#34;getReportCount&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        return res
+        
+    def getUnreadCount(self, instance:str=None, auth_token:str=None):
+        &#34;&#34;&#34;
+        Get the unread count
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+        Returns:
+            Unread count response
+        &#34;&#34;&#34;
+        form={}
+        res = self._req.lemmyRequest(&#34;getUnreadCount&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+        return res
+        
+    def verifyEmail(self, instance:str=None, token:str=None):
+        &#34;&#34;&#34;
+        Verify an email address
+        
+        Args:
+            instance (str): URL of local instance. Optional. Default None uses logged in instance
+            token (str): Authentication token from email
+        Returns:
+            Password changed response
+        &#34;&#34;&#34;
+        form={ &#34;token&#34;: token }
+        res = self._req.lemmyRequest(&#34;verifyEmail&#34;, instance=instance, form=form, auth=False)
+        return res</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="jplaw.user.User.ban"><code class="name flex">
+<span>def <span class="ident">ban</span></span>(<span>self, person_id: int, ban: bool, remove_data: bool = None, reason: str = None, expires: int = None, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Ban a user from the instance</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>person_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>User ID of the person to ban</dd>
+<dt><strong><code>ban</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If the user is banned from the instance.</dd>
+<dt><strong><code>remove_data</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Remove the data of the user. Optional.</dd>
+<dt><strong><code>expires</code></strong> :&ensp;<code>int</code></dt>
+<dd>Unix Timestamp of ban expiration (seconds). Optional.</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Banned user</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ban(self, person_id:int, ban:bool, remove_data:bool=None, reason:str=None, expires:int=None, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Ban a user from the instance
+    
+    Args:
+        person_id (int): User ID of the person to ban
+        ban (bool): If the user is banned from the instance.
+        remove_data (bool): Remove the data of the user. Optional.
+        expires (int): Unix Timestamp of ban expiration (seconds). Optional.
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Banned user 
+    &#34;&#34;&#34;
+    form={
+        &#34;person_id&#34;     :person_id,
+        &#34;ban&#34;           :ban
+        }
+    optional = {
+        &#34;remove_data&#34;    :remove_data   ,
+        &#34;reason&#34;         :reason        ,
+        &#34;expires&#34;        :expires
+        }
+    res = self._req.lemmyRequest(&#34;banPerson&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.block"><code class="name flex">
+<span>def <span class="ident">block</span></span>(<span>self, person_id: int, block: bool, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>"
+Block or unblock a user</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>person_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the user to block</dd>
+<dt><strong><code>block</code></strong> :&ensp;<code>bool</code></dt>
+<dd>True to block user. False to unblock user. </dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Blocked user response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def block(self, person_id:int, block:bool, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;&#34;
+    Block or unblock a user
+    
+    Args:
+        person_id (int): ID of the user to block
+        block (bool): True to block user. False to unblock user. 
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Blocked user response
+    &#34;&#34;&#34;
+    form={
+        &#34;person_id&#34;: person_id,
+        &#34;block&#34;: block
+        }
+    res = self._req.lemmyRequest(&#34;blockPerson&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.changePassword"><code class="name flex">
+<span>def <span class="ident">changePassword</span></span>(<span>self, new_password: str, new_password_verify: str, old_password: str, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Change password</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>new_password</code></strong> :&ensp;<code>str</code></dt>
+<dd>New password</dd>
+<dt><strong><code>new_password_verify</code></strong> :&ensp;<code>str</code></dt>
+<dd>New password repeated for verification</dd>
+<dt><strong><code>old_password</code></strong> :&ensp;<code>str</code></dt>
+<dd>Old password to verify identity</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Password changed response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def changePassword(self, 
+    new_password: str,
+    new_password_verify: str,
+    old_password: str,
+    instance:str=None,
+    auth_token:str=None):
+    &#34;&#34;&#34;
+    Change password
+    
+    Args:
+        new_password (str): New password
+        new_password_verify (str): New password repeated for verification
+        old_password (str): Old password to verify identity
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Password changed response
+    &#34;&#34;&#34;
+    form = {
+        &#34;new_password&#34;: new_password,
+        &#34;new_password_verify&#34; : new_password_verify,
+        &#34;old_password&#34;: old_password
+    }
+    res = self._req.lemmyRequest(&#34;changePassword&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.deleteAccount"><code class="name flex">
+<span>def <span class="ident">deleteAccount</span></span>(<span>self, password: str, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Delete an account</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>password</code></strong> :&ensp;<code>str</code></dt>
+<dd>password to verify account deletion</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Deleted account response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deleteAccount(self, password:str, instance:str=None, auth_token:str=None): 
+    &#34;&#34;&#34;
+    Delete an account
+    
+    Args:
+        password (str): password to verify account deletion
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Deleted account response
+    &#34;&#34;&#34;
+    form={
+        &#34;password&#34;: password
+        }
+    res = self._req.lemmyRequest(&#34;deleteAccount&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.getBanned"><code class="name flex">
+<span>def <span class="ident">getBanned</span></span>(<span>self, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the list of banned users</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>List of banned users</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getBanned(self, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Get the list of banned users
+    
+    Args:
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        List of banned users
+    &#34;&#34;&#34;
+    form={}
+    res = self._req.lemmyRequest(HttpType.GET, &#34;getBannedPersons&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.getCaptcha"><code class="name flex">
+<span>def <span class="ident">getCaptcha</span></span>(<span>self, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a new captcha from an instance</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Captcha</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getCaptcha(self, instance:str=None, auth_token:str=None): 
+    &#34;&#34;&#34;
+    Get a new captcha from an instance
+    
+    Args:
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Captcha
+    &#34;&#34;&#34;
+    form={}
+    res = self._req.lemmyRequest(&#34;getCaptcha&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.getDetails"><code class="name flex">
+<span>def <span class="ident">getDetails</span></span>(<span>self, person_id: str = None, username: str = None, sort: <a title="jplaw.types.sort_type.SortType" href="types/sort_type.html#jplaw.types.sort_type.SortType">SortType</a> = None, page: int = None, limit: int = None, community_id: int = None, saved_only: bool = None, instance: str = None, auth: bool = True, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get details of a user</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>person_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>User ID of the person to get the details of. Optional.</dd>
+<dt><strong><code>username</code></strong> :&ensp;<code>str</code></dt>
+<dd>Username of the user to get the details of. Optional</dd>
+<dt><strong><code>sort</code></strong> :&ensp;<code>SortType</code></dt>
+<dd>Sort order of user list. Optional</dd>
+<dt><strong><code>page</code></strong> :&ensp;<code>int</code></dt>
+<dd>Page number to get.</dd>
+<dt><strong><code>limit</code></strong> :&ensp;<code>int</code></dt>
+<dd>Limit for number of users to return</dd>
+<dt><strong><code>community_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>Community to filter by for user</dd>
+<dt><strong><code>saved_only</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Show only saved objects</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, authenticate using auth_token or login respectively. Defaults to True.</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>List of items which follow the filters given</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDetails(self, person_id:str=None, username:str=None, sort:SortType=None, page:int=None, limit:int=None, community_id:int=None, saved_only:bool=None, instance:str=None, auth:bool=True, auth_token:str=None):
+    &#34;&#34;&#34;
+    Get details of a user
+    
+    Args:
+        person_id (int): User ID of the person to get the details of. Optional.
+        username (str): Username of the user to get the details of. Optional
+        sort (SortType): Sort order of user list. Optional
+        page (int): Page number to get.
+        limit (int): Limit for number of users to return
+        community_id (int): Community to filter by for user
+        saved_only (bool): Show only saved objects
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth (bool): If true, authenticate using auth_token or login respectively. Defaults to True.
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        List of items which follow the filters given
+    &#34;&#34;&#34;
+    form={}
+    if(sort is not None):
+        form[&#34;sort&#34;] = sort.value
+    optional={
+        &#34;person_id&#34;      :person_id      ,
+        &#34;username&#34;       :username       ,
+        &#34;page&#34;           :page           ,
+        &#34;limit&#34;          :limit          ,
+        &#34;community_id&#34;   :community_id   ,
+        &#34;saved_only&#34;     :saved_only     ,
+        }
+    res = self._req.lemmyRequest(&#34;getPersonDetails&#34;, instance=instance, form=form, optional=optional, auth=auth, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.getMentions"><code class="name flex">
+<span>def <span class="ident">getMentions</span></span>(<span>self, sort: <a title="jplaw.types.sort_type.SortType" href="types/sort_type.html#jplaw.types.sort_type.SortType">SortType</a> = None, page: int = None, limit: int = None, unread_only: bool = True, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the list of mentions</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sort</code></strong> :&ensp;<code>SortType</code></dt>
+<dd>Sort order of mention list. Optional</dd>
+<dt><strong><code>page</code></strong> :&ensp;<code>int</code></dt>
+<dd>Page number to get. Optional.</dd>
+<dt><strong><code>limit</code></strong> :&ensp;<code>int</code></dt>
+<dd>Limit for number of mentions to return. Optional.</dd>
+<dt><strong><code>unread_only</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Show only unread mentions. Optional. Defaults to true.</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>List of mentions</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getMentions(self, sort:SortType=None, page:int=None, limit:int=None, unread_only:bool=True, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Get the list of mentions
+    
+    Args:
+        sort (SortType): Sort order of mention list. Optional
+        page (int): Page number to get. Optional.
+        limit (int): Limit for number of mentions to return. Optional.
+        unread_only (bool): Show only unread mentions. Optional. Defaults to true.
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        List of mentions
+    &#34;&#34;&#34;
+    form={}
+    if(sort is not None):
+        form[&#34;sort&#34;] = sort.value
+    optional = {
+        &#34;sort&#34;           :sort           ,
+        &#34;page&#34;           :page           ,
+        &#34;limit&#34;          :limit          ,
+        &#34;unread_only&#34;    :unread_only    ,
+        }
+    res = self._req.lemmyRequest(&#34;getPersonMentions&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.getReplies"><code class="name flex">
+<span>def <span class="ident">getReplies</span></span>(<span>self, sort: <a title="jplaw.types.sort_type.SortType" href="types/sort_type.html#jplaw.types.sort_type.SortType">SortType</a> = None, page: int = None, limit: int = None, unread_only: bool = True, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the list of replies</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sort</code></strong> :&ensp;<code>SortType</code></dt>
+<dd>Sort order of reply list. Optional</dd>
+<dt><strong><code>page</code></strong> :&ensp;<code>int</code></dt>
+<dd>Page number to get. Optional.</dd>
+<dt><strong><code>limit</code></strong> :&ensp;<code>int</code></dt>
+<dd>Limit for number of replies to return. Optional.</dd>
+<dt><strong><code>unread_only</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Show only unread replies. Optional. Defaults to true.</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>List of replies</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getReplies(self, sort:SortType=None, page:int=None, limit:int=None, unread_only:bool=True, auth_token:str=None):
+    &#34;&#34;&#34;
+    Get the list of replies
+    
+    Args:
+        sort (SortType): Sort order of reply list. Optional
+        page (int): Page number to get. Optional.
+        limit (int): Limit for number of replies to return. Optional.
+        unread_only (bool): Show only unread replies. Optional. Defaults to true.
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        List of replies
+    &#34;&#34;&#34;
+    form={}
+    if(sort is not None):
+        form[&#34;sort&#34;] = sort.value
+    optional = {
+        &#34;sort&#34;           :sort           ,
+        &#34;page&#34;           :page           ,
+        &#34;limit&#34;          :limit          ,
+        &#34;unread_only&#34;    :unread_only    ,
+        }
+    res = self._req.lemmyRequest(&#34;getReplies&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.getReportCount"><code class="name flex">
+<span>def <span class="ident">getReportCount</span></span>(<span>self, community_id: int = None, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the report count</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>community_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the community. Optional</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Report count response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getReportCount(self,community_id:int=None, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Get the report count
+    
+    Args:
+        community_id (int): ID of the community. Optional
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Report count response
+    &#34;&#34;&#34;
+    form={}
+    optional={
+        &#34;community_id&#34;: community_id
+        }
+    res = self._req.lemmyRequest(&#34;getReportCount&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.getUnreadCount"><code class="name flex">
+<span>def <span class="ident">getUnreadCount</span></span>(<span>self, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the unread count</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Unread count response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getUnreadCount(self, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Get the unread count
+    
+    Args:
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Unread count response
+    &#34;&#34;&#34;
+    form={}
+    res = self._req.lemmyRequest(&#34;getUnreadCount&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.leaveAdmin"><code class="name flex">
+<span>def <span class="ident">leaveAdmin</span></span>(<span>self, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Leave the administrator team of a site</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Removed community response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def leaveAdmin(self, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Leave the administrator team of a site
+    
+    Args:
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Removed community response
+    &#34;&#34;&#34;
+    form = {}
+    res = self._req.lemmyRequest(&#34;leaveAdmin&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.markAllAsRead"><code class="name flex">
+<span>def <span class="ident">markAllAsRead</span></span>(<span>self, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Mark all as read</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Mark read response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markAllAsRead(self, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Mark all as read
+    
+    Args:
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Mark read response
+    &#34;&#34;&#34;
+    form={}
+    res = self._req.lemmyRequest(&#34;markAllAsRead&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.markMentionAsRead"><code class="name flex">
+<span>def <span class="ident">markMentionAsRead</span></span>(<span>self, person_mention_id: int, read: bool = True, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Mark a mention as read or unread</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>person_mention_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the mention</dd>
+<dt><strong><code>read</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If true, marks mention as read. False marks unread. Defaults to True. Optional.</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>List of items which follow the filters given</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markMentionAsRead(self, person_mention_id:int, read:bool=True, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Mark a mention as read or unread
+    
+    Args:
+        person_mention_id (int): ID of the mention
+        read (bool): If true, marks mention as read. False marks unread. Defaults to True. Optional.
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        List of items which follow the filters given
+    &#34;&#34;&#34;
+    form={
+        &#34;person_mention_id&#34;: person_mention_id,
+        &#34;read&#34;: read
+        }
+    res = self._req.lemmyRequest(&#34;markPersonMentionAsRead&#34;, instance=instance, form=form, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.passwordChangeAfterReset"><code class="name flex">
+<span>def <span class="ident">passwordChangeAfterReset</span></span>(<span>self, token: str, password: str, password_verify: str, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Change a password after reset request</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Reset token sent to email address</dd>
+<dt><strong><code>password</code></strong> :&ensp;<code>str</code></dt>
+<dd>New password</dd>
+<dt><strong><code>password_verify</code></strong> :&ensp;<code>str</code></dt>
+<dd>New password repeated for verification</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Password reset response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def passwordChangeAfterReset(self, token:str, password:str, password_verify:str, instance:str=None, auth_token:str=None):
+    &#34;&#34;&#34;
+    Change a password after reset request
+    
+    Args:
+        token (str): Reset token sent to email address
+        password (str): New password
+        password_verify (str): New password repeated for verification
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Password reset response
+    &#34;&#34;&#34;
+    form={
+        &#34;token&#34;: token,
+        &#34;password&#34;: password,
+        &#34;password_verify&#34;: password_verify
+        }
+    res = self._req.lemmyRequest(&#34;passwordChangeAfterReset&#34;, instance=instance, form=form, auth=False, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.passwordReset"><code class="name flex">
+<span>def <span class="ident">passwordReset</span></span>(<span>self, email: str, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reset an account password associated with an email</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>email</code></strong> :&ensp;<code>str</code></dt>
+<dd>Email address an account is associated with</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Pasword reset response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def passwordReset(self, email:str, instance:str=None, auth_token:str=None): 
+    &#34;&#34;&#34;
+    Reset an account password associated with an email
+    
+    Args:
+        email (str): Email address an account is associated with
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Pasword reset response
+    &#34;&#34;&#34;
+    form={
+        &#34;email&#34;: email
+        }
+    res = self._req.lemmyRequest(&#34;passwordReset&#34;, instance=instance, form=form, auth=False, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.register"><code class="name flex">
+<span>def <span class="ident">register</span></span>(<span>self, username: str, password: str, password_verify: str, show_nsfw: bool, email: str = None, captcha_uuid: str = None, captcha_answer: str = None, honeypot: str = None, answer: str = None, instance: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Register at an instance</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>username</code></strong> :&ensp;<code>str</code></dt>
+<dd>Username to use for account</dd>
+<dt><strong><code>password</code></strong> :&ensp;<code>str</code></dt>
+<dd>Password for account</dd>
+<dt><strong><code>password_verify</code></strong> :&ensp;<code>str</code></dt>
+<dd>Password repeated for verification</dd>
+<dt><strong><code>show_nsfw</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If NSFW posts should be shown</dd>
+<dt><strong><code>email</code></strong> :&ensp;<code>str</code></dt>
+<dd>Email address associated with the account. Optional</dd>
+<dt><strong><code>captcha_uuid</code></strong> :&ensp;<code>str</code></dt>
+<dd>UUID of the captcha. Optional. Required if site requires captcha.</dd>
+<dt><strong><code>captcha_answer</code></strong> :&ensp;<code>str</code></dt>
+<dd>Answer to the captcha. Optional. Required if site requires captcha.</dd>
+<dt><strong><code>honeypot</code></strong> :&ensp;<code>str</code></dt>
+<dd>Honeypot field. Used for detecting bots which autofill all fields. Do not use unless trying to explicitly trigger honeypot</dd>
+<dt><strong><code>answer</code></strong> :&ensp;<code>str</code></dt>
+<dd>Answer to sign up question</dd>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Removed community response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def register(self, username:str, password:str, password_verify:str, show_nsfw:bool, email:str=None, captcha_uuid:str=None, captcha_answer:str=None, honeypot:str=None, answer:str=None, instance:str=None):
+    &#34;&#34;&#34;
+    Register at an instance
+    
+    Args:
+        username (str): Username to use for account
+        password (str): Password for account
+        password_verify (str): Password repeated for verification
+        show_nsfw (bool): If NSFW posts should be shown
+        email (str): Email address associated with the account. Optional
+        captcha_uuid (str): UUID of the captcha. Optional. Required if site requires captcha.
+        captcha_answer (str): Answer to the captcha. Optional. Required if site requires captcha.
+        honeypot (str): Honeypot field. Used for detecting bots which autofill all fields. Do not use unless trying to explicitly trigger honeypot
+        answer (str): Answer to sign up question
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        Removed community response
+    &#34;&#34;&#34;
+    form={
+        &#34;username&#34;: username,
+        &#34;password&#34;: password,
+        &#34;password_verify&#34;: password_verify,
+        &#34;show_nsfw&#34;: show_nsfw
+        }
+    optional = {       
+        &#34;email&#34;          :email          ,
+        &#34;captcha_uuid&#34;   :captcha_uuid   ,
+        &#34;captcha_uuid&#34;   :captcha_uuid   ,
+        &#34;limit&#34;          :limit          ,
+        &#34;honeypot&#34;       :honeypot       ,
+        &#34;answer&#34;         :answer         ,
+        }
+    res = self._req.lemmyRequest(&#34;register&#34;, instance=instance, form=form, optional=optional, auth=False)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.saveUserSettings"><code class="name flex">
+<span>def <span class="ident">saveUserSettings</span></span>(<span>self, show_nsfw: bool = None, show_scores: bool = None, theme: str = None, default_sort_type: <a title="jplaw.types.sort_type.SortType" href="types/sort_type.html#jplaw.types.sort_type.SortType">SortType</a> = None, default_listing_type: <a title="jplaw.types.listing_type.ListingType" href="types/listing_type.html#jplaw.types.listing_type.ListingType">ListingType</a> = None, interface_language: str = None, avatar: str = None, banner: str = None, display_name: str = None, email: str = None, bio: str = None, matrix_user_id: str = None, show_avatars: bool = None, send_notifications_to_email: bool = None, bot_account: bool = None, show_bot_accounts: bool = None, show_read_posts: bool = None, show_new_post_notifs: bool = None, discussion_languages: List[int] = None, generate_totp_2fa: bool = None, instance: str = None, auth_token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Save user settings to account</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>show_nsfw</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If NSFW posts and communities should be shown. Optional</dd>
+<dt>show_scores (bool) If scores should be shown. Optional</dt>
+<dt><strong><code>theme</code></strong> :&ensp;<code>str</code></dt>
+<dd>Site theme. Optional</dd>
+<dt><strong><code>default_sort_type</code></strong> :&ensp;<code>SortType</code></dt>
+<dd>Sort type for the site. Optional</dd>
+<dt><strong><code>default_listing_type</code></strong> :&ensp;<code>ListingType</code></dt>
+<dd>Default listing type. Allows viewing Local or All communities. Optional</dd>
+<dt><strong><code>interface_language</code></strong> :&ensp;<code>str</code></dt>
+<dd>Interface language string. Optional</dd>
+<dt><strong><code>avatar</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of avatar. Optional</dd>
+<dt><strong><code>banner</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of user banner. Optional</dd>
+<dt><strong><code>display_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>DIsplay name of the user. Optional</dd>
+<dt><strong><code>email</code></strong> :&ensp;<code>str</code></dt>
+<dd>Email address associated with the account. Optional</dd>
+<dt><strong><code>bio</code></strong> :&ensp;<code>str</code></dt>
+<dd>User Bio/Description. Optional</dd>
+<dt><strong><code>matrix_user_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>Matrix user ID. Optional</dd>
+<dt><strong><code>show_avatars</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If user avatars should be shown next to names. Optional </dd>
+<dt><strong><code>send_notifications_to_email</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If email notifications should be sent to the user. Optional</dd>
+<dt><strong><code>bot_account</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If this is a bot account. Optional</dd>
+<dt><strong><code>show_bot_accounts</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If bot accounts should be hidden. Optional </dd>
+<dt><strong><code>show_read_posts</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If read posts should be shown or hidden . Optional</dd>
+<dt><strong><code>show_new_post_notifs</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If new posts should send a notification. Optional</dd>
+<dt><strong><code>discussion_languages</code></strong> :&ensp;<code>List[int]</code></dt>
+<dd>List of langages to show. Using undefined may cause no posts to show</dd>
+<dt>generate_totp_2fa (bool); Use TOTP 2FA</dt>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>auth_token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token for local instance. Optional. Default None uses logged in auth_token</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>User settings saved response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def saveUserSettings(self,
+    show_nsfw: bool=None,
+    show_scores: bool=None,
+    theme: str=None,
+    default_sort_type: SortType=None,
+    default_listing_type: ListingType=None,
+    interface_language: str=None,
+    avatar: str=None,
+    banner: str=None,
+    display_name: str=None,
+    email: str=None,
+    bio: str=None,
+    matrix_user_id: str=None,
+    show_avatars: bool=None,
+    send_notifications_to_email: bool=None,
+    bot_account: bool=None,
+    show_bot_accounts: bool=None,
+    show_read_posts: bool=None, 
+    show_new_post_notifs: bool=None, 
+    discussion_languages: List[int]=None, 
+    generate_totp_2fa: bool=None, 
+    instance:str=None,
+    auth_token:str=None):
+    &#34;&#34;&#34;
+    Save user settings to account
+    
+    Args:
+        show_nsfw (bool): If NSFW posts and communities should be shown. Optional
+        show_scores (bool) If scores should be shown. Optional
+        theme (str): Site theme. Optional
+        default_sort_type (SortType): Sort type for the site. Optional
+        default_listing_type (ListingType): Default listing type. Allows viewing Local or All communities. Optional
+        interface_language (str): Interface language string. Optional
+        avatar (str): URL of avatar. Optional
+        banner (str): URL of user banner. Optional
+        display_name (str): DIsplay name of the user. Optional
+        email (str): Email address associated with the account. Optional
+        bio (str): User Bio/Description. Optional
+        matrix_user_id (str): Matrix user ID. Optional
+        show_avatars (bool): If user avatars should be shown next to names. Optional 
+        send_notifications_to_email (bool): If email notifications should be sent to the user. Optional
+        bot_account (bool): If this is a bot account. Optional
+        show_bot_accounts (bool): If bot accounts should be hidden. Optional 
+        show_read_posts (bool): If read posts should be shown or hidden . Optional
+        show_new_post_notifs (bool): If new posts should send a notification. Optional
+        discussion_languages (List[int]): List of langages to show. Using undefined may cause no posts to show
+        generate_totp_2fa (bool); Use TOTP 2FA
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+    Returns:
+        User settings saved response
+    &#34;&#34;&#34; 
+    form = {}
+    optional = {
+        &#34;show_nsfw&#34;                     : show_nsfw                  ,
+        &#34;show_scores&#34;                   : show_scores                ,
+        &#34;theme&#34;                         : theme                      ,
+        &#34;default_sort_type&#34;             : default_sort_type          ,
+        &#34;default_listing_type&#34;          : default_listing_type       ,
+        &#34;interface_language&#34;            : interface_language         ,
+        &#34;avatar&#34;                        : avatar                     ,
+        &#34;banner&#34;                        : banner                     ,
+        &#34;display_name&#34;                  : display_name               ,
+        &#34;email&#34;                         : email                      ,
+        &#34;bio&#34;                           : bio                        ,
+        &#34;matrix_user_id&#34;                : matrix_user_id             ,
+        &#34;show_avatars&#34;                  : show_avatars               ,
+        &#34;send_notifications_to_email&#34;   : send_notifications_to_email,
+        &#34;bot_account&#34;                   : bot_account                ,
+        &#34;show_bot_accounts&#34;             : show_bot_accounts          ,
+        &#34;show_read_posts&#34;               : show_read_posts            ,
+        &#34;show_new_post_notifs&#34;          : show_new_post_notifs       ,
+        &#34;discussion_languages&#34;          : discussion_languages       ,
+        &#34;generate_totp_2fa&#34;             : generate_totp_2fa          
+        }
+    res = self._req.lemmyRequest(&#34;saveUserSettings&#34;, instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="jplaw.user.User.verifyEmail"><code class="name flex">
+<span>def <span class="ident">verifyEmail</span></span>(<span>self, instance: str = None, token: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Verify an email address</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL of local instance. Optional. Default None uses logged in instance</dd>
+<dt><strong><code>token</code></strong> :&ensp;<code>str</code></dt>
+<dd>Authentication token from email</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Password changed response</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def verifyEmail(self, instance:str=None, token:str=None):
+    &#34;&#34;&#34;
+    Verify an email address
+    
+    Args:
+        instance (str): URL of local instance. Optional. Default None uses logged in instance
+        token (str): Authentication token from email
+    Returns:
+        Password changed response
+    &#34;&#34;&#34;
+    form={ &#34;token&#34;: token }
+    res = self._req.lemmyRequest(&#34;verifyEmail&#34;, instance=instance, form=form, auth=False)
+    return res</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="jplaw" href="index.html">jplaw</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="jplaw.user.User" href="#jplaw.user.User">User</a></code></h4>
+<ul class="">
+<li><code><a title="jplaw.user.User.ban" href="#jplaw.user.User.ban">ban</a></code></li>
+<li><code><a title="jplaw.user.User.block" href="#jplaw.user.User.block">block</a></code></li>
+<li><code><a title="jplaw.user.User.changePassword" href="#jplaw.user.User.changePassword">changePassword</a></code></li>
+<li><code><a title="jplaw.user.User.deleteAccount" href="#jplaw.user.User.deleteAccount">deleteAccount</a></code></li>
+<li><code><a title="jplaw.user.User.getBanned" href="#jplaw.user.User.getBanned">getBanned</a></code></li>
+<li><code><a title="jplaw.user.User.getCaptcha" href="#jplaw.user.User.getCaptcha">getCaptcha</a></code></li>
+<li><code><a title="jplaw.user.User.getDetails" href="#jplaw.user.User.getDetails">getDetails</a></code></li>
+<li><code><a title="jplaw.user.User.getMentions" href="#jplaw.user.User.getMentions">getMentions</a></code></li>
+<li><code><a title="jplaw.user.User.getReplies" href="#jplaw.user.User.getReplies">getReplies</a></code></li>
+<li><code><a title="jplaw.user.User.getReportCount" href="#jplaw.user.User.getReportCount">getReportCount</a></code></li>
+<li><code><a title="jplaw.user.User.getUnreadCount" href="#jplaw.user.User.getUnreadCount">getUnreadCount</a></code></li>
+<li><code><a title="jplaw.user.User.leaveAdmin" href="#jplaw.user.User.leaveAdmin">leaveAdmin</a></code></li>
+<li><code><a title="jplaw.user.User.markAllAsRead" href="#jplaw.user.User.markAllAsRead">markAllAsRead</a></code></li>
+<li><code><a title="jplaw.user.User.markMentionAsRead" href="#jplaw.user.User.markMentionAsRead">markMentionAsRead</a></code></li>
+<li><code><a title="jplaw.user.User.passwordChangeAfterReset" href="#jplaw.user.User.passwordChangeAfterReset">passwordChangeAfterReset</a></code></li>
+<li><code><a title="jplaw.user.User.passwordReset" href="#jplaw.user.User.passwordReset">passwordReset</a></code></li>
+<li><code><a title="jplaw.user.User.register" href="#jplaw.user.User.register">register</a></code></li>
+<li><code><a title="jplaw.user.User.saveUserSettings" href="#jplaw.user.User.saveUserSettings">saveUserSettings</a></code></li>
+<li><code><a title="jplaw.user.User.verifyEmail" href="#jplaw.user.User.verifyEmail">verifyEmail</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
