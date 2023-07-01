@@ -34,7 +34,7 @@ jobs:
         python -m pip install dist/jplaw-${{ env.VERSION }}.tar.gz
     - name: Generate Documentation
       run: |
-        mkdir -p docs/v${{ env.VERSION }}
+        rm -r docs/v${{ env.VERSION }}
         python -m pydoc -html -o docs/v${{ env.VERSION }}
         mv docs/v${{ env.VERSION }}/jplaw/* docs/v${{ env.VERSION }}/
         rm -r docs/v${{ env.VERSION }}/jplaw/
