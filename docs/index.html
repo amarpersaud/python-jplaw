@@ -29,7 +29,7 @@
 		let targetList = document.getElementById("version-list");
 		for(let i = 0; i < obj.Versions.length; i++){
 			let version = obj.Versions[i];
-			let clone = document.importNode(template.content, true);
+			let clone = document.importNode(versionItemTemplate.content, true);
 
 			// Find the relevant elements within the cloned template
 			let versionLink = clone.querySelector("a");
