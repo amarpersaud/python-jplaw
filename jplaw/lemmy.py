@@ -83,6 +83,6 @@ class Lemmy:
         self.Comment = Comment(self._req)
         self.User = User(self._req)
         self.Site = Site(self._req)
-        this.Emoji = Emoji(self._req)
+        self.Emoji = Emoji(self._req)
         self.PrivateMessage = PrivateMessage(self._req)
         # print(self._req.headers.get("Authorization"))
