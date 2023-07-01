@@ -1,3 +1,32 @@
+"""
+The Lemmy object is used to interract with a Lemmy instance.
+
+Creation can be done 
+
+```python
+import jplaw
+
+my_instance = "..."
+my_username = "..."
+my_password = "..."
+
+lem = jplaw.Lemmy(
+    instance=my_instance, 
+    username=my_username, 
+    password=my_password
+    )
+```
+
+Functions of subtypes can be done like so:
+
+```python
+print(lem.Community.list())
+
+print(lem.Post.create(community_id=..., title="Test", body="test"))
+```
+
+"""
+
 from jplaw.requestor import Requestor
 from jplaw.comment import Comment
 from jplaw.community import Community
@@ -8,9 +37,6 @@ from jplaw.emoji import Emoji
 from jplaw.private_message import PrivateMessage
 
 class Lemmy:
-    """
-    Lemmy object. Used to interract with a lemmy site
-    """
     
     Post: Post
     """Post object. Allows Lemmy.Post functions"""

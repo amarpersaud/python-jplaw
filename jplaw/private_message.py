@@ -1,3 +1,6 @@
+"""
+Private message class. Used to access functions for sending, reading, and reporting private messages.
+"""
 from jplaw.requestor import Requestor
 from jplaw.api_paths import *
 

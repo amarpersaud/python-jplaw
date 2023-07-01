@@ -1,3 +1,6 @@
+"""
+Post class. Designed to allow Lemmy.Post functions.
+"""
 from jplaw.requestor import Requestor
 from jplaw.api_paths import *
 from jplaw.types.post_feature_type import PostFeatureType
@@ -5,9 +8,6 @@ from jplaw.types.listing_type import ListingType
 from jplaw.types.sort_type import SortType
 
 class Post():
-    """
-    Post class. Designed to allow Lemmy.Post functions.
-    """
     def __init__(self, _req: Requestor):
         self._req = _req
         

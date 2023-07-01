@@ -1,3 +1,6 @@
+"""
+Requestor allows HTTP communication.
+"""
 from enum import Enum
 import requests
 import json
@@ -10,7 +13,7 @@ T = TypeVar("T")
 class Requestor:
     def __init__(self, instance:str, username:str, password:str, headers: Dict[str, str]):
         """
-        Make an HTTP request
+        Make an HTTP requestor
         
         Args:
             instance (str): URL of instance to log in to or use

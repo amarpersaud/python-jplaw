@@ -1,3 +1,6 @@
+"""
+Emoji class. Designed to allow Lemmy.Emoji functions.
+"""
 from jplaw.requestor import Requestor
 from jplaw.api_paths import *
 from typing import List
@@ -6,9 +9,6 @@ from jplaw.types.listing_type import ListingType
 from jplaw.types.registration_mode import RegistrationMode
 
 class Emoji():
-    """
-    Emoji class. Designed to allow Lemmy.Emoji functions.
-    """
     def __init__(self, _req: Requestor):
         self._req = _req
     

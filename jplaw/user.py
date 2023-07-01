@@ -1,3 +1,6 @@
+"""
+User class. Designed to allow Lemmy.User functions.
+"""
 from .requestor import Requestor
 from .api_paths import *
 from typing import List
@@ -5,9 +8,6 @@ from .types.listing_type import ListingType
 from .types.sort_type import SortType
 
 class User():
-    """
-    User class. Designed to allow Lemmy.User functions.
-    """
     def __init__(self, _req: Requestor):
         self._req = _req
     def leaveAdmin(self, instance:str=None, auth_token:str=None):

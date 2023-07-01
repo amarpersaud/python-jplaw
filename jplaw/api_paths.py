@@ -1,3 +1,7 @@
+"""
+Helper variables for converting between function and API path / request type.
+"""
+
 from jplaw.types.http_type import HttpType
 
 API_VERSION = "/api/v3"

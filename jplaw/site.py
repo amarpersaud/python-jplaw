@@ -1,3 +1,6 @@
+"""
+Site class. Designed to allow Lemmy.Site functions.
+"""
 from .requestor import Requestor
 from .api_paths import *
 from typing import List
@@ -6,9 +9,6 @@ from .types.listing_type import ListingType
 from .types.registration_mode import RegistrationMode
 
 class Site():
-    """
-    Site class. Designed to allow Lemmy.Site functions.
-    """
     def __init__(self, _req: Requestor):
         self._req = _req
     
