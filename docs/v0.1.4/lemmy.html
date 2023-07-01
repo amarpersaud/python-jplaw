@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
 <title>jplaw.lemmy API documentation</title>
-<meta name="description" content="" />
+<meta name="description" content="The Lemmy object is used to interract with a Lemmy instance …" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
 <link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
@@ -22,23 +22,68 @@
 <h1 class="title">Module <code>jplaw.lemmy</code></h1>
 </header>
 <section id="section-intro">
+<p>The Lemmy object is used to interract with a Lemmy instance.</p>
+<p>Creation can be done </p>
+<pre><code class="language-python">import jplaw
+
+my_instance = &quot;...&quot;
+my_username = &quot;...&quot;
+my_password = &quot;...&quot;
+
+lem = jplaw.Lemmy(
+    instance=my_instance, 
+    username=my_username, 
+    password=my_password
+    )
+</code></pre>
+<p>Functions of subtypes can be done like so:</p>
+<pre><code class="language-python">print(lem.Community.list())
+
+print(lem.Post.create(community_id=..., title=&quot;Test&quot;, body=&quot;test&quot;))
+</code></pre>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from .requestor import Requestor
-from .comment import Comment
-from .community import Community
-from .post import Post
-from .user import User
-from .site import Site
-from .emoji import Emoji
-from .private_message import PrivateMessage
+<pre><code class="python">&#34;&#34;&#34;
+The Lemmy object is used to interract with a Lemmy instance.
+
+Creation can be done 
+
+```python
+import jplaw
+
+my_instance = &#34;...&#34;
+my_username = &#34;...&#34;
+my_password = &#34;...&#34;
+
+lem = jplaw.Lemmy(
+    instance=my_instance, 
+    username=my_username, 
+    password=my_password
+    )
+```
+
+Functions of subtypes can be done like so:
+
+```python
+print(lem.Community.list())
+
+print(lem.Post.create(community_id=..., title=&#34;Test&#34;, body=&#34;test&#34;))
+```
+
+&#34;&#34;&#34;
+
+from jplaw.requestor import Requestor
+from jplaw.comment import Comment
+from jplaw.community import Community
+from jplaw.post import Post
+from jplaw.user import User
+from jplaw.site import Site
+from jplaw.emoji import Emoji
+from jplaw.private_message import PrivateMessage
 
 class Lemmy:
-    &#34;&#34;&#34;
-    Lemmy object. Used to interract with a lemmy site
-    &#34;&#34;&#34;
     
     Post: Post
     &#34;&#34;&#34;Post object. Allows Lemmy.Post functions&#34;&#34;&#34;
@@ -104,8 +149,7 @@ class Lemmy:
 <span>(</span><span>instance: str, username: str = None, password: str = None)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Lemmy object. Used to interract with a lemmy site</p>
-<p>Create a Lemmy object</p>
+<div class="desc"><p>Create a Lemmy object</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>instance</code></strong> :&ensp;<code>str</code></dt>
@@ -122,9 +166,6 @@ class Lemmy:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class Lemmy:
-    &#34;&#34;&#34;
-    Lemmy object. Used to interract with a lemmy site
-    &#34;&#34;&#34;
     
     Post: Post
     &#34;&#34;&#34;Post object. Allows Lemmy.Post functions&#34;&#34;&#34;
