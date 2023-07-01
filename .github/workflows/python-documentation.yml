@@ -1,6 +1,6 @@
 # This workflow will generate documentation using pdoc3 then commit it to the docs/ folder
 
-name: Generate Python Documentation
+name: Generate Python Documentation 
 
 on:
   workflow_dispatch:
