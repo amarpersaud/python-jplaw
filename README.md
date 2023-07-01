@@ -1,5 +1,5 @@
 # Python Lemmy API Wrapper
-[![Build](https://github.com/amarpersaud/python-jplaw/actions/workflows/python-package.yml/badge.svg?branch=main)](https://github.com/amarpersaud/python-jplaw/actions/workflows/python-package.yml)   [![PYPI Package](https://github.com/amarpersaud/python-jplaw/actions/workflows/python-publish.yml/badge.svg?branch=main)](https://github.com/amarpersaud/python-jplaw/actions/workflows/python-publish.yml)
+[![Build](https://github.com/amarpersaud/python-jplaw/actions/workflows/python-package.yml/badge.svg?branch=main)](https://github.com/amarpersaud/python-jplaw/actions/workflows/python-package.yml) 
 [![Generate Python Documentation](https://github.com/amarpersaud/python-jplaw/actions/workflows/python-documentation.yml/badge.svg)](https://github.com/amarpersaud/python-jplaw/actions/workflows/python-documentation.yml)
 
 Like PRAW but for Lemmy
