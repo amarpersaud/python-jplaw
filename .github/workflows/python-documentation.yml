@@ -26,7 +26,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Set variables
       run: |
-        VER=$(cat VERSION)
+        VER=$(python setup.py --version)
         echo "VERSION=$VER" >> $GITHUB_ENV
     - name: Build and install
       run: |
@@ -34,9 +34,9 @@ jobs:
         python -m pip install dist/jplaw-${{ env.VERSION }}.tar.gz
     - name: Generate Documentation
       run: |
-        rm -r docs/
-        mkdir docs
-        python -m pydoc -html -o docs/
+        mkdir -p docs/v${{ env.VERSION }}
+        python -m pydoc -html -o docs/v${{ env.VERSION }}
+        python ./scripts/update_versions.py
     - name: Commit files
       run: |
         echo ${{ github.ref }}
