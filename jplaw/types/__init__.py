@@ -1,4 +1,4 @@
-__version__ = "0.1.4"
+__version__ = "0.1.5"
 __package__ = "jplaw.types"
 from .comment_sort_type import CommentSortType
 from .http_type import HttpType
