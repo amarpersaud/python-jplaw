@@ -41,3 +41,34 @@ print(lem.Community.get("test@lemmy.ml"))
 
 # Documentation
 See [the documentation](https://amarpersaud.github.io/python-jplaw/) for more information on how to use jplaw.
+
+# Roadmap 
+### v0.1.6 
+  - Work on return types and usability.
+
+### v0.1.5 
+  - Work on testing functions and finding / squashing bugs
+
+# Changelog
+### v0.1.4
+- Created documentation
+    - Versioned documentation for browsing info on previous versions (things will prob change pretty quickly in early releases)
+    - Available [here](https://amarpersaud.github.io/python-jplaw/)
+- Fixed some issues with argument types not using enums properly or missing references
+- Created Emoji class for creating, editing and deleting custom emoji
+
+### v0.1.3
+- Moved enums like SortType to submodule jplaw.types
+- Fix missing enum types
+- Rename a large portion of the functions to remove repetition.
+    - Decouples naming scheme from Lemmy API
+    - Shortens names and removes repetitive naming like "Lemmy.Comment.likeComment()" -> "Lemmy.Comment.like()."
+
+### v0.1.2
+- Added majority of the API functions except for image uploading
+
+### v0.1.1
+- Getting PyPi package working and added some functions
+
+### v0.1
+- Alpha release. After forking from plaw, fork was broken and migrated to this repository from the [jplaw](https://github.com/amarpersaud/jplaw/) repository, as I wanted to do something a little different from having a purely API equivalent library.
