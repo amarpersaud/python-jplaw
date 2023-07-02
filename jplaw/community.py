@@ -29,7 +29,7 @@ class Community():
         res = self._req.lemmyRequest("getCommunity", instance=instance, form=form, auth=auth, auth_token=auth_token)
         return res["community_view"]
         
-    def list(self, type: ListingType=None, sort:SortType=None, page:int=None, limit:int=None, auth:bool=True, auth_token:str=None): 
+    def list(self, type: ListingType=None, sort:SortType=None, page:int=None, limit:int=None, instance:str=None, auth:bool=True, auth_token:str=None): 
         """
         Get a list of communities (federated or local)
         
