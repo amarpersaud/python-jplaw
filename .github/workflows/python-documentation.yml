@@ -42,7 +42,7 @@ jobs:
     - name: Set variables
       if: env.is-auto-commit == false
       run: |
-        VER=$(python setup.py --version)
+        VER=$(python scripts/getversion.py)
         echo "VERSION=$VER" >> $GITHUB_ENV
     - name: Build and install
       if: env.is-auto-commit == false
