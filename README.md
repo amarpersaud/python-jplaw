@@ -43,13 +43,18 @@ print(lem.Community.get("test@lemmy.ml"))
 See [the documentation](https://amarpersaud.github.io/python-jplaw/) for more information on how to use jplaw.
 
 # Roadmap 
-### v0.1.6 
-  - Work on return types and usability.
+### v0.1.7
+- Work on return types and usability.
 
-### v0.1.5 
-  - Work on testing functions and finding / squashing bugs
+### v0.1.6
+- Work on testing functions and finding / squashing bugs
 
 # Changelog
+### v0.1.5
+- Fix namespace issues
+- Fix build issues
+- Fix missing instance argument in list communities
+
 ### v0.1.4
 - Created documentation
     - Versioned documentation for browsing info on previous versions (things will prob change pretty quickly in early releases)
