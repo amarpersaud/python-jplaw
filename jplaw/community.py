@@ -29,13 +29,22 @@ class Community():
         res = self._req.lemmyRequest("getCommunity", instance=instance, form=form, auth=auth, auth_token=auth_token)
         return res["community_view"]
         
-    def list(self, type: ListingType=None, sort:SortType=None, page:int=None, limit:int=None, instance:str=None, auth:bool=True, auth_token:str=None): 
+    def list(self, 
+        type: ListingType=None, 
+        sort:SortType=None,
+        show_nsfw: bool=None,
+        page:int=None, 
+        limit:int=None, 
+        instance:str=None, 
+        auth:bool=True, 
+        auth_token:str=None): 
         """
         Get a list of communities (federated or local)
         
         Args:
             type (ListingType): Type of community (all or local). Optional
             sort (SortType): Sorting Mode. Optional
+            show_nsfw (bool): Whether or not to show nsfw communities. Optional. 
             page (int): Page number. Optional
             limit (int): Limit for number of posts. Optional
             instance (str): URL of local instance. Optional. Default None uses logged in instance
@@ -50,6 +59,7 @@ class Community():
         if(sort):
             form["sort"]=sort.value
         optional={
+            "show_nsfw": show_nsfw,
             "page": page,
             "limit": limit
             }
