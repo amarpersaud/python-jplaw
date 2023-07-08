@@ -61,7 +61,6 @@ class Site():
         rate_limit_search_per_second: int=None,
         federation_enabled: bool=None,
         federation_debug: bool=None,
-        federation_worker_count: int=None,
         captcha_enabled: bool=None,
         captcha_difficulty: str=None,
         allowed_instances: List[str]=None,
@@ -107,7 +106,6 @@ class Site():
             rate_limit_search_per_second (int): Search per second rate limit. Optional.
             federation_enabled (bool): If federation is enabled. Optional.
             federation_debug (bool): If federation debugging is enabled. Optional.
-            federation_worker_count (int): Number of federation workers. This is the number of threads dedicated to federating content. Optional.
             captcha_enabled (bool): If captcha is enabled. Optional.
             captcha_difficulty (str): Difficulty of the captcha. Text: easy, medium or hard.
             allowed_instances (List[str]): List of allowed instances. Optional.
@@ -156,7 +154,6 @@ class Site():
             "rate_limit_search_per_second"      : rate_limit_search_per_second      ,
             "federation_enabled"                : federation_enabled                ,
             "federation_debug"                  : federation_debug                  ,
-            "federation_worker_count"           : federation_worker_count           ,
             "captcha_enabled"                   : captcha_enabled                   ,
             "captcha_difficulty"                : captcha_difficulty                ,
             "allowed_instances"                 : allowed_instances                 ,
@@ -201,7 +198,6 @@ class Site():
         rate_limit_search_per_second: int=None,
         federation_enabled: bool=None,
         federation_debug: bool=None,
-        federation_worker_count: int=None,
         captcha_enabled: bool=None,
         captcha_difficulty: str=None,
         allowed_instances: List[str]=None,
@@ -248,7 +244,6 @@ class Site():
             rate_limit_search_per_second (int): Search per second rate limit. Optional.
             federation_enabled (bool): If federation is enabled. Optional.
             federation_debug (bool): If federation debugging is enabled. Optional.
-            federation_worker_count (int): Number of federation workers. This is the number of threads dedicated to federating content. Optional.
             captcha_enabled (bool): If captcha is enabled. Optional.
             captcha_difficulty (str): Difficulty of the captcha. Text: easy, medium or hard.
             allowed_instances (List[str]): List of allowed instances. Optional.
@@ -296,7 +291,6 @@ class Site():
             "rate_limit_search_per_second"      : rate_limit_search_per_second      ,
             "federation_enabled"                : federation_enabled                ,
             "federation_debug"                  : federation_debug                  ,
-            "federation_worker_count"           : federation_worker_count           ,
             "captcha_enabled"                   : captcha_enabled                   ,
             "captcha_difficulty"                : captcha_difficulty                ,
             "allowed_instances"                 : allowed_instances                 ,
