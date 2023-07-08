@@ -12,19 +12,19 @@ class Site():
     def __init__(self, _req: Requestor):
         self._req = _req
     
-    def getSite(self, instance:str=None, auth:bool=True, auth_token:str=None):
+    def getSite(self, instance:str=None, auth:bool=True):
         """
         Get the site details
         
         Args:
             instance (str): URL of local instance. Optional. Default None uses logged in instance
             auth (bool): Whether or not to authenticate. Optional. Defaults to True.
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Instance details response
         """
         form = {}
-        res = self._req.lemmyRequest("getSite", instance=instance, form=form, auth=auth, auth_token=auth_token)
+        res = self._req.lemmyRequest("getSite", instance=instance, form=form, auth=auth)
         return res
     
     def create(self,    
@@ -61,15 +61,13 @@ class Site():
         rate_limit_search_per_second: int=None,
         federation_enabled: bool=None,
         federation_debug: bool=None,
-        federation_worker_count: int=None,
         captcha_enabled: bool=None,
         captcha_difficulty: str=None,
         allowed_instances: List[str]=None,
         blocked_instances: List[str]=None,
         taglines: List[str]=None,
         registration_mode: RegistrationMode=None,
-        instance:str=None, 
-        auth_token:str=None):
+        instance:str=None):
         """
         Create the lemmy instance
         
@@ -107,7 +105,6 @@ class Site():
             rate_limit_search_per_second (int): Search per second rate limit. Optional.
             federation_enabled (bool): If federation is enabled. Optional.
             federation_debug (bool): If federation debugging is enabled. Optional.
-            federation_worker_count (int): Number of federation workers. This is the number of threads dedicated to federating content. Optional.
             captcha_enabled (bool): If captcha is enabled. Optional.
             captcha_difficulty (str): Difficulty of the captcha. Text: easy, medium or hard.
             allowed_instances (List[str]): List of allowed instances. Optional.
@@ -116,7 +113,7 @@ class Site():
             registration_mode (RegistrationMode): Mode of registration (Closed/Application/Open). Optional.
             reports_email_admins (bool): if reporting emails the admins. Optional.
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Create site response
         """
@@ -156,7 +153,6 @@ class Site():
             "rate_limit_search_per_second"      : rate_limit_search_per_second      ,
             "federation_enabled"                : federation_enabled                ,
             "federation_debug"                  : federation_debug                  ,
-            "federation_worker_count"           : federation_worker_count           ,
             "captcha_enabled"                   : captcha_enabled                   ,
             "captcha_difficulty"                : captcha_difficulty                ,
             "allowed_instances"                 : allowed_instances                 ,
@@ -164,7 +160,7 @@ class Site():
             "taglines"                          : taglines                          ,
             "registration_mode"                 : registration_mode                 ,
             }
-        res = self._req.lemmyRequest("createSite", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("createSite", instance=instance, form=form, optional=optional, auth=True)
         return res
     
     def edit(self,         
@@ -201,7 +197,6 @@ class Site():
         rate_limit_search_per_second: int=None,
         federation_enabled: bool=None,
         federation_debug: bool=None,
-        federation_worker_count: int=None,
         captcha_enabled: bool=None,
         captcha_difficulty: str=None,
         allowed_instances: List[str]=None,
@@ -209,8 +204,7 @@ class Site():
         taglines: List[str]=None,
         registration_mode: RegistrationMode=None,
         reports_email_admins:bool=None,
-        instance:str=None, 
-        auth_token:str=None):
+        instance:str=None):
         """
         Edit the site details. Optional arguments can be excluded to leave them as is.
         
@@ -248,7 +242,6 @@ class Site():
             rate_limit_search_per_second (int): Search per second rate limit. Optional.
             federation_enabled (bool): If federation is enabled. Optional.
             federation_debug (bool): If federation debugging is enabled. Optional.
-            federation_worker_count (int): Number of federation workers. This is the number of threads dedicated to federating content. Optional.
             captcha_enabled (bool): If captcha is enabled. Optional.
             captcha_difficulty (str): Difficulty of the captcha. Text: easy, medium or hard.
             allowed_instances (List[str]): List of allowed instances. Optional.
@@ -257,7 +250,7 @@ class Site():
             registration_mode (RegistrationMode): Mode of registration (Closed/Application/Open). Optional.
             reports_email_admins (bool): if reporting emails the admins. Optional.
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Edit site response
         """
@@ -296,7 +289,6 @@ class Site():
             "rate_limit_search_per_second"      : rate_limit_search_per_second      ,
             "federation_enabled"                : federation_enabled                ,
             "federation_debug"                  : federation_debug                  ,
-            "federation_worker_count"           : federation_worker_count           ,
             "captcha_enabled"                   : captcha_enabled                   ,
             "captcha_difficulty"                : captcha_difficulty                ,
             "allowed_instances"                 : allowed_instances                 ,
@@ -305,24 +297,24 @@ class Site():
             "registration_mode"                 : registration_mode                 ,
             "reports_email_admins"              : reports_email_admins              ,
             }
-        res = self._req.lemmyRequest("editSite", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("editSite", instance=instance, form=form, optional=optional, auth=True)
         return res
         
-    def getFederatedInstances(self, instance:str=None, auth:bool=True, auth_token:str=None):
+    def getFederatedInstances(self, instance:str=None, auth:bool=True):
         """
         Get the list of federated instances from the site
         
         Args:
             instance (str): URL of local instance. Optional. Default None uses logged in instance
             auth (bool): Whether or not to use authentication. Optional. Defaults to True.
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Federated instances response
         """
-        res = self._req.lemmyRequest("getFederatedInstances", instance=instance, auth=auth, auth_token=auth_token)
+        res = self._req.lemmyRequest("getFederatedInstances", instance=instance, auth=auth)
         return res
     
-    def addAdmin(self, person_id:int, added:bool=True, instance:str=None, auth_token:str=None):
+    def addAdmin(self, person_id:int, added:bool=True, instance:str=None):
         """
         Add an administrator to the site
         
@@ -330,7 +322,7 @@ class Site():
             person_id (int): ID of user to add as administrator
             added (bool): If person is added as an administrator to the site. Optional. Defaults to True.
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Administrator added response
         """
@@ -338,24 +330,24 @@ class Site():
             "person_id": person_id,
             "added": added
             }
-        res = self._req.lemmyRequest("addAdmin", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("addAdmin", instance=instance, form=form, auth=True)
         return res
         
-    def getUnreadRegistrationApplicationCount(self, instance:str=None, auth_token=None):
+    def getUnreadRegistrationApplicationCount(self, instance:str=None):
         """
         Get the number of unread registration applications
         
         Args:
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Unread registration application count response
         """
         form={}
-        res = self._req.lemmyRequest("getUnreadRegistrationApplicationCount", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("getUnreadRegistrationApplicationCount", instance=instance, form=form, auth=True)
         return res
         
-    def listRegistrationApplications(self, unread_only:bool=None, page:int=None, limit:str=None, instance:str=None, auth_token=None):
+    def listRegistrationApplications(self, unread_only:bool=None, page:int=None, limit:str=None, instance:str=None):
         """
         Get a list of registration applications
         
@@ -364,7 +356,7 @@ class Site():
             page (int): Page of applications to get. Optional.
             limit (int): Limit for number of applications to get. Optional.
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             List of registration applications 
         """
@@ -374,10 +366,10 @@ class Site():
             "limit": limit,
             "unread_only": unread_only
             }
-        res = self._req.lemmyRequest("listRegistrationApplications", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("listRegistrationApplications", instance=instance, form=form, auth=True)
         return res
         
-    def approveRegistrationApplication(self, application_id:int, approve:bool=True, deny_reason:str=None, instance:str=None, auth_token:str=None):
+    def approveRegistrationApplication(self, application_id:int, approve:bool=True, deny_reason:str=None, instance:str=None):
         """
         Approve a registration application
         
@@ -386,7 +378,7 @@ class Site():
             approve (bool): If registration application has been approved. Optional. Defaults to True
             dent_reason (str): Reason for denying the application, if denied. Optional.
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Approved registration response
         """
@@ -397,10 +389,10 @@ class Site():
         optional={
             "deny_reason": deny_reason
             }
-        res = self._req.lemmyRequest("approveRegistrationApplication", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("approveRegistrationApplication", instance=instance, form=form, optional=optional, auth=True)
         return res
         
-    def getModlog(self, mod_person_id:int=None, community_id:int=None, page:int=None, limit:int=None, type_:ModlogActionType=None, other_person_id:int=None, instance:str=None, auth_token:str=None):
+    def getModlog(self, mod_person_id:int=None, community_id:int=None, page:int=None, limit:int=None, type_:ModlogActionType=None, other_person_id:int=None, instance:str=None):
         """
         Get the moderation log of the site
         
@@ -412,7 +404,7 @@ class Site():
             type_ (ModlogActionType): Filter by type of moderator action. Optional
             other_person_id (int): ID of the user who made the comment, post or community. Optional
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Moderator log response
         """
@@ -425,10 +417,10 @@ class Site():
             "type_": type_,
             "other_person_id": other_person_id,
             }
-        res = self._req.lemmyRequest("getModlog", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("getModlog", instance=instance, form=form, optional=optional, auth=True)
         return res
         
-    def purgeComment(self, comment_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+    def purgeComment(self, comment_id:int, reason:str=None, instance:str=None):
         """
         Purge a comment from the site
         
@@ -436,7 +428,7 @@ class Site():
             comment_id (int): ID of the comment to purge
             reason (str): Reason for purging the comment. Optional
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Purged comment response
         """
@@ -446,9 +438,9 @@ class Site():
         optional={
             "reason": reason,
             }
-        res = self._req.lemmyRequest("purgeComment", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("purgeComment", instance=instance, form=form, optional=optional, auth=True)
         return res
-    def purgeCommunity(self, community_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+    def purgeCommunity(self, community_id:int, reason:str=None, instance:str=None):
         """
         Purge a community from the site
         
@@ -456,7 +448,7 @@ class Site():
             community_id (int): ID of the user to purge
             reason (str): Reason for purging the community. Optional
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Purged community response
         """
@@ -466,9 +458,9 @@ class Site():
         optional={
             "reason": reason,
             }
-        res = self._req.lemmyRequest("purgeCommunity", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("purgeCommunity", instance=instance, form=form, optional=optional, auth=True)
         return res
-    def purgePost(self, post_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+    def purgePost(self, post_id:int, reason:str=None, instance:str=None):
         """
         Purge a post from the site
         
@@ -476,7 +468,7 @@ class Site():
             post_id (int): ID of the post to purge
             reason (str): Reason for purging the post. Optional
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Purged post response
         """
@@ -486,9 +478,9 @@ class Site():
         optional={
             "reason": reason,
             }
-        res = self._req.lemmyRequest("purgePost", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("purgePost", instance=instance, form=form, optional=optional, auth=True)
         return res
-    def purgePerson(self, person_id:int, reason:str=None, instance:str=None, auth_token:str=None):
+    def purgePerson(self, person_id:int, reason:str=None, instance:str=None):
         """
         Purge a person from the site
         
@@ -496,7 +488,7 @@ class Site():
             person_id (int): ID of the user to purge
             reason (str): Reason for purging the person. Optional
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Purged person response
         """
@@ -506,39 +498,39 @@ class Site():
         optional={
             "reason": reason,
             }
-        res = self._req.lemmyRequest("purgePerson", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("purgePerson", instance=instance, form=form, optional=optional, auth=True)
         return res
     
-    def resolveObject(self, obj, instance:str=None, auth_token:str=None):
+    def resolveObject(self, obj, instance:str=None):
         """
         Resolves object from another instance
         
         Args:
             obj: Object to resolve from the remote instance
             instance (str): URL of local instance to request the object from
-            auth_token (str): Authentication token for local instance
+            
         Returns:
             Federated object
         """
         form={
             "q": obj
         }
-        res = self._req.lemmyRequest("resolveObject", instance=instance, form=form, auth_token=auth_token)
+        res = self._req.lemmyRequest("resolveObject", instance=instance, form=form)
         return res
         
-    def search(self, term:str, instance:str=None, auth_token:str=None):
+    def search(self, term:str, instance:str=None):
         """
         Search for term
         
         Args:
             term (str): Object to resolve from the remote instance
             instance (str): URL of local instance. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance
+            
         Returns:
             Search results
         """
         form={
             "q": term
         }
-        res = self._req.request("search", instance=instance, auth_token=auth_token, form=form)
+        res = self._req.request("search", instance=instance, form=form)
         return res
