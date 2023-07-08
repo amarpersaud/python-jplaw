@@ -109,19 +109,29 @@ class Requestor:
         res_data = self.lemmyRequest("login", form=form, instance=instance)
         return res_data["jwt"]
     
-    def AddIfValue(self, name:str, value, form: Dict[str, Any]):
+    def AddIfValue(self, name:str, value: Any, form: Dict[str, Any]):
         """
         Adds items to form if not None
         Args:
-        
+            name (str): Key of item to add
+            value (Any): Value of item to add to form
+            form (Dict[str, Any]): Dictionary to add optional arguments to if not none.
         Returns:
-            Access token
+            Form with optional item.
         """
         if(value is not None):
             form[name]=value
         return form
     
     def AddListIfValue(self, optional: Dict[str, Any], form: Dict[str, Any]):
+        """
+        Adds items from optional list to form if not None
+        Args:
+            optional (Dict[str, Any]): Dictionary of options with string keys and value.
+            form (Dict[str, Any]): Dictionary to add optional arguments to if not none.
+        Returns:
+            Form with optional items.
+        """
         if(optional is not None):
             for key in optional:
                 if(optional[key] is not None):
