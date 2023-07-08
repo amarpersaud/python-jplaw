@@ -66,7 +66,7 @@ class Requestor:
         url = instance or self.instance
         return url.rstrip("/") + API_VERSION.rstrip("/") + path
     
-    def lemmyRequest(self, function: str, instance: str = None, form: Dict[str, Any]={}, optional: Dict[str, Any]={}, auth:bool=True, auth_token:str=None) -> T:
+    def lemmyRequest(self, function: str, instance: str = None, form: Dict[str, Any]={}, optional: Dict[str, Any]={}, auth:bool=True) -> T:
         """
         Make an api request specifically to a lemmy instance for a given api function
         
@@ -75,16 +75,17 @@ class Requestor:
             function (str): API function
             instance (str): instance to access. Default None uses logged in/default instance
             form (Dict[str,Any]): dictionary with data to send
-            auth (bool): Whether or not to authenticate. Will use auth_token if available first, then internal auth_token from login.
-            auth_token (str): authentication token
+            auth (bool): Whether or not to authenticate. Will use internal auth_token from login if available, otherwise doesn't authenticate
+            
         Returns:
             request response
         """
         form = self.AddListIfValue(optional=optional, form=form)
+        form = self.fixFormValues(form)
         
-        #if auth and token available 
-        if(auth and (auth_token or self.auth_token)):
-            form["auth"] = auth_token or self.auth_token
+        #Only authorize if authorization enabled, token is available, and instance is not changed. If instance changed or logged out, disable auth. 
+        if(auth and (self.auth_token is not None) and ((instance is None) or (instance == self.instance))):
+            form["auth"] = self.auth_token
         return self.request((API_PATH[function]["method"]), self.apiURL(instance=instance, path=(API_PATH[function]["path"])), form)
     
     def logout(self):
@@ -106,8 +107,39 @@ class Requestor:
         """
         self.instance = instance or self.instance
         form = { "username_or_email": username, "password": password }
-        res_data = self.lemmyRequest("login", form=form, instance=instance)
+        res_data = self.lemmyRequest("login", form=form, instance=instance, auth=False)
         return res_data["jwt"]
+    
+    def boolToStr(self, bool_val:bool):
+        """
+        Convert a boolean value to a lowercase string for request
+        
+        Args:
+            bool_val (bool): boolean value to convert to string
+        
+        Returns:
+            "true" if True, "false" if false, "none" if None.
+        """
+        if(bool_val is None):
+            return "none"
+        return str(bool_val).lower() if isinstance(bool_val, bool) else bool_val
+        
+    def fixFormValues(self, form: Dict[str, Any]):
+        """
+        Fix value types for requests (e.g. bool and Enum types)
+        
+        Args:
+            form (Dict[str, Any]): Dictionary of keys and items in form
+        
+        Returns:
+            Form with fixed values
+        """
+        for key, value in form.items():
+            if(isinstance(value, bool)):
+                form[key] = self.boolToStr(value)
+            if(isinstance(value, Enum)):
+                form[key] = value.value
+        return form
     
     def AddIfValue(self, name:str, value: Any, form: Dict[str, Any]):
         """

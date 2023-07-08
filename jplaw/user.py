@@ -10,18 +10,18 @@ from .types.sort_type import SortType
 class User():
     def __init__(self, _req: Requestor):
         self._req = _req
-    def leaveAdmin(self, instance:str=None, auth_token:str=None):
+    def leaveAdmin(self, instance:str=None):
         """
         Leave the administrator team of a site
         
         Args:
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Removed community response
         """
         form = {}
-        res = self._req.lemmyRequest("leaveAdmin", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("leaveAdmin", instance=instance, form=form, auth=True)
     def register(self, 
         username:str, 
         password:str, 
@@ -47,7 +47,7 @@ class User():
             honeypot (str): Honeypot field. Used for detecting bots which autofill all fields. Do not use unless trying to explicitly trigger honeypot
             answer (str): Answer to sign up question
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Removed community response
         """
@@ -67,7 +67,7 @@ class User():
             }
         res = self._req.lemmyRequest("register", instance=instance, form=form, optional=optional, auth=False)
         return res
-    def getDetails(self, person_id:str=None, username:str=None, sort:SortType=None, page:int=None, limit:int=None, community_id:int=None, saved_only:bool=None, instance:str=None, auth:bool=True, auth_token:str=None):
+    def getDetails(self, person_id:str=None, username:str=None, sort:SortType=None, page:int=None, limit:int=None, community_id:int=None, saved_only:bool=None, instance:str=None, auth:bool=True):
         """
         Get details of a user
         
@@ -80,26 +80,25 @@ class User():
             community_id (int): Community to filter by for user
             saved_only (bool): Show only saved objects
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth (bool): If true, authenticate using auth_token or login respectively. Defaults to True.
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            auth (bool): If true, authenticate using login. Defaults to True.
+            
         Returns:
             List of items which follow the filters given
         """
         form={}
-        if(sort is not None):
-            form["sort"] = sort.value
         optional={
-            "person_id"      :person_id      ,
-            "username"       :username       ,
-            "page"           :page           ,
-            "limit"          :limit          ,
-            "community_id"   :community_id   ,
-            "saved_only"     :saved_only     ,
+            "sort"          :   sort              ,
+            "person_id"     :   person_id         ,
+            "username"      :   username          ,
+            "page"          :   page              ,
+            "limit"         :   limit             ,
+            "community_id"  :   community_id      ,
+            "saved_only"    :   saved_only        ,
             }
-        res = self._req.lemmyRequest("getPersonDetails", instance=instance, form=form, optional=optional, auth=auth, auth_token=auth_token)
+        res = self._req.lemmyRequest("getPersonDetails", instance=instance, form=form, optional=optional, auth=auth)
         return res
     
-    def markMentionAsRead(self, person_mention_id:int, read:bool=True, instance:str=None, auth_token:str=None):
+    def markMentionAsRead(self, person_mention_id:int, read:bool=True, instance:str=None):
         """
         Mark a mention as read or unread
         
@@ -107,7 +106,7 @@ class User():
             person_mention_id (int): ID of the mention
             read (bool): If true, marks mention as read. False marks unread. Defaults to True. Optional.
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             List of items which follow the filters given
         """
@@ -115,10 +114,10 @@ class User():
             "person_mention_id": person_mention_id,
             "read": read
             }
-        res = self._req.lemmyRequest("markPersonMentionAsRead", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("markPersonMentionAsRead", instance=instance, form=form, auth=True)
         return res
     
-    def getMentions(self, sort:SortType=None, page:int=None, limit:int=None, unread_only:bool=True, instance:str=None, auth_token:str=None):
+    def getMentions(self, sort:SortType=None, page:int=None, limit:int=None, unread_only:bool=True, instance:str=None):
         """
         Get the list of mentions
         
@@ -128,23 +127,21 @@ class User():
             limit (int): Limit for number of mentions to return. Optional.
             unread_only (bool): Show only unread mentions. Optional. Defaults to true.
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             List of mentions
         """
         form={}
-        if(sort is not None):
-            form["sort"] = sort.value
         optional = {
-            "sort"           :sort           ,
-            "page"           :page           ,
-            "limit"          :limit          ,
-            "unread_only"    :unread_only    ,
+            "sort"           :  sort           ,
+            "page"           :  page           ,
+            "limit"          :  limit          ,
+            "unread_only"    :  unread_only    ,
             }
-        res = self._req.lemmyRequest("getPersonMentions", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("getPersonMentions", instance=instance, form=form, optional=optional, auth=True)
         return res
     
-    def getReplies(self, sort:SortType=None, page:int=None, limit:int=None, unread_only:bool=True, auth_token:str=None):
+    def getReplies(self, sort:SortType=None, page:int=None, limit:int=None, unread_only:bool=True):
         """
         Get the list of replies
         
@@ -154,23 +151,21 @@ class User():
             limit (int): Limit for number of replies to return. Optional.
             unread_only (bool): Show only unread replies. Optional. Defaults to true.
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             List of replies
         """
         form={}
-        if(sort is not None):
-            form["sort"] = sort.value
         optional = {
-            "sort"           :sort           ,
-            "page"           :page           ,
-            "limit"          :limit          ,
-            "unread_only"    :unread_only    ,
+            "sort"           :  sort           ,
+            "page"           :  page           ,
+            "limit"          :  limit          ,
+            "unread_only"    :  unread_only    ,
             }
-        res = self._req.lemmyRequest("getReplies", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("getReplies", instance=instance, form=form, optional=optional, auth=True)
         return res
     
-    def ban(self, person_id:int, ban:bool, remove_data:bool=None, reason:str=None, expires:int=None, instance:str=None, auth_token:str=None):
+    def ban(self, person_id:int, ban:bool, remove_data:bool=None, reason:str=None, expires:int=None, instance:str=None):
         """
         Ban a user from the instance
         
@@ -180,7 +175,7 @@ class User():
             remove_data (bool): Remove the data of the user. Optional.
             expires (int): Unix Timestamp of ban expiration (seconds). Optional.
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Banned user 
         """
@@ -193,24 +188,24 @@ class User():
             "reason"         :reason        ,
             "expires"        :expires
             }
-        res = self._req.lemmyRequest("banPerson", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("banPerson", instance=instance, form=form, optional=optional, auth=True)
         return res
     
-    def getBanned(self, instance:str=None, auth_token:str=None):
+    def getBanned(self, instance:str=None):
         """
         Get the list of banned users
         
         Args:
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             List of banned users
         """
         form={}
-        res = self._req.lemmyRequest(HttpType.GET, "getBannedPersons", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest(HttpType.GET, "getBannedPersons", instance=instance, form=form, auth=True)
         return res
      
-    def block(self, person_id:int, block:bool, instance:str=None, auth_token:str=None):
+    def block(self, person_id:int, block:bool, instance:str=None):
         """"
         Block or unblock a user
         
@@ -218,7 +213,7 @@ class User():
             person_id (int): ID of the user to block
             block (bool): True to block user. False to unblock user. 
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Blocked user response
         """
@@ -226,58 +221,58 @@ class User():
             "person_id": person_id,
             "block": block
             }
-        res = self._req.lemmyRequest("blockPerson", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("blockPerson", instance=instance, form=form, auth=True)
         return res
     
-    def getCaptcha(self, instance:str=None, auth_token:str=None): 
+    def getCaptcha(self, instance:str=None): 
         """
         Get a new captcha from an instance
         
         Args:
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Captcha
         """
         form={}
-        res = self._req.lemmyRequest("getCaptcha", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("getCaptcha", instance=instance, form=form, auth=True)
         return res
     
-    def deleteAccount(self, password:str, instance:str=None, auth_token:str=None): 
+    def deleteAccount(self, password:str, instance:str=None): 
         """
         Delete an account
         
         Args:
             password (str): password to verify account deletion
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Deleted account response
         """
         form={
             "password": password
             }
-        res = self._req.lemmyRequest("deleteAccount", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("deleteAccount", instance=instance, form=form, auth=True)
         return res
     
-    def passwordReset(self, email:str, instance:str=None, auth_token:str=None): 
+    def passwordReset(self, email:str, instance:str=None): 
         """
         Reset an account password associated with an email
         
         Args:
             email (str): Email address an account is associated with
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Pasword reset response
         """
         form={
             "email": email
             }
-        res = self._req.lemmyRequest("passwordReset", instance=instance, form=form, auth=False, auth_token=auth_token)
+        res = self._req.lemmyRequest("passwordReset", instance=instance, form=form, auth=False)
         return res
         
-    def passwordChangeAfterReset(self, token:str, password:str, password_verify:str, instance:str=None, auth_token:str=None):
+    def passwordChangeAfterReset(self, token:str, password:str, password_verify:str, instance:str=None):
         """
         Change a password after reset request
         
@@ -286,7 +281,7 @@ class User():
             password (str): New password
             password_verify (str): New password repeated for verification
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Password reset response
         """
@@ -295,21 +290,21 @@ class User():
             "password": password,
             "password_verify": password_verify
             }
-        res = self._req.lemmyRequest("passwordChangeAfterReset", instance=instance, form=form, auth=False, auth_token=auth_token)
+        res = self._req.lemmyRequest("passwordChangeAfterReset", instance=instance, form=form, auth=False)
         return res
         
-    def markAllAsRead(self, instance:str=None, auth_token:str=None):
+    def markAllAsRead(self, instance:str=None):
         """
         Mark all as read
         
         Args:
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Mark read response
         """
         form={}
-        res = self._req.lemmyRequest("markAllAsRead", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("markAllAsRead", instance=instance, form=form, auth=True)
         return res
         
     def saveUserSettings(self,
@@ -334,8 +329,7 @@ class User():
         discussion_languages: List[int]=None, 
         generate_totp_2fa: bool=None, 
         open_links_in_new_tab: bool=None,
-        instance:str=None,
-        auth_token:str=None):
+        instance:str=None):
         """
         Save user settings to account
         
@@ -362,7 +356,7 @@ class User():
             generate_totp_2fa (bool): Use TOTP 2FA. Optional
             open_links_in_new_tab (bool): Open links in new tab. Optional
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             User settings saved response
         """ 
@@ -390,14 +384,13 @@ class User():
             "generate_totp_2fa"             : generate_totp_2fa          ,
             "open_links_in_new_tab"         : open_links_in_new_tab
             }
-        res = self._req.lemmyRequest("saveUserSettings", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("saveUserSettings", instance=instance, form=form, optional=optional, auth=True)
         return res
     def changePassword(self, 
         new_password: str,
         new_password_verify: str,
         old_password: str,
-        instance:str=None,
-        auth_token:str=None):
+        instance:str=None):
         """
         Change password
         
@@ -406,7 +399,7 @@ class User():
             new_password_verify (str): New password repeated for verification
             old_password (str): Old password to verify identity
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Password changed response
         """
@@ -415,17 +408,17 @@ class User():
             "new_password_verify" : new_password_verify,
             "old_password": old_password
         }
-        res = self._req.lemmyRequest("changePassword", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("changePassword", instance=instance, form=form, auth=True)
         return res
         
-    def getReportCount(self,community_id:int=None, instance:str=None, auth_token:str=None):
+    def getReportCount(self,community_id:int=None, instance:str=None):
         """
         Get the report count
         
         Args:
             community_id (int): ID of the community. Optional
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Report count response
         """
@@ -433,21 +426,21 @@ class User():
         optional={
             "community_id": community_id
             }
-        res = self._req.lemmyRequest("getReportCount", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("getReportCount", instance=instance, form=form, optional=optional, auth=True)
         return res
         
-    def getUnreadCount(self, instance:str=None, auth_token:str=None):
+    def getUnreadCount(self, instance:str=None):
         """
         Get the unread count
         
         Args:
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            
         Returns:
             Unread count response
         """
         form={}
-        res = self._req.lemmyRequest("getUnreadCount", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("getUnreadCount", instance=instance, form=form, auth=True)
         return res
         
     def verifyEmail(self, instance:str=None, token:str=None):

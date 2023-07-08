@@ -10,7 +10,7 @@ class Comment():
     def __init__(self, _req: Requestor):
         self._req = _req
         
-    def create(self, post_id:int, content:str, parent_id:int=None, language_id:int=None, instance:str=None, auth_token:str=None):
+    def create(self, post_id:int, content:str, parent_id:int=None, language_id:int=None, instance:str=None):
         """
         Create a comment
         
@@ -20,7 +20,6 @@ class Comment():
             parent_id (int): Parent comment ID. Optional. Default/If None, posts comment directly to post.
             language_id (int): Language ID
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
         Returns:
             Comment response
         """
@@ -32,11 +31,11 @@ class Comment():
             "language_id": language_id,
             "parent_id": parent_id
         }
-        res = self._req.lemmyRequest("createComment", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("createComment", instance=instance, form=form, optional=optional, auth=True)
         
         return res["comment_view"]
         
-    def like(self, comment_id:int, score:int=1, instance:str=None, auth_token:str=None):
+    def like(self, comment_id:int, score:int=1, instance:str=None):
         """
         Like a comment
         
@@ -44,7 +43,6 @@ class Comment():
             comment_id (int): ID of the comment
             score (int): Score of the comment. -1/0/1 dislikes, removes like, and likes a comment.
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
         Returns:
             Comment response
         """
@@ -56,10 +54,10 @@ class Comment():
             "comment_id": comment_id,
             "score": score
         }
-        res = self._req.lemmyRequest("likeComment", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("likeComment", instance=instance, form=form, auth=True)
         return res["comment_view"]
         
-    def report(self, comment_id:int, reason:str, instance:str=None, auth_token:str=None):
+    def report(self, comment_id:int, reason:str, instance:str=None):
         """
         Report a comment
         
@@ -67,7 +65,6 @@ class Comment():
             comment_id (int): ID of the comment
             reason (str): Reason for reporting the comment
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
         Returns:
             Comment report response
         """
@@ -75,10 +72,10 @@ class Comment():
             "comment_id": comment_id,
             "reason": reason
             }
-        res = self._req.lemmyRequest("createCommentReport", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("createCommentReport", instance=instance, form=form, auth=True)
         return res
         
-    def delete(self, comment_id:int, deleted:bool=True, instance:str=None, auth_token:str=None):
+    def delete(self, comment_id:int, deleted:bool=True, instance:str=None):
         """
         Delete a comment
         
@@ -86,7 +83,6 @@ class Comment():
             comment_id (int): ID of the comment
             deleted (bool): If comment is deleted. Optional. Defaults to true
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
         Returns:
             Comment response
         """
@@ -94,10 +90,10 @@ class Comment():
             "comment_id": comment_id,
             "deleted": deleted
             }
-        res = self._req.lemmyRequest("deleteComment", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("deleteComment", instance=instance, form=form, auth=True)
         return res["comment_view"]
         
-    def remove(self, comment_id:int, mod_person_id:int, when_:str, removed:bool=True, reason:str=None, instance:str=None, auth_token:str=None):
+    def remove(self, comment_id:int, mod_person_id:int, when_:str, removed:bool=True, reason:str=None, instance:str=None):
         """
         Moderator remove a comment
         
@@ -109,7 +105,6 @@ class Comment():
             deleted (bool): If comment is deleted. Optional. Defaults to true
             reason (str): Reason for removing the comment. Optional.
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
         Returns:
             Comment response
         """
@@ -122,10 +117,10 @@ class Comment():
         optional={
             "reason":reason,
             }
-        res = self._req.lemmyRequest("removeComment", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("removeComment", instance=instance, form=form, optional=optional, auth=True)
         return res["comment_view"]
         
-    def distinguish(self, comment_id:int, distinguished:bool=True, instance:str=None, auth_token:str=None):
+    def distinguish(self, comment_id:int, distinguished:bool=True, instance:str=None):
         """
         Distinguish a comment
         
@@ -133,7 +128,6 @@ class Comment():
             comment_id (int): ID of the comment
             distinguished (bool): If comment is distinguished. Optional. Defaults to true
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
         Returns:
             Comment response
         """
@@ -141,10 +135,10 @@ class Comment():
             "comment_id": comment_id,
             "distinguished": distinguished,
             }
-        res = self._req.lemmyRequest("distinguishComment", instance=instance, form=form, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("distinguishComment", instance=instance, form=form, auth=True)
         return res["comment_view"]
         
-    def edit(self, comment_id:int, content:str=None, language_id:int=None, form_id:str=None, instance:str=None, auth_token:str=None):
+    def edit(self, comment_id:int, content:str=None, language_id:int=None, form_id:str=None, instance:str=None):
         """
         Edit a comment
         
@@ -154,7 +148,6 @@ class Comment():
             language_id (int): Language of the comment
             form_id (str): ???
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
         Returns:
             Comment response
         """
@@ -166,24 +159,24 @@ class Comment():
             "language_id":language_id,
             "form_id":form_id,
             }
-        res = self._req.lemmyRequest("editComment", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
+        res = self._req.lemmyRequest("editComment", instance=instance, form=form, optional=optional, auth=True)
         return res["comment_view"]
         
-    def get(self, comment_id:int, instance:str=None, auth:bool=True, auth_token:str=None):    
+    def get(self, comment_id:int, instance:str=None, auth:bool=True):    
         """
         Get a comment by id
         
         Args:
             comment_id (int): ID of the comment
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
+            auth (bool): Whether to authenticate using login or not. Optional. Defaults to True
         Returns:
             Comment response
         """
         form = {
             "comment_id": comment_id
             }
-        res = self._req.lemmyRequest("getComment", instance=instance, form=form, optional=optional, auth=auth, auth_token=auth_token)
+        res = self._req.lemmyRequest("getComment", instance=instance, form=form, optional=optional, auth=auth)
         return res["comment_view"]
         
     def list(self, 
@@ -198,8 +191,7 @@ class Comment():
         parent_id:int=None,
         saved_only:bool=None,
         instance:str=None, 
-        auth:bool=True, 
-        auth_token:str=None):
+        auth:bool=True):
         """
         Get comments in a post
         
@@ -217,33 +209,29 @@ class Comment():
             saved_only (bool): Filter by only saved comments. Optional.
             instance (str): URL of local instance. Optional. Default None uses logged in instance
             auth (bool): Whether or not to authenticate. Optional. True by default.
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
         Returns:
             Comment list
         """
         form = {
             "comment_id": comment_id
             }
-        if(comment_type):
-            form["type_"] = comment_type,
-        if(sort):
-            form["sort"] = sort
-
         optional={
-            "max_depth"      : max_depth       ,
-            "page"           : page            ,
-            "limit"          : limit           ,
-            "post_id"        : post_id         ,
-            "community_id"   : community_id    ,
-            "community_name" : community_name  ,
-            "parent_id"      : parent_id       ,
-            "saved_only"     : saved_only      ,
+            "type_"             : type_             ,
+            "sort"              : sort              ,
+            "max_depth"         : max_depth         ,
+            "page"              : page              ,
+            "limit"             : limit             ,
+            "post_id"           : post_id           ,
+            "community_id"      : community_id      ,
+            "community_name"    : community_name    ,
+            "parent_id"         : parent_id         ,
+            "saved_only"        : saved_only        ,
             }
        
-        res = self._req.lemmyRequest("getComments", instance=instance, form=form, optional=optional, auth=auth, auth_token=auth_token)
+        res = self._req.lemmyRequest("getComments", instance=instance, form=form, optional=optional, auth=auth)
         return res["comment_view"]
     
-    def listReports(self, page:int=None, limit:int=None, unresolved_only:bool=None, community_id:int=None, instance:str=None, auth_token:str=None):
+    def listReports(self, page:int=None, limit:int=None, unresolved_only:bool=None, community_id:int=None, instance:str=None):
         """
         Get list of comment reports
         
@@ -253,7 +241,6 @@ class Comment():
             unresolved_only (bool): If only unresolved reports should be listed. Optional.
             community_id (int): ID of community to get comment from. Optional.
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
         Returns:
             Comment report list response
         """
@@ -264,10 +251,10 @@ class Comment():
             "community_id"   : community_id    ,
             "unresolved_only": unresolved_only ,
             }
-        res = self._req.lemmyRequest("listCommentReports", instance=instance, form=form, optional=optional, auth=auth, auth_token=auth_token)
+        res = self._req.lemmyRequest("listCommentReports", instance=instance, form=form, optional=optional, auth=auth)
         return
         
-    def markReplyAsRead(self, comment_reply_id:int, read:bool=True, instance:str=None, auth_token:str=None):
+    def markReplyAsRead(self, comment_reply_id:int, read:bool=True, instance:str=None):
         """
         Mark a reply as read
         
@@ -275,7 +262,6 @@ class Comment():
             comment_reply_id (int): ID of comment reply.
             read (bool): If reply is marked as read. Optional. Defaults to True
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
         Returns:
             Comment reply marked as read response
         """
@@ -283,10 +269,10 @@ class Comment():
             "comment_reply_id"  : comment_reply_id  ,
             "read"              : read              ,
             }
-        res = self._req.lemmyRequest("markCommentReplyAsRead", instance=instance, form=form, auth=auth, auth_token=auth_token)
+        res = self._req.lemmyRequest("markCommentReplyAsRead", instance=instance, form=form, auth=auth)
         return
     
-    def resolveReport(self, report_id:int, resolved:bool=True, instance:str=None, auth_token:str=None):
+    def resolveReport(self, report_id:int, resolved:bool=True, instance:str=None):
         """
         Resolve a comment report
         
@@ -294,7 +280,6 @@ class Comment():
             report_id (int): ID of report.
             resolved (bool): If reply is marked as read. Optional. Defaults to True
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
         Returns:
             Report resolved response
         """
@@ -302,10 +287,10 @@ class Comment():
             "report_id"  : report_id ,
             "resolved"   : resolved  ,
             }
-        res = self._req.lemmyRequest("resolveCommentReport", instance=instance, form=form, auth=auth, auth_token=auth_token)
+        res = self._req.lemmyRequest("resolveCommentReport", instance=instance, form=form, auth=auth)
         return
     
-    def save(self, comment_id:int, save:bool=True, instance:str=None, auth_token:str=None):
+    def save(self, comment_id:int, save:bool=True, instance:str=None):
         """
         Save a comment
         
@@ -313,7 +298,6 @@ class Comment():
             comment_id (int): ID of comment.
             save (bool): If comment is saved or not. Optional. Defaults to True
             instance (str): URL of local instance. Optional. Default None uses logged in instance
-            auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
         Returns:
             Report resolved response
         """
@@ -321,5 +305,5 @@ class Comment():
             "comment_id"  : comment_id ,
             "save"   : save,
             }
-        res = self._req.lemmyRequest("saveComment", instance=instance, form=form, auth=auth, auth_token=auth_token)
+        res = self._req.lemmyRequest("saveComment", instance=instance, form=form, auth=auth)
         return
