@@ -22,7 +22,17 @@ class User():
         """
         form = {}
         res = self._req.lemmyRequest("leaveAdmin", instance=instance, form=form, auth=True, auth_token=auth_token)
-    def register(self, username:str, password:str, password_verify:str, show_nsfw:bool, email:str=None, captcha_uuid:str=None, captcha_answer:str=None, honeypot:str=None, answer:str=None, instance:str=None):
+    def register(self, 
+        username:str, 
+        password:str, 
+        password_verify:str, 
+        show_nsfw:bool, 
+        email:str=None, 
+        captcha_uuid:str=None, 
+        captcha_answer:str=None, 
+        honeypot:str=None, 
+        answer:str=None, 
+        instance:str=None):
         """
         Register at an instance
         
@@ -323,6 +333,7 @@ class User():
         show_new_post_notifs: bool=None, 
         discussion_languages: List[int]=None, 
         generate_totp_2fa: bool=None, 
+        open_links_in_new_tab: bool=None,
         instance:str=None,
         auth_token:str=None):
         """
@@ -347,8 +358,9 @@ class User():
             show_bot_accounts (bool): If bot accounts should be hidden. Optional 
             show_read_posts (bool): If read posts should be shown or hidden . Optional
             show_new_post_notifs (bool): If new posts should send a notification. Optional
-            discussion_languages (List[int]): List of langages to show. Using undefined may cause no posts to show
-            generate_totp_2fa (bool); Use TOTP 2FA
+            discussion_languages (List[int]): List of langages to show. Using undefined may cause no posts to show. Optional
+            generate_totp_2fa (bool): Use TOTP 2FA. Optional
+            open_links_in_new_tab (bool): Open links in new tab. Optional
             instance (str): URL of local instance. Optional. Default None uses logged in instance
             auth_token (str): Authentication token for local instance. Optional. Default None uses logged in auth_token
         Returns:
@@ -375,7 +387,8 @@ class User():
             "show_read_posts"               : show_read_posts            ,
             "show_new_post_notifs"          : show_new_post_notifs       ,
             "discussion_languages"          : discussion_languages       ,
-            "generate_totp_2fa"             : generate_totp_2fa          
+            "generate_totp_2fa"             : generate_totp_2fa          ,
+            "open_links_in_new_tab"         : open_links_in_new_tab
             }
         res = self._req.lemmyRequest("saveUserSettings", instance=instance, form=form, optional=optional, auth=True, auth_token=auth_token)
         return res
