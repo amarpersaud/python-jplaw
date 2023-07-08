@@ -1,12 +1,12 @@
+"""
+Comment class. Designed to allow Lemmy.Comment functions.
+"""
 from jplaw.requestor import Requestor
 from jplaw.api_paths import *
 from jplaw.types.listing_type import ListingType
 from jplaw.types.comment_sort_type import CommentSortType
 
 class Comment():
-    """
-    Comment class. Designed to allow Lemmy.Comment functions.
-    """
     def __init__(self, _req: Requestor):
         self._req = _req
         
