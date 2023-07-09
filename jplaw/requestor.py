@@ -81,8 +81,9 @@ class Requestor:
             request response
         """
         form = self.AddListIfValue(optional=optional, form=form)
-        form = self.fixFormValues(form)
-        
+        #form = self.fixFormValues(form)
+        for key, val in form.items():
+            print("{0}: {1} | {2}".format(key, val, str(val)))
         #Only authorize if authorization enabled, token is available, and instance is not changed. If instance changed or logged out, disable auth. 
         if(auth and (self.auth_token is not None) and ((instance is None) or (instance == self.instance))):
             form["auth"] = self.auth_token
