@@ -81,9 +81,8 @@ class Requestor:
             request response
         """
         form = self.AddListIfValue(optional=optional, form=form)
-        #form = self.fixFormValues(form)
-        for key, val in form.items():
-            print("{0}: {1} | {2}".format(key, val, str(val)))
+        form = self.fixFormValues(form)
+        
         #Only authorize if authorization enabled, token is available, and instance is not changed. If instance changed or logged out, disable auth. 
         if(auth and (self.auth_token is not None) and ((instance is None) or (instance == self.instance))):
             form["auth"] = self.auth_token
@@ -127,7 +126,7 @@ class Requestor:
         
     def fixFormValues(self, form: Dict[str, Any]):
         """
-        Fix value types for requests (e.g. bool and Enum types)
+        Fix value types for requests (e.g. Enum types)
         
         Args:
             form (Dict[str, Any]): Dictionary of keys and items in form
@@ -136,8 +135,6 @@ class Requestor:
             Form with fixed values
         """
         for key, value in form.items():
-            if(isinstance(value, bool)):
-                form[key] = self.boolToStr(value)
             if(isinstance(value, Enum)):
                 form[key] = value.value
         return form
