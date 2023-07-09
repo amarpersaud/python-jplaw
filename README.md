@@ -43,13 +43,21 @@ print(lem.Community.get("test@lemmy.ml"))
 See [the documentation](https://amarpersaud.github.io/python-jplaw/) for more information on how to use jplaw.
 
 # Roadmap 
-### v0.1.7
 - Work on return types and usability.
-
-### v0.1.6
 - Work on testing functions and finding / squashing bugs
 
 # Changelog
+
+### v0.1.7
+- Fix bug with "fixed" boolean values
+
+### v0.1.6
+- Fixes boolean and Enum parameters
+- Adds show_nsfw to communities
+- Add open_links_in_new_tab saveUserSettings
+- Removes auth_token parameter from functions. To get an auth_token, a new Lemmy object can be created and logged in with. Accessing other instances via a Lemmy object can be done via the instance parameter, but does not authenticate
+- Fix documentation for jplaw.types and jplaw.comment
+
 ### v0.1.5
 - Fix namespace issues
 - Fix build issues

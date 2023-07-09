@@ -61,7 +61,7 @@ class Post():
         res = self._req.lemmyRequest("getPost", instance=instance, form=form, optional=optional, auth=auth)
         return res["post_view"]
         
-    def create(self, community_id:int, title:str=None, body:str=None, remote_url:str=None, honeypot:str=None, nsfw=False, language_id:int=None, instance:str=None):
+    def create(self, community_id:int, title:str=None, body:str=None, remote_url:str=None, honeypot:str=None, nsfw:bool=False, language_id:int=None, instance:str=None):
         """
         Create a post
         

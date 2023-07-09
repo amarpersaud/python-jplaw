@@ -126,7 +126,7 @@ class Requestor:
         
     def fixFormValues(self, form: Dict[str, Any]):
         """
-        Fix value types for requests (e.g. bool and Enum types)
+        Fix value types for requests (e.g. Enum types)
         
         Args:
             form (Dict[str, Any]): Dictionary of keys and items in form
@@ -135,8 +135,6 @@ class Requestor:
             Form with fixed values
         """
         for key, value in form.items():
-            if(isinstance(value, bool)):
-                form[key] = self.boolToStr(value)
             if(isinstance(value, Enum)):
                 form[key] = value.value
         return form
