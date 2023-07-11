@@ -86,3 +86,18 @@ class Lemmy:
         self.Emoji = Emoji(self._req)
         self.PrivateMessage = PrivateMessage(self._req)
         # print(self._req.headers.get("Authorization"))
+        
+    def federateCommunity(self, name:str, auth:bool=True, instance:str=None):
+        """
+        Get comunity from another instance which may not have been federated.
+        
+        Args:
+            name (str): Name of the community. Include @[instance] for a community at 
+            auth (bool): Whether or not to use authentication. True by default.
+            instance (str): Remote instance to send federation command to / get federated community through. Federating "[community]@[instance A]" with instance="[instance B]" sends the federation command to instance B, which then looks for the community at instance A. Default None uses instane = logged in instance.
+        
+        Returns:
+            Community 
+        """
+        data = self.Site.resolveObject("!" + name);
+        return self.Community.get(name, instance=instance, auth=auth)["community_view"];
