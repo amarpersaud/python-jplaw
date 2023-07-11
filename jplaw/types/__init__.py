@@ -1,7 +1,7 @@
 """
     The jplaw.types submodule is used for Enums and data types used in jplaw.
 """
-__version__ = "0.1.7"
+__version__ = "0.1.8"
 __package__ = "jplaw.types"
 from .comment_sort_type import CommentSortType
 from .http_type import HttpType
