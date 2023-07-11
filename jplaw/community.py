@@ -240,7 +240,7 @@ class Community():
             "posting_restricted_to_mods": posting_restricted_to_mods,
             "discussion_languages": discussion_languages,
             }
-        res = self._req.lemmyRequest("createCommunity", instance=instance, form=form, optional=optional, auth=True)
+        res = self._req.lemmyRequest("editCommunity", instance=instance, form=form, optional=optional, auth=True)
         return res["community_view"]
         
     def remove(self, community_id:int, removed:bool=True, reason:str=None, expires:int=None, instance:str=None):
