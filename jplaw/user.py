@@ -309,6 +309,8 @@ class User():
         
     def saveUserSettings(self,
         show_nsfw: bool=None,
+        blur_nsfw: bool=None,
+        auto_expand: bool=None,
         show_scores: bool=None,
         theme: str=None,
         default_sort_type: SortType=None,
@@ -335,7 +337,9 @@ class User():
         
         Args:
             show_nsfw (bool): If NSFW posts and communities should be shown. Optional
-            show_scores (bool) If scores should be shown. Optional
+            show_scores (bool): If scores should be shown. Optional
+            blur_nsfw (bool): If nsfw thumbnails and images should be blurred before opening the image. Optional
+            auto_expand (bool): If true, autoexpand images. Optional.
             theme (str): Site theme. Optional
             default_sort_type (SortType): Sort type for the site. Optional
             default_listing_type (ListingType): Default listing type. Allows viewing Local or All communities. Optional
