@@ -11,7 +11,18 @@ class Post():
     def __init__(self, _req: Requestor):
         self._req = _req
         
-    def list(self, type:ListingType=None, sort:SortType=None, page:int=None, limit:int=None, community_id:int=None, community_name:str=None, saved_only:bool=None, instance:str=None, auth:bool=True):
+    def list(
+        self, 
+        type:ListingType=None, 
+        sort:SortType=None, 
+        page:int=None, 
+        limit:int=None, 
+        community_id:int=None, 
+        community_name:str=None, 
+        saved_only:bool=None, 
+        moderator_view: bool=None,
+        instance:str=None, 
+        auth:bool=True):
         """
         Get a list of posts in a community
         
@@ -23,6 +34,7 @@ class Post():
             community_id (int): ID of the community the post is in. Optional
             community_name (str): Name of the community the post is in. Optional
             saved_only (bool): Find posts only from saved posts. Optional
+            moderator_view (bool): Moderator view. Optional
             instance (str): URL of local instance. Optional. Default None uses logged in instance
             auth (str): If true, authenticates using internal token from login. Optional. Default True
         Returns:
@@ -36,7 +48,8 @@ class Post():
             "page": page,
             "limit": limit,
             "community_name": community_name,
-            "saved_only": saved_only
+            "saved_only": saved_only,
+            "moderator_view": moderator_view,
             }
         res = self._req.lemmyRequest("getPosts", instance=instance, form=form, optional=optional, auth=auth)
         return res["posts"]
@@ -59,6 +72,7 @@ class Post():
             "comment_id": comment_id,
             }
         res = self._req.lemmyRequest("getPost", instance=instance, form=form, optional=optional, auth=auth)
+        
         return res["post_view"]
         
     def create(self, community_id:int, title:str=None, body:str=None, remote_url:str=None, honeypot:str=None, nsfw:bool=False, language_id:int=None, instance:str=None):

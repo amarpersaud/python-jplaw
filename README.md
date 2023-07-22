@@ -47,6 +47,14 @@ See [the documentation](https://amarpersaud.github.io/python-jplaw/) for more in
 - Work on testing functions and finding / squashing bugs
 
 # Changelog
+### v0.1.9
+- Add blur_nsfw and auto_expand parameters to saveUserSettings
+- Add moderator_view parameter to Post.list()
+
+### v0.1.8
+- Fixes Community.edit()
+- Adds Lemmy.federateCommunity()
+
 
 ### v0.1.7
 - Fix bug with "fixed" boolean values
