@@ -45,6 +45,8 @@ jobs:
         VERSION_STR=$(python -m build)
         FILE=$(echo $VERSION_STR | grep -oh -E '(jplaw-[0-9]*.[0-9]*.[0-9]*).tar.gz')
         VER=$(echo $FILE | grep -oh -E '([0-9]*.[0-9]*.[0-9]*)')
+        echo $FILE
+        echo $VER
         echo "VERSION=$VER" >> $GITHUB_ENV
         python -m pip install "dist/$FILE"
     - name: Generate Documentation
