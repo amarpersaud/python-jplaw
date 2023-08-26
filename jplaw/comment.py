@@ -213,10 +213,9 @@ class Comment():
             Comment list
         """
         form = {
-            "comment_id": comment_id
             }
         optional={
-            "type_"             : type_             ,
+            "type"              : comment_type      ,
             "sort"              : sort              ,
             "max_depth"         : max_depth         ,
             "page"              : page              ,
@@ -229,7 +228,7 @@ class Comment():
             }
        
         res = self._req.lemmyRequest("getComments", instance=instance, form=form, optional=optional, auth=auth)
-        return res["comment_view"]
+        return res["comments"]
     
     def listReports(self, page:int=None, limit:int=None, unresolved_only:bool=None, community_id:int=None, instance:str=None):
         """
