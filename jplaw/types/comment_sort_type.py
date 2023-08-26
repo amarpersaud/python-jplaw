@@ -4,3 +4,4 @@ class CommentSortType(Enum):
     Top = "Top"
     New = "New"
     Old = "Old"
+    Controversial = "Controversial"

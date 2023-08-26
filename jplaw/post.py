@@ -20,7 +20,6 @@ class Post():
         community_id:int=None, 
         community_name:str=None, 
         saved_only:bool=None, 
-        moderator_view: bool=None,
         instance:str=None, 
         auth:bool=True):
         """
@@ -34,7 +33,6 @@ class Post():
             community_id (int): ID of the community the post is in. Optional
             community_name (str): Name of the community the post is in. Optional
             saved_only (bool): Find posts only from saved posts. Optional
-            moderator_view (bool): Moderator view. Optional
             instance (str): URL of local instance. Optional. Default None uses logged in instance
             auth (str): If true, authenticates using internal token from login. Optional. Default True
         Returns:
@@ -49,7 +47,6 @@ class Post():
             "limit": limit,
             "community_name": community_name,
             "saved_only": saved_only,
-            "moderator_view": moderator_view,
             }
         res = self._req.lemmyRequest("getPosts", instance=instance, form=form, optional=optional, auth=auth)
         return res["posts"]

@@ -17,3 +17,4 @@ class SortType(Enum):
     TopNineMonths=  "TopNineMonths"
     TopYear=        "TopYear"
     TopAll=         "TopAll"
+    Contoversial=   "Controversial"
