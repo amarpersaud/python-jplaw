@@ -100,4 +100,4 @@ class Lemmy:
             Community 
         """
         data = self.Site.resolveObject("!" + name);
-        return self.Community.get(name, instance=instance, auth=auth)["community_view"];
+        return self.Community.get(name, instance=instance, auth=auth);
