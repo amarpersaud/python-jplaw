@@ -17,6 +17,20 @@ jplaw can be installed from PYPI through pip:
 
 `python -m pip install jplaw`
 
+
+## From source
+Building can use the script build_and_install:
+
+`sh ./build_and_install.sh`
+
+Or build and install manually for version {version}:
+
+```
+py -m build
+py -m pip install ./dist/jplaw-{version}.tar.gz
+```
+
+
 # Usage example
 This example uses python-dotenv to load secrets from the `.env` file, which is not strictly necessary.
 
@@ -47,6 +61,14 @@ See [the documentation](https://amarpersaud.github.io/python-jplaw/) for more in
 - Work on testing functions and finding / squashing bugs
 
 # Changelog
+### v0.1.10
+- Fix getting comments (thanks to @notBradPitt)
+- Add Controversial sorting to comments and posts
+- Add infinite scrolling option to user settings
+- Fix build script issues for non-single digit major/minor versions
+- Add Moderator View to listing type
+- Fix federateCommunity indexing
+
 ### v0.1.9
 - Add blur_nsfw and auto_expand parameters to saveUserSettings
 - Add moderator_view parameter to Post.list()
