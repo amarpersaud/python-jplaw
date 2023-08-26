@@ -331,6 +331,7 @@ class User():
         discussion_languages: List[int]=None, 
         generate_totp_2fa: bool=None, 
         open_links_in_new_tab: bool=None,
+        infinite_scroll_enabled: bool=None,
         instance:str=None):
         """
         Save user settings to account
@@ -359,6 +360,7 @@ class User():
             discussion_languages (List[int]): List of langages to show. Using undefined may cause no posts to show. Optional
             generate_totp_2fa (bool): Use TOTP 2FA. Optional
             open_links_in_new_tab (bool): Open links in new tab. Optional
+            infinite_scroll_enabled (bool): Allow infinite scrolling. Optional
             instance (str): URL of local instance. Optional. Default None uses logged in instance
             
         Returns:
@@ -386,7 +388,8 @@ class User():
             "show_new_post_notifs"          : show_new_post_notifs       ,
             "discussion_languages"          : discussion_languages       ,
             "generate_totp_2fa"             : generate_totp_2fa          ,
-            "open_links_in_new_tab"         : open_links_in_new_tab
+            "open_links_in_new_tab"         : open_links_in_new_tab      ,
+            "infinite_scroll_enabled"       : infinite_scroll_enabled    ,
             }
         res = self._req.lemmyRequest("saveUserSettings", instance=instance, form=form, optional=optional, auth=True)
         return res
