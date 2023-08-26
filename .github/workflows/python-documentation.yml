@@ -43,8 +43,8 @@ jobs:
       if: env.is-auto-commit == false
       run: |
         VERSION_STR=$(python -m build)
-        FILE=$(echo $VERSION_STR | grep -oh -E '(jplaw-[0-9].[0-9].[0-9]).tar.gz')
-        VER=$(echo $FILE | grep -oh -E '([0-9].[0-9].[0-9])')
+        FILE=$(echo $VERSION_STR | grep -oh -E '(jplaw-[0-9]*.[0-9]*.[0-9]*).tar.gz')
+        VER=$(echo $FILE | grep -oh -E '([0-9]*.[0-9]*.[0-9]*)')
         echo "VERSION=$VER" >> $GITHUB_ENV
         python -m pip install "dist/$FILE"
     - name: Generate Documentation
